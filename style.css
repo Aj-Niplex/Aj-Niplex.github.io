@@ -103,6 +103,10 @@ nav {
     background: rgba(10, 10, 10, 0.8);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
 }
 
 .light-theme nav {
@@ -114,13 +118,13 @@ nav {
 }
 
 .nav-container {
-    max-width: 1100px;
+    width: 100%;
+    max-width: 1200px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 2rem;
-    height: 60px;
 }
 
 .nav-logo {
