@@ -148,88 +148,96 @@ body {
     font-weight: 600 !important;
 }
 
-/* Theme Picker Dropdown */
-details {
+/* Theme Switcher */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.theme-switch {
     position: relative;
-    cursor: pointer;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
 }
 
-summary {
-    list-style: none;
-    font-family: 'Fira Code', monospace;
-    font-size: 0.8rem;
-    color: var(--text-dim);
-    padding: 0.4rem 0.8rem;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    transition: var(--transition);
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
 
-summary::-webkit-details-marker {
-    display: none;
-}
-
-summary:hover {
-    border-color: var(--accent);
-    color: var(--white);
-}
-
-.dropdown {
+.slider {
     position: absolute;
-    top: 110%;
-    right: 0;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1rem;
-    width: 220px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    z-index: 1100;
-}
-
-.dropdown fieldset {
-    border: none;
-    padding: 0;
-    margin: 0;
-}
-
-.dropdown legend {
-    color: var(--text-dim);
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-    letter-spacing: 1px;
-}
-
-[data-options="theme"] {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
-}
-
-[data-options="theme"] button {
-    background: var(--bg-dark);
-    border: 1px solid var(--border);
-    color: var(--text-main);
-    padding: 0.6rem;
-    border-radius: 8px;
     cursor: pointer;
-    text-align: left;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.85rem;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #333;
+    transition: .4s;
+    border-radius: 34px;
+    border: 1px solid var(--border);
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    z-index: 2;
+}
+
+input:checked + .slider {
+    background-color: var(--accent);
+}
+
+input:checked + .slider:before {
+    transform: translateX(30px);
+}
+
+/* Icon Overlays */
+.slider .icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.slider .sun {
+    left: 8px;
+    color: #f1c40f;
+}
+
+.slider .moon {
+    right: 8px;
+    color: #f1c40f;
+}
+
+.sakura-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    font-family: 'Fira Code', monospace;
     transition: var(--transition);
 }
 
-[data-options="theme"] button:hover {
-    border-color: var(--accent);
-    background: rgba(77, 173, 255, 0.1);
-}
-
-[data-options="theme"] button[aria-pressed="true"] {
-    background: var(--accent);
-    color: var(--bg-dark);
-    border-color: var(--accent);
-    font-weight: 600;
+.sakura-btn:hover {
+    border-color: #ffb7c5;
+    color: #ffb7c5;
 }
 
 .circle-logo {
