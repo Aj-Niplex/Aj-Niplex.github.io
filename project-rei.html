@@ -18,8 +18,9 @@
             </div>
             <div class="nav-links">
                 <a href="index.html">Home</a>
-                <a href="about.html">About</a>
+                <a href="about.html">Vision</a>
                 <a href="projects.html">Projects</a>
+                <a href="roadmap.html">Roadmap</a>
                 <a href="https://www.linkedin.com/in/aj-niplex-foundation" target="_blank" class="nav-cta">Contact</a>
             </div>
         </div>
@@ -36,31 +37,45 @@
             <div class="detail-grid">
                 <div class="detail-main">
                     <div class="content-block">
-                        <h2>Overview</h2>
+                        <h2>Core Architecture</h2>
                         <div class="markdown-content">
-                            <p>Rei-kun is a high-performance, AI-driven Discord orchestrator designed to move beyond simple chat-bots into a fully persistent persona with deep architectural intelligence.</p>
-                            <p>The system integrates multi-model fallback mechanisms, custom emoji systems, and a comprehensive resource hub for students and developers.</p>
+                            <p>Rei-kun is a production-grade Discord orchestrator serving an active student community. Unlike basic bots, it utilizes a <strong>multi-model fallback engine</strong> via OpenRouter, ensuring 100% uptime by switching between DeepSeek, LLaMA 4, GPT, and Gemini.</p>
+                            <p>Key technical features include:</p>
+                            <ul>
+                                <li><strong>Code Doctor</strong>: A proprietary tool that scans Python source code, flags issues, and proposes patches with rollback support.</li>
+                                <li><strong>Resource Hub</strong>: Interactive wizard allowing students to retrieve notes, mind maps, and quizzes via code.</li>
+                                <li><strong>Dynamic Memory</strong>: Per-channel conversation memory for a persistent persona.</li>
+                                <li><strong>Hot-Reload</strong>: Architecture that allows module updates without restarting the bot.</li>
+                            </ul>
                         </div>
                     </div>
                     <div class="content-block">
-                        <h2>Installation & Quickstart</h2>
+                        <h2>Deployment Specs</h2>
                         <div class="code-section">
-                            <div class="code-header">Git Clone & Setup</div>
+                            <div class="code-header">Infrastructure</div>
+                            <pre><code>Host: Self-managed Linux VPS
+RAM: 3GB
+CPU: 2-Core
+Runtime: Python 3.13
+Libraries: discord.py, aiohttp, JSON storage</code></pre>
+                        </div>
+                        <div class="code-section" style="margin-top: 1rem;">
+                            <div class="code-header">Quick Install</div>
                             <pre><code>git clone https://github.com/Aj-Niplex/Rei-kun-Bot.git
 cd Rei-kun-Bot
 pip install -r requirements.txt
 cp .env.example .env
-# Edit .env with your tokens
 python app.py</code></pre>
                         </div>
                     </div>
                 </div>
                 <div class="detail-sidebar">
                     <div class="sidebar-card">
-                        <h3>Project Meta</h3>
+                        <h3>Technical Meta</h3>
                         <ul>
-                            <li><strong>Language:</strong> Python</li>
-                            <li><strong>Platform:</strong> Discord</li>
+                            <li><strong>Commands:</strong> 24 implemented</li>
+                            <li><strong>Modules:</strong> 19 utility modules</li>
+                            <li><strong>Data:</strong> 5 JSON-backed stores</li>
                             <li><strong>License:</strong> MIT</li>
                         </ul>
                     </div>
@@ -82,7 +97,7 @@ python app.py</code></pre>
                 <img src="assets/niplex_ai_logo.jpeg" alt="AI">
             </div>
             <p>&copy; 2026 Niplex Foundation. <strong>NEVER STOP IMAGINING</strong></p>
-            <p class="footer-credit">Crafted by Niplex-AI</p>
+            <p class="footer-credit">Orchestrated by Niplex-AI</p>
         </div>
     </footer>
 </body>

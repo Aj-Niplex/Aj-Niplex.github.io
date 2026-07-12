@@ -18,8 +18,9 @@
             </div>
             <div class="nav-links">
                 <a href="index.html">Home</a>
-                <a href="about.html">About</a>
+                <a href="about.html">Vision</a>
                 <a href="projects.html">Projects</a>
+                <a href="roadmap.html">Roadmap</a>
                 <a href="https://www.linkedin.com/in/aj-niplex-foundation" target="_blank" class="nav-cta">Contact</a>
             </div>
         </div>
@@ -36,19 +37,18 @@
             <div class="detail-grid">
                 <div class="detail-main">
                     <div class="content-block">
-                        <h2>Overview</h2>
+                        <h2>The Secure Bridge</h2>
                         <div class="markdown-content">
-                            <p>A secure MCP server designed to bridge the gap between AI agents and private codebases. It allows agents to interact with GitHub repositories without exposing sensitive Personal Access Tokens (PATs) to the model itself.</p>
-                            <p>By utilizing a proxy-based architecture, Niplex-MCP ensures that the AI agent receives the necessary context while the credentials remain securely vaulted on the server.</p>
+                            <p>Niplex-MCP is a Model Context Protocol (MCP) server that acts as a high-security bridge between AI tools (like Claude) and private GitHub repositories.</p>
+                            <p>The core problem it solves is <strong>credential exposure</strong>. Instead of giving an AI agent a raw Personal Access Token (PAT), Niplex-MCP handles the authentication on the server side, allowing the agent to read code and list files without ever seeing the secret keys.</p>
                         </div>
                     </div>
                     <div class="content-block">
                         <div class="code-section">
-                            <div class="code-header">Pull & Run</div>
+                            <div class="code-header">Deployment</div>
                             <pre><code>git clone https://github.com/Aj-Niplex/niplex-mcp.git
 cd niplex-mcp
 pip install -r requirements.txt
-# Run the MCP server
 python server.py</code></pre>
                         </div>
                     </div>
@@ -58,8 +58,9 @@ python server.py</code></pre>
                         <h3>Project Meta</h3>
                         <ul>
                             <li><strong>Protocol:</strong> MCP</li>
+                            <li><strong>Focus:</strong> Security & Proxying</li>
                             <li><strong>Language:</strong> Python</li>
-                            <li><strong>Security:</strong> Proxy-Vaulted</li>
+                            <li><strong>Status:</strong> Active Development</li>
                         </ul>
                     </div>
                     <div class="sidebar-card">
@@ -78,7 +79,7 @@ python server.py</code></pre>
                 <img src="assets/niplex_ai_logo.jpeg" alt="AI">
             </div>
             <p>&copy; 2026 Niplex Foundation. <strong>NEVER STOP IMAGINING</strong></p>
-            <p class="footer-credit">Crafted by Niplex-AI</p>
+            <p class="footer-credit">Orchestrated by Niplex-AI</p>
         </div>
     </footer>
 </body>
