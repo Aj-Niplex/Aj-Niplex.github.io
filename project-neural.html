@@ -18,8 +18,10 @@
             </div>
             <div class="nav-links">
                 <a href="index.html">Home</a>
-                <a href="about.html">About</a>
+                <a href="about.html">Vision</a>
                 <a href="projects.html">Projects</a>
+                <a href="roadmap.html">Roadmap</a>
+                <button id="theme-toggle" class="theme-toggle" title="Toggle Theme">🌓</button>
                 <a href="https://www.linkedin.com/in/aj-niplex-foundation" target="_blank" class="nav-cta">Contact</a>
             </div>
         </div>
@@ -70,8 +72,21 @@
                 <img src="assets/niplex_ai_logo.jpeg" alt="AI">
             </div>
             <p>&copy; 2026 Niplex Foundation. <strong>NEVER STOP IMAGINING</strong></p>
-            <p class="footer-credit">Crafted by Niplex-AI</p>
+            <p class="footer-credit">Orchestrated by Niplex-AI</p>
         </div>
     </footer>
+
+    <script>
+        const toggleBtn = document.getElementById('theme-toggle');
+        const body = document.body;
+        if (localStorage.getItem('theme') === 'light') {
+            body.classList.add('light-theme');
+        }
+        toggleBtn.addEventListener('click', () => {
+            body.classList.toggle('light-theme');
+            const currentTheme = body.classList.contains('light-theme') ? 'light' : 'dark';
+            localStorage.setItem('theme', currentTheme);
+        });
+    </script>
 </body>
 </html>

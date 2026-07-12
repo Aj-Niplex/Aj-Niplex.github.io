@@ -18,8 +18,10 @@
             </div>
             <div class="nav-links">
                 <a href="index.html">Home</a>
-                <a href="about.html">About</a>
+                <a href="about.html">Vision</a>
                 <a href="projects.html">Projects</a>
+                <a href="roadmap.html">Roadmap</a>
+                <button id="theme-toggle" class="theme-toggle" title="Toggle Theme">🌓</button>
                 <a href="https://www.linkedin.com/in/aj-niplex-foundation" target="_blank" class="nav-cta">Contact</a>
             </div>
         </div>
@@ -30,7 +32,7 @@
             <h2 class="section-title">Featured Projects</h2>
             <div class="projects-grid">
                 <!-- Rei-kun Bot -->
-                <div class="project-card animate-slide-up stagger-1">
+                <div class="project-card">
                     <div class="project-header">
                         <img src="assets/rei_logo.png" alt="Rei-kun Logo" class="project-logo">
                         <h3>Rei-kun Bot</h3>
@@ -42,7 +44,7 @@
                     </div>
                 </div>
                 <!-- Niplex-MCP -->
-                <div class="project-card animate-slide-up stagger-2">
+                <div class="project-card">
                     <div class="project-header">
                         <div class="project-icon">⚡</div>
                         <h3>Niplex-MCP</h3>
@@ -54,7 +56,7 @@
                     </div>
                 </div>
                 <!-- Neural-OS -->
-                <div class="project-card animate-slide-up stagger-3">
+                <div class="project-card">
                     <div class="project-header">
                         <div class="project-icon">🧠</div>
                         <h3>Neural-OS</h3>
@@ -77,8 +79,21 @@
                 <img src="assets/niplex_ai_logo.jpeg" alt="AI">
             </div>
             <p>&copy; 2026 Niplex Foundation. <strong>NEVER STOP IMAGINING</strong></p>
-            <p class="footer-credit">Crafted by Niplex-AI</p>
+            <p class="footer-credit">Orchestrated by Niplex-AI</p>
         </div>
     </footer>
+
+    <script>
+        const toggleBtn = document.getElementById('theme-toggle');
+        const body = document.body;
+        if (localStorage.getItem('theme') === 'light') {
+            body.classList.add('light-theme');
+        }
+        toggleBtn.addEventListener('click', () => {
+            body.classList.toggle('light-theme');
+            const currentTheme = body.classList.contains('light-theme') ? 'light' : 'dark';
+            localStorage.setItem('theme', currentTheme);
+        });
+    </script>
 </body>
 </html>

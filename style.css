@@ -388,6 +388,13 @@ nav {
     gap: 3rem;
 }
 
+@media (max-width: 768px) {
+    .detail-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
 .content-block {
     margin-bottom: 3rem;
 }
@@ -434,6 +441,15 @@ nav {
     border-radius: 16px;
     border: 1px solid var(--border);
     margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.sidebar-card .btn {
+    width: 100%;
+    text-align: center;
+    display: block;
 }
 
 .sidebar-card h3 {
