@@ -10,6 +10,17 @@
     --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
+.light-theme {
+    --bg-dark: #f8f9fa;
+    --bg-card: #ffffff;
+    --bg-alt: #f1f3f5;
+    --accent: #2563eb;
+    --text-main: #1a1a1a;
+    --text-dim: #4b5563;
+    --white: #ffffff;
+    --border: #e5e7eb;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -373,7 +384,7 @@ nav {
 
 .detail-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 3rem;
 }
 
