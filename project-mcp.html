@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niplex-MCP | Projects</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/company_logo.png" alt="Niplex Logo">
+                <span>NIPLEX</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="projects.html">Projects</a>
+                <a href="https://www.linkedin.com/in/aj-niplex-foundation" target="_blank" class="nav-cta">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="section">
+        <div class="container">
+            <div class="project-detail-header">
+                <div class="detail-icon">⚡</div>
+                <h1>Niplex-MCP</h1>
+                <p class="detail-subtitle">Secure Model Context Protocol Server</p>
+            </div>
+
+            <div class="detail-grid">
+                <div class="detail-main">
+                    <div class="content-block">
+                        <h2>Overview</h2>
+                        <div class="markdown-content">
+                            <p>A secure MCP server designed to bridge the gap between AI agents and private codebases. It allows agents to interact with GitHub repositories without exposing sensitive Personal Access Tokens (PATs) to the model itself.</p>
+                            <p>By utilizing a proxy-based architecture, Niplex-MCP ensures that the AI agent receives the necessary context while the credentials remain securely vaulted on the server.</p>
+                        </div>
+                    </div>
+                    <div class="content-block">
+                        <div class="code-section">
+                            <div class="code-header">Pull & Run</div>
+                            <pre><code>git clone https://github.com/Aj-Niplex/niplex-mcp.git
+cd niplex-mcp
+pip install -r requirements.txt
+# Run the MCP server
+python server.py</code></pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="detail-sidebar">
+                    <div class="sidebar-card">
+                        <h3>Project Meta</h3>
+                        <ul>
+                            <li><strong>Protocol:</strong> MCP</li>
+                            <li><strong>Language:</strong> Python</li>
+                            <li><strong>Security:</strong> Proxy-Vaulted</li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-card">
+                        <a href="https://github.com/Aj-Niplex/niplex-mcp" target="_blank" class="btn primary">View Source</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logos">
+                <img src="assets/user_logo.jpeg" alt="User">
+                <img src="assets/company_logo.png" alt="Company">
+                <img src="assets/niplex_ai_logo.jpeg" alt="AI">
+            </div>
+            <p>&copy; 2026 Niplex Foundation. <strong>NEVER STOP IMAGINING</strong></p>
+            <p class="footer-credit">Crafted by Niplex-AI</p>
+        </div>
+    </footer>
+</body>
+</html>
