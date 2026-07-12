@@ -7,7 +7,7 @@
     --text-dim: #a0a0a0;
     --white: #ffffff;
     --border: #222;
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 * {
@@ -27,6 +27,42 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
 }
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes glow {
+    0% { filter: drop-shadow(0 0 5px rgba(77, 173, 255, 0.2)); }
+    50% { filter: drop-shadow(0 0 15px rgba(77, 173, 255, 0.5)); }
+    100% { filter: drop-shadow(0 0 5px rgba(77, 173, 255, 0.2)); }
+}
+
+.animate-fade-in {
+    animation: fadeIn 1s ease-out forwards;
+}
+
+.animate-slide-up {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.stagger-1 { animation-delay: 0.2s; }
+.stagger-2 { animation-delay: 0.4s; }
+.stagger-3 { animation-delay: 0.6s; }
 
 .container {
     max-width: 1100px;
@@ -312,11 +348,16 @@ nav {
 }
 
 .detail-logo {
-    width: 120px;
-    height: 120px;
-    border-radius: 20px;
+    width: 140px;
+    height: 140px;
+    border-radius: 24px;
     margin-bottom: 1rem;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+    object-fit: contain;
+    background: radial-gradient(circle, #1a1a1a 0%, #0a0a0a 100%);
+    padding: 10px;
+    border: 1px solid var(--border);
+    animation: glow 4s infinite ease-in-out;
 }
 
 .detail-icon {
@@ -412,7 +453,11 @@ nav {
     width: 60px;
     height: 60px;
     border-radius: 12px;
-    object-fit: cover;
+    object-fit: contain;
+    background: radial-gradient(circle, #1a1a1a 0%, #0a0a0a 100%);
+    padding: 5px;
+    border: 1px solid var(--border);
+    animation: glow 3s infinite ease-in-out;
 }
 
 .project-actions {
