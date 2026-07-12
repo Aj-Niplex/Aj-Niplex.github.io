@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="petal-layer" id="petal-layer"></div>
+
     <nav>
         <div class="nav-container">
             <div class="nav-logo">
@@ -21,7 +23,14 @@
                 <a href="about.html">Vision</a>
                 <a href="projects.html">Projects</a>
                 <a href="roadmap.html">Roadmap</a>
-                <button id="theme-toggle" class="theme-toggle" title="Toggle Theme">🌓</button>
+                <div class="theme-picker">
+                    <button id="theme-toggle" class="theme-toggle" title="Toggle Theme" aria-haspopup="true">🌙</button>
+                    <div class="theme-dropdown" id="theme-dropdown">
+                        <button class="theme-option" data-theme="dark" aria-pressed="true">🌙 Dark</button>
+                        <button class="theme-option" data-theme="light" aria-pressed="false">☀️ Light</button>
+                        <button class="theme-option" data-theme="sakura" aria-pressed="false">🌸 Sakura</button>
+                    </div>
+                </div>
                 <a href="https://www.linkedin.com/in/aj-niplex-foundation" target="_blank" class="nav-cta">Contact</a>
             </div>
         </div>
@@ -30,53 +39,53 @@
     <section class="section">
         <div class="container">
             <h2 class="section-title animate-fade-in">The Vision</h2>
-            
+
             <div class="vision-hero animate-slide-up">
-                <p class="vision-text">"My goal is a robotics lab in Japan, and to keep shipping systems that actually run, not just live in a portfolio."</p>
+                <p class="vision-text">"My goal is a robotics lab in Japan &mdash; and to keep shipping systems that actually run, not just live in a portfolio."</p>
             </div>
 
             <div class="about-grid">
                 <div class="about-card animate-slide-up stagger-1">
                     <h3>Adarsh Jaiswal</h3>
-                    <p>A Class 12 PCM student at Woodland Academy, Gorakhpur, targeting the MEXT Undergraduate Scholarship 2028 to study Robotics Engineering in Japan. An independent developer who treats documentation and debugging as a primary learning process.</p>
+                    <p>A Class 12 PCM student at Woodland Academy, Gorakhpur, working toward the MEXT Undergraduate Scholarship 2028 to study Robotics Engineering in Japan. I taught myself to build software by reading documentation, debugging real deployments, and treating that process as the actual education &mdash; not a detour from it.</p>
                 </div>
                 <div class="about-card animate-slide-up stagger-2">
-                    <h3>The Niplex Ecosystem</h3>
-                    <p>A suite of agentic tools designed for high-authority orchestration. From the persona-driven Rei-kun Bot to the secure Niplex-MCP bridge, the ecosystem focuses on making AI truly useful in professional and academic workflows.</p>
+                    <h3>What I'm Building</h3>
+                    <p>Niplex is what I call my collection of independent projects: an AI Discord bot serving an active student community, a Model Context Protocol server that lets AI tools work with my code securely, and an early-stage effort to coordinate multiple AI agents together. Different stages, same habit &mdash; ship something real, then improve it.</p>
                 </div>
                 <div class="about-card animate-slide-up stagger-3">
-                    <h3>Niplex-AI</h3>
-                    <p>Powered by Hermes and completely modified by Adarsh Jaiswal. A specialized agentic framework built for complex task decomposition, an automated "Code Doctor" for source analysis, and seamless human-AI collaboration.</p>
+                    <h3>How I Work</h3>
+                    <p>I use AI tools deliberately as part of my development process &mdash; for debugging, code review, and planning &mdash; the same way any developer uses their tools. The judgment, the architecture decisions, and the actual shipping are mine.</p>
                 </div>
             </div>
 
             <div class="skill-matrix-container animate-slide-up" style="margin-top: 4rem;">
-                <h3 class="section-subtitle" style="text-align: center; color: var(--white); margin-bottom: 2rem;">Technical Arsenal</h3>
+                <h3 class="section-subtitle" style="text-align: center; color: var(--white); margin-bottom: 2rem;">What I Know</h3>
                 <div class="skill-matrix">
                     <div class="skill-category">
-                        <h4>Intelligence</h4>
+                        <h4>AI &amp; Agents</h4>
                         <ul>
-                            <li>Prompt Writing</li>
+                            <li>Prompt Engineering</li>
                             <li>AI Agent Design</li>
-                            <li>Multi-Model Fallbacks</li>
-                            <li>Agent Orchestration</li>
+                            <li>Multi-Model Fallback Systems</li>
+                            <li>Model Context Protocol (MCP)</li>
                         </ul>
                     </div>
                     <div class="skill-category">
                         <h4>Engineering</h4>
                         <ul>
                             <li>Python 3.13</li>
-                            <li>REST APIs (FastAPI/aiohttp)</li>
-                            <li>Linux VPS Management</li>
-                            <li>MCP Protocol</li>
+                            <li>Discord.py</li>
+                            <li>REST APIs (aiohttp)</li>
+                            <li>Linux VPS Administration</li>
                         </ul>
                     </div>
                     <div class="skill-category">
                         <h4>Academic</h4>
                         <ul>
-                            <li>PCM (Physics, Chem, Math)</li>
-                            <li>Robotics Technology</li>
-                            <li>Japanese (Beginner/JLPT N5)</li>
+                            <li>PCM (Physics, Chemistry, Math)</li>
+                            <li>Robotics Technology (Class 11&ndash;12)</li>
+                            <li>Japanese &mdash; Beginner, targeting JLPT N5</li>
                             <li>Technical Documentation</li>
                         </ul>
                     </div>
@@ -92,22 +101,86 @@
                 <img src="assets/company_logo.png" alt="Company">
                 <img src="assets/niplex_ai_logo.jpeg" alt="AI">
             </div>
-            <p>&copy; 2026 Niplex Foundation. <strong>NEVER STOP IMAGINING</strong></p>
-            <p class="footer-credit">Orchestrated by Niplex-AI</p>
+            <p>&copy; 2026 Adarsh Jaiswal &mdash; Niplex. <strong>NEVER STOP IMAGINING</strong></p>
+            <p class="footer-credit">Built independently, with AI tools used as part of the process.</p>
         </div>
     </footer>
 
     <script>
-        const toggleBtn = document.getElementById('theme-toggle');
-        const body = document.body;
-        if (localStorage.getItem('theme') === 'light') {
-            body.classList.add('light-theme');
-        }
-        toggleBtn.addEventListener('click', () => {
-            body.classList.toggle('light-theme');
-            const currentTheme = body.classList.contains('light-theme') ? 'light' : 'dark';
-            localStorage.setItem('theme', currentTheme);
-        });
+        (function () {
+            const body = document.body;
+            const toggleBtn = document.getElementById('theme-toggle');
+            const dropdown = document.getElementById('theme-dropdown');
+            const options = document.querySelectorAll('.theme-option');
+            const petalLayer = document.getElementById('petal-layer');
+            const ICONS = { dark: '🌙', light: '☀️', sakura: '🌸' };
+
+            function applyTheme(theme) {
+                body.classList.remove('light-theme', 'sakura-theme');
+                if (theme === 'light') body.classList.add('light-theme');
+                if (theme === 'sakura') body.classList.add('sakura-theme');
+                localStorage.setItem('theme', theme);
+                toggleBtn.textContent = ICONS[theme] || '🌙';
+                options.forEach(btn => {
+                    btn.setAttribute('aria-pressed', btn.dataset.theme === theme ? 'true' : 'false');
+                });
+                if (theme === 'sakura') {
+                    spawnPetals();
+                } else {
+                    clearPetals();
+                }
+            }
+
+            function spawnPetals() {
+                if (!petalLayer || petalLayer.dataset.spawned === 'true') return;
+                petalLayer.dataset.spawned = 'true';
+                const count = window.innerWidth < 600 ? 16 : 28;
+                for (let i = 0; i < count; i++) {
+                    const petal = document.createElement('div');
+                    petal.className = 'petal';
+                    const left = Math.random() * 100;
+                    const fallDuration = 7 + Math.random() * 8;
+                    const swayDuration = 3 + Math.random() * 3;
+                    const delay = Math.random() * 10;
+                    const size = 8 + Math.random() * 10;
+                    const opacity = 0.5 + Math.random() * 0.4;
+                    petal.style.left = left + 'vw';
+                    petal.style.width = size + 'px';
+                    petal.style.height = size + 'px';
+                    petal.style.opacity = opacity;
+                    petal.style.animationDuration = fallDuration + 's, ' + swayDuration + 's';
+                    petal.style.animationDelay = '-' + delay + 's, -' + (Math.random() * swayDuration) + 's';
+                    petalLayer.appendChild(petal);
+                }
+            }
+
+            function clearPetals() {
+                if (!petalLayer) return;
+                petalLayer.innerHTML = '';
+                petalLayer.dataset.spawned = 'false';
+            }
+
+            const saved = localStorage.getItem('theme') || 'dark';
+            applyTheme(saved);
+
+            toggleBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                dropdown.classList.toggle('open');
+            });
+
+            options.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    applyTheme(btn.dataset.theme);
+                    dropdown.classList.remove('open');
+                });
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!dropdown.contains(e.target) && e.target !== toggleBtn) {
+                    dropdown.classList.remove('open');
+                }
+            });
+        })();
     </script>
 </body>
 </html>

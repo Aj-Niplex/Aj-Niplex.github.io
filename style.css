@@ -22,14 +22,14 @@
 }
 
 .sakura-theme {
-    --bg-dark: #1a0a1a;
-    --bg-card: #2a1a2a;
-    --bg-alt: #1f0d1f;
-    --accent: #ffb7c5;
+    --bg-dark: #1a0e15;
+    --bg-card: #241521;
+    --bg-alt: #1f1119;
+    --accent: #ff8fab;
     --text-main: #ffeef2;
-    --text-dim: #d1a3b0;
+    --text-dim: #d9a8b8;
     --white: #ffffff;
-    --border: #3d2a3d;
+    --border: #3d2532;
 }
 
 * {
@@ -48,6 +48,8 @@ body {
     color: var(--text-main);
     line-height: 1.6;
     overflow-x: hidden;
+    padding-top: 60px;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 /* Animations */
@@ -93,7 +95,7 @@ body {
 }
 
 /* Navigation & Theme Picker */
-.page-header {
+nav {
     position: fixed;
     top: 0;
     width: 100%;
@@ -101,6 +103,19 @@ body {
     background: rgba(10, 10, 10, 0.8);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border);
+}
+
+.light-theme nav {
+    background: rgba(248, 249, 250, 0.8);
+}
+
+.sakura-theme nav {
+    background: rgba(26, 14, 21, 0.85);
+}
+
+.nav-container {
+    max-width: 1100px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -108,27 +123,34 @@ body {
     height: 60px;
 }
 
-.light-theme .page-header {
-    background: rgba(248, 249, 250, 0.8);
-}
-
-.sakura-theme .page-header {
-    background: rgba(26, 10, 26, 0.8);
-}
-
-[data-nav="site"] {
+.nav-logo {
     display: flex;
     align-items: center;
+    gap: 0.6rem;
 }
 
-[data-navlist="site"] {
-    list-style: none;
+.nav-logo img {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.nav-logo span {
+    font-family: 'Fira Code', monospace;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--white);
+    font-size: 0.9rem;
+}
+
+.nav-links {
     display: flex;
     gap: 2rem;
     align-items: center;
 }
 
-[data-navlist="site"] a {
+.nav-links a {
     text-decoration: none;
     color: var(--text-dim);
     font-size: 0.9rem;
@@ -136,7 +158,7 @@ body {
     transition: var(--transition);
 }
 
-[data-navlist="site"] a:hover {
+.nav-links a:hover {
     color: var(--accent);
 }
 
@@ -148,96 +170,112 @@ body {
     font-weight: 600 !important;
 }
 
-/* Theme Switcher */
-.theme-switch-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.theme-switch {
+/* Theme Picker Dropdown */
+.theme-picker {
     position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 30px;
 }
 
-.theme-switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #333;
-    transition: .4s;
-    border-radius: 34px;
-    border: 1px solid var(--border);
-}
-
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 22px;
-    width: 22px;
-    left: 4px;
-    bottom: 3px;
-    background-color: white;
-    transition: .4s;
-    border-radius: 50%;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-    z-index: 2;
-}
-
-input:checked + .slider {
-    background-color: var(--accent);
-}
-
-input:checked + .slider:before {
-    transform: translateX(30px);
-}
-
-/* Icon Overlays */
-.slider .icon {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 14px;
-    pointer-events: none;
-    z-index: 1;
-}
-
-.slider .sun {
-    left: 8px;
-    color: #f1c40f;
-}
-
-.slider .moon {
-    right: 8px;
-    color: #f1c40f;
-}
-
-.sakura-btn {
-    background: none;
-    border: 1px solid var(--border);
+.theme-toggle {
+    list-style: none;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
     color: var(--text-dim);
-    padding: 0.3rem 0.6rem;
+    background: transparent;
+    padding: 0.4rem 0.7rem;
+    border: 1px solid var(--border);
     border-radius: 6px;
     cursor: pointer;
-    font-size: 0.7rem;
-    font-family: 'Fira Code', monospace;
     transition: var(--transition);
+    line-height: 1;
 }
 
-.sakura-btn:hover {
-    border-color: #ffb7c5;
-    color: #ffb7c5;
+.theme-toggle:hover {
+    border-color: var(--accent);
+    color: var(--white);
+}
+
+.theme-dropdown {
+    position: absolute;
+    top: 130%;
+    right: 0;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 0.6rem;
+    width: 190px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    z-index: 1100;
+    display: none;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.theme-dropdown.open {
+    display: flex;
+}
+
+.theme-option {
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--text-main);
+    padding: 0.55rem 0.7rem;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: var(--transition);
+    width: 100%;
+}
+
+.theme-option:hover {
+    border-color: var(--accent);
+    background: rgba(255, 143, 171, 0.08);
+}
+
+.theme-option[aria-pressed="true"] {
+    background: var(--accent);
+    color: var(--bg-dark);
+    font-weight: 600;
+}
+
+/* Sakura petal shower */
+.petal-layer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 900;
+    overflow: hidden;
+    display: none;
+}
+
+.sakura-theme .petal-layer {
+    display: block;
+}
+
+.petal {
+    position: absolute;
+    top: -10%;
+    width: 14px;
+    height: 14px;
+    background: radial-gradient(circle at 30% 30%, #ffd6e2, #ff8fab 70%);
+    border-radius: 150% 0 150% 0;
+    opacity: 0.85;
+    animation: petal-fall linear infinite, petal-sway ease-in-out infinite;
+    will-change: transform;
+}
+
+@keyframes petal-fall {
+    from { transform: translateY(-10vh) rotate(0deg); }
+    to { transform: translateY(110vh) rotate(360deg); }
+}
+
+@keyframes petal-sway {
+    0%, 100% { margin-left: 0; }
+    50% { margin-left: 40px; }
 }
 
 .circle-logo {
@@ -604,10 +642,19 @@ footer p {
     .hero h1 {
         font-size: 2.5rem;
     }
-    .nav-links {
+    .nav-links a:not(.nav-cta) {
         display: none;
+    }
+    .nav-links {
+        gap: 0.75rem;
+    }
+    .theme-dropdown {
+        width: 170px;
     }
     .logo-group {
         gap: 10px;
+    }
+    .container {
+        padding: 0 1.25rem;
     }
 }

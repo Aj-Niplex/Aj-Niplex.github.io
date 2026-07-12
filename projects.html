@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="petal-layer" id="petal-layer"></div>
+
     <nav>
         <div class="nav-container">
             <div class="nav-logo">
@@ -21,7 +23,14 @@
                 <a href="about.html">Vision</a>
                 <a href="projects.html">Projects</a>
                 <a href="roadmap.html">Roadmap</a>
-                <button id="theme-toggle" class="theme-toggle" title="Toggle Theme">🌓</button>
+                <div class="theme-picker">
+                    <button id="theme-toggle" class="theme-toggle" title="Toggle Theme" aria-haspopup="true">🌙</button>
+                    <div class="theme-dropdown" id="theme-dropdown">
+                        <button class="theme-option" data-theme="dark" aria-pressed="true">🌙 Dark</button>
+                        <button class="theme-option" data-theme="light" aria-pressed="false">☀️ Light</button>
+                        <button class="theme-option" data-theme="sakura" aria-pressed="false">🌸 Sakura</button>
+                    </div>
+                </div>
                 <a href="https://www.linkedin.com/in/aj-niplex-foundation" target="_blank" class="nav-cta">Contact</a>
             </div>
         </div>
@@ -29,7 +38,7 @@
 
     <section class="section">
         <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
+            <h2 class="section-title">Projects</h2>
             <div class="projects-grid">
                 <!-- Rei-kun Bot -->
                 <div class="project-card">
@@ -37,7 +46,8 @@
                         <img src="assets/rei_logo.png" alt="Rei-kun Logo" class="project-logo">
                         <h3>Rei-kun Bot</h3>
                     </div>
-                    <p>A high-performance, AI-driven Discord orchestrator with a persistent persona and multi-model intelligence.</p>
+                    <p>A production Discord bot serving an active student community &mdash; multi-model AI chat, a custom emoji system, and a study resource hub. 24 commands, self-managed on a Linux VPS.</p>
+                    <span class="badge">Live &amp; Operational</span>
                     <div class="project-actions">
                         <a href="project-rei.html" class="btn secondary">Details</a>
                         <a href="https://github.com/Aj-Niplex/Rei-kun-Bot" target="_blank" class="btn primary">GitHub</a>
@@ -49,7 +59,8 @@
                         <div class="project-icon">⚡</div>
                         <h3>Niplex-MCP</h3>
                     </div>
-                    <p>Secure Model Context Protocol server for professional-grade GitHub access with zero-token leakage.</p>
+                    <p>A Model Context Protocol server that lets AI tools like Claude read and work with my GitHub repositories without ever handling raw credentials directly.</p>
+                    <span class="badge">Active Development</span>
                     <div class="project-actions">
                         <a href="project-mcp.html" class="btn secondary">Details</a>
                         <a href="https://github.com/Aj-Niplex/niplex-mcp" target="_blank" class="btn primary">GitHub</a>
@@ -61,10 +72,10 @@
                         <div class="project-icon">🧠</div>
                         <h3>Neural-OS</h3>
                     </div>
-                    <p>Foundational neural-inspired orchestration layer for the Niplex AI ecosystem.</p>
+                    <p>An orchestration layer for coordinating multiple AI agents &mdash; how they share memory and hand off tasks. Currently in the design and planning phase.</p>
+                    <span class="badge">Early Design Phase</span>
                     <div class="project-actions">
                         <a href="project-neural.html" class="btn secondary">Details</a>
-                        <span class="badge">In Development</span>
                     </div>
                 </div>
             </div>
@@ -78,22 +89,86 @@
                 <img src="assets/company_logo.png" alt="Company">
                 <img src="assets/niplex_ai_logo.jpeg" alt="AI">
             </div>
-            <p>&copy; 2026 Niplex Foundation. <strong>NEVER STOP IMAGINING</strong></p>
-            <p class="footer-credit">Orchestrated by Niplex-AI</p>
+            <p>&copy; 2026 Adarsh Jaiswal &mdash; Niplex. <strong>NEVER STOP IMAGINING</strong></p>
+            <p class="footer-credit">Built independently, with AI tools used as part of the process.</p>
         </div>
     </footer>
 
     <script>
-        const toggleBtn = document.getElementById('theme-toggle');
-        const body = document.body;
-        if (localStorage.getItem('theme') === 'light') {
-            body.classList.add('light-theme');
-        }
-        toggleBtn.addEventListener('click', () => {
-            body.classList.toggle('light-theme');
-            const currentTheme = body.classList.contains('light-theme') ? 'light' : 'dark';
-            localStorage.setItem('theme', currentTheme);
-        });
+        (function () {
+            const body = document.body;
+            const toggleBtn = document.getElementById('theme-toggle');
+            const dropdown = document.getElementById('theme-dropdown');
+            const options = document.querySelectorAll('.theme-option');
+            const petalLayer = document.getElementById('petal-layer');
+            const ICONS = { dark: '🌙', light: '☀️', sakura: '🌸' };
+
+            function applyTheme(theme) {
+                body.classList.remove('light-theme', 'sakura-theme');
+                if (theme === 'light') body.classList.add('light-theme');
+                if (theme === 'sakura') body.classList.add('sakura-theme');
+                localStorage.setItem('theme', theme);
+                toggleBtn.textContent = ICONS[theme] || '🌙';
+                options.forEach(btn => {
+                    btn.setAttribute('aria-pressed', btn.dataset.theme === theme ? 'true' : 'false');
+                });
+                if (theme === 'sakura') {
+                    spawnPetals();
+                } else {
+                    clearPetals();
+                }
+            }
+
+            function spawnPetals() {
+                if (!petalLayer || petalLayer.dataset.spawned === 'true') return;
+                petalLayer.dataset.spawned = 'true';
+                const count = window.innerWidth < 600 ? 16 : 28;
+                for (let i = 0; i < count; i++) {
+                    const petal = document.createElement('div');
+                    petal.className = 'petal';
+                    const left = Math.random() * 100;
+                    const fallDuration = 7 + Math.random() * 8;
+                    const swayDuration = 3 + Math.random() * 3;
+                    const delay = Math.random() * 10;
+                    const size = 8 + Math.random() * 10;
+                    const opacity = 0.5 + Math.random() * 0.4;
+                    petal.style.left = left + 'vw';
+                    petal.style.width = size + 'px';
+                    petal.style.height = size + 'px';
+                    petal.style.opacity = opacity;
+                    petal.style.animationDuration = fallDuration + 's, ' + swayDuration + 's';
+                    petal.style.animationDelay = '-' + delay + 's, -' + (Math.random() * swayDuration) + 's';
+                    petalLayer.appendChild(petal);
+                }
+            }
+
+            function clearPetals() {
+                if (!petalLayer) return;
+                petalLayer.innerHTML = '';
+                petalLayer.dataset.spawned = 'false';
+            }
+
+            const saved = localStorage.getItem('theme') || 'dark';
+            applyTheme(saved);
+
+            toggleBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                dropdown.classList.toggle('open');
+            });
+
+            options.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    applyTheme(btn.dataset.theme);
+                    dropdown.classList.remove('open');
+                });
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!dropdown.contains(e.target) && e.target !== toggleBtn) {
+                    dropdown.classList.remove('open');
+                }
+            });
+        })();
     </script>
 </body>
 </html>
