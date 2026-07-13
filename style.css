@@ -522,7 +522,7 @@ nav {
 }
 
 .content-block h2 {
-    color: var(--white);
+    color: var(--text-main);
     margin-bottom: 1.5rem;
     font-size: 1.8rem;
 }
@@ -575,7 +575,7 @@ nav {
 }
 
 .sidebar-card h3 {
-    color: var(--white);
+    color: var(--text-main);
     margin-bottom: 1rem;
     font-size: 1.2rem;
 }
