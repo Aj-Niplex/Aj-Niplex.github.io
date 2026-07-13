@@ -311,6 +311,10 @@ nav {
     letter-spacing: -1px;
 }
 
+.hero h1 .accent {
+    color: var(--accent);
+}
+
 .accent {
     color: var(--accent);
 }
