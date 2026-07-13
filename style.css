@@ -306,7 +306,7 @@ nav {
 .hero h1 {
     font-size: 4rem;
     font-weight: 800;
-    color: var(--white);
+    color: var(--text-main);
     margin-bottom: 1rem;
     letter-spacing: -1px;
 }
