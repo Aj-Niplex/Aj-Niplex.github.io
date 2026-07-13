@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({ startOnLoad: true, theme: 'dark' });</script>
 </head>
 <body>
     <div class="petal-layer" id="petal-layer"></div>
@@ -49,16 +51,66 @@
                     <div class="content-block">
                         <h2>The Secure Bridge</h2>
                         <div class="markdown-content">
-                            <p>Niplex-MCP is a Model Context Protocol (MCP) server that acts as a high-security bridge between AI tools (like Claude) and private GitHub repositories.</p>
-                            <p>The core problem it solves is <strong>credential exposure</strong>. Instead of giving an AI agent a raw Personal Access Token (PAT), Niplex-MCP handles the authentication on the server side, allowing the agent to read code and list files without ever seeing the secret keys.</p>
+                            <p>Niplex-MCP is a Model Context Protocol (MCP) server that acts as a high-security bridge between AI tools (like Claude) and private infrastructure. It eliminates the risk of <strong>credential exposure</strong> by handling authentication on the server side.</p>
+                        </div>
+                        
+                        <!-- Architectural Flow -->
+                        <div class="mermaid">
+                            graph TD
+                                Agents[A.I. Agents] --> MCP[Niplex M.C.P.]
+                                MCP --> NeuralOS[Neural-OS<br/>Life Database: Goals, Tasks, Dreams & Profiles]
+                                MCP --> GitHub[GitHub<br/>Read/Write]
+                                MCP --> Daytona[Daytona Sandbox<br/>Isolated Code Execution] 
+                                MCP --> Google[Google Control<br/>via G.Key]
+                                MCP --> Scraper[Web Scraper<br/>via API]
+
+                                style MCP fill:#1f6feb,stroke:#fff,stroke-width:2px,color:#fff
+                                style Agents fill:#238636,stroke:#fff,stroke-width:1px,color:#fff
+                                style NeuralOS fill:#8957e5,stroke:#fff,stroke-width:1px,color:#fff
+                                style Daytona fill:#da3633,stroke:#fff,stroke-width:1px,color:#fff
+                                style Scraper fill:#d29922,stroke:#fff,stroke-width:1px,color:#fff
                         </div>
                     </div>
+
+                    <div class="content-block">
+                        <h2>How it Works</h2>
+                        <div class="markdown-content">
+                            <p>The server exposes specialized tools to the AI agent. When the agent calls a tool, Niplex-MCP verifies the request, uses the stored server-side credentials to interact with the target service, and returns only the necessary data to the agent.</p>
+                            
+                            <h3>Core Tools:</h3>
+                            <ul>
+                                <li><strong>GitHub Bridge:</strong> Securely list and read files from private repositories.</li>
+                                <li><strong>Daytona Sandbox:</strong> Spawn isolated environments to execute untrusted code.</li>
+                                <li><strong>Neural-OS:</strong> Query the internal life database for goals and profile context.</li>
+                                <li><strong>Web Intelligence:</strong> High-fidelity web scraping via API.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>Configuration & Setup</h2>
+                        <div class="markdown-content">
+                            <p>To run NIPLEX-MCP, configure the following environment variables:</p>
+                            <div class="code-section">
+                                <pre><code>GITHUB_PAT=your_github_token
+DAYTONA_API_KEY=your_daytona_token
+NEURAL_OS_URL=http://your-neural-os-url:8000
+SCRAPER_API_KEY=your_scraper_api_key</code></pre>
+                            </div>
+                            <p><strong>Installation:</strong></p>
+                            <div class="code-section">
+                                <pre><code>pip install fastmcp requests daytona-sdk
+python server.py</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="content-block">
                         <div class="code-section">
-                            <div class="code-header">Deployment</div>
+                            <div class="code-header">Quick Start</div>
                             <pre><code>git clone https://github.com/Aj-Niplex/niplex-mcp.git
 cd niplex-mcp
-pip install -r requirements.txt
+# Set env variables
 python server.py</code></pre>
                         </div>
                     </div>
@@ -69,12 +121,15 @@ python server.py</code></pre>
                         <ul>
                             <li><strong>Protocol:</strong> MCP</li>
                             <li><strong>Focus:</strong> Security & Proxying</li>
-                            <li><strong>Language:</strong> Python</li>
+                            <li><li><strong>Language:</strong> Python</li>
                             <li><strong>Status:</strong> Active Development</li>
                         </ul>
                     </div>
                     <div class="sidebar-card">
-                        <a href="https://github.com/Aj-Niplex/niplex-mcp" target="_blank" class="btn primary">View Source</a>
+                        <a href="https://github.com/Aj-Niplex/niplex-mcp" target="_blank" class="btn primary">🚀 View on GitHub</a>
+                    </div>
+                    <div class="sidebar-card">
+                        <a href="https://github.com/Aj-Niplex/niplex-mcp/blob/main/README.md" target="_blank" class="btn secondary">Read Documentation</a>
                     </div>
                 </div>
             </div>
