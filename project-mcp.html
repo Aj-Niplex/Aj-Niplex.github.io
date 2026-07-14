@@ -57,18 +57,43 @@
                         <!-- Architectural Flow -->
                         <div class="mermaid">
                             graph TD
-                                Agents[A.I. Agents] --> MCP[Niplex M.C.P.]
-                                MCP --> NeuralOS[Neural-OS<br/>Life Database: Goals, Tasks, Dreams & Profiles]
-                                MCP --> GitHub[GitHub<br/>Read/Write]
-                                MCP --> Daytona[Daytona Sandbox<br/>Isolated Code Execution] 
-                                MCP --> Google[Google Control<br/>via G.Key]
-                                MCP --> Scraper[Web Scraper<br/>via API]
+                                %% User/Agent Layer
+                                Agents[A.I. Agents] -->|Tool Calls| NiplexMCP[Niplex M.C.P. Orchestrator]
 
-                                style MCP fill:#1f6feb,stroke:#fff,stroke-width:2px,color:#fff
+                                %% Direct Core Integrations (The "Narrow Waist")
+                                subgraph Core_Integrations [Direct Core Integrations]
+                                    NiplexMCP --> NeuralOS[Neural-OS&lt;br/&gt;Life Database: Goals, Tasks, Dreams & Profiles]
+                                    NiplexMCP --> GitHub[GitHub&lt;br/&gt;Secure Read/Write]
+                                    NiplexMCP --> Daytona[Daytona Sandbox&lt;br/&gt;Isolated Code Execution] 
+                                    NiplexMCP --> Google[Google Control&lt;br/&gt;via G.Key]
+                                    NiplexMCP --> Scraper[Web Scraper&lt;br/&gt;via API]
+                                    NiplexMCP --> YouCom[You.com&lt;br/&gt;Agentic Research API]
+                                    NiplexMCP --> YouTube[YouTube Data&lt;br/&gt;Token-Optimized API]
+                                end
+
+                                %% Remote Orchestration Layer
+                                subgraph Remote_MCP_Network [Remote MCP Network]
+                                    NiplexMCP -->|JSON-RPC /call| MCPBridge[MCP Client Bridge]
+                                    MCPBridge -->|Delegates| YouTubeServer[YouTube MCP Server @ Horizon]
+                                    MCPBridge -->|Delegates| OtherMCPs[Other 3rd Party MCP Servers]
+                                end
+
+                                %% Data Flow & Feedback Loop
+                                YouTubeServer -->|Filtered Data| MCPBridge
+                                MCPBridge -->|Synthesized Data| NiplexMCP
+                                NiplexMCP -->|Persist Knowledge| NeuralOS
+
+                                %% Styling for High-Authority Visuals
+                                style NiplexMCP fill:#1f6feb,stroke:#fff,stroke-width:2px,color:#fff
                                 style Agents fill:#238636,stroke:#fff,stroke-width:1px,color:#fff
                                 style NeuralOS fill:#8957e5,stroke:#fff,stroke-width:1px,color:#fff
                                 style Daytona fill:#da3633,stroke:#fff,stroke-width:1px,color:#fff
                                 style Scraper fill:#d29922,stroke:#fff,stroke-width:1px,color:#fff
+                                style YouTube fill:#ff0000,stroke:#fff,stroke-width:1px,color:#fff
+                                style YouCom fill:#4caf50,stroke:#fff,stroke-width:1px,color:#fff
+                                style MCPBridge fill:#f96,stroke:#333,stroke-width:2px,color:#000
+                                style Core_Integrations fill:#f5f5f5,stroke:#ccc,stroke-dasharray: 5 5
+                                style Remote_MCP_Network fill:#e1f5fe,stroke:#01579b,stroke-dasharray: 5 5
                         </div>
                     </div>
 
