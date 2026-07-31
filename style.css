@@ -415,6 +415,62 @@ nav {
     color: var(--text-dim);
 }
 
+/* Projects Section Intro */
+.section-intro {
+    text-align: center;
+    color: var(--text-dim);
+    max-width: 620px;
+    margin: -2.5rem auto 3rem;
+    font-size: 1.05rem;
+}
+
+.section-intro a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.section-intro a:hover {
+    text-decoration: underline;
+}
+
+/* Repo metadata strip on project cards */
+.repo-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.78rem;
+    color: var(--text-dim);
+}
+
+.meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    white-space: nowrap;
+}
+
+.meta-item a {
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.meta-item a:hover {
+    color: var(--accent);
+}
+
+.lang-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
 /* Projects Grid */
 .projects-grid {
     display: grid;
@@ -435,6 +491,15 @@ nav {
 .project-card:hover {
     border-color: var(--accent);
     background: #161616;
+}
+
+.light-theme .project-card:hover {
+    background: #ffffff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.sakura-theme .project-card:hover {
+    background: #2a1a26;
 }
 
 .project-icon {
@@ -471,6 +536,15 @@ nav {
     font-size: 0.75rem;
     font-weight: 600;
     margin-top: 1rem;
+    align-self: flex-start;
+}
+
+.light-theme .badge {
+    background: #eef2ff;
+}
+
+.sakura-theme .badge {
+    background: #3d2532;
 }
 
 
@@ -664,5 +738,208 @@ footer p {
     }
     .container {
         padding: 0 1.25rem;
+    }
+}
+
+/* ============ Hero stats bar (index) ============ */
+.stats-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.stat-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 0.5rem 1.1rem;
+    border-radius: 20px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    transition: var(--transition);
+}
+
+.stat-item:hover {
+    border-color: var(--accent);
+    color: var(--text-main);
+}
+
+.stat-item .view-counter {
+    color: var(--accent);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ============ Tech Stack section (index) ============ */
+.stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.stack-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    transition: var(--transition);
+}
+
+.stack-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.light-theme .stack-card:hover {
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.stack-card.main {
+    border-color: var(--accent);
+    background: linear-gradient(160deg, rgba(77, 173, 255, 0.09), transparent 55%);
+    box-shadow: inset 0 0 0 1px var(--accent);
+}
+
+.light-theme .stack-card.main {
+    background: linear-gradient(160deg, rgba(37, 99, 235, 0.07), transparent 55%);
+}
+
+.stack-icon {
+    font-size: 2.2rem;
+    line-height: 1;
+}
+
+.stack-card h3 {
+    color: var(--text-main);
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+}
+
+.stack-card p {
+    color: var(--text-dim);
+    font-size: 0.92rem;
+    flex-grow: 1;
+}
+
+.stack-flag {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    background: var(--accent);
+    color: var(--bg-dark);
+    padding: 0.18rem 0.55rem;
+    border-radius: 20px;
+    text-transform: uppercase;
+}
+
+.code-card {
+    background: #000;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.code-card .code-header {
+    background: #151515;
+    padding: 0.5rem 0.9rem;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.code-card pre {
+    padding: 1rem;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.78rem;
+    color: #a9b7c6;
+    overflow-x: auto;
+    line-height: 1.55;
+    margin: 0;
+}
+
+.backend-note {
+    margin-top: 2.5rem;
+    background: var(--bg-card);
+    border: 1px dashed var(--border);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    text-align: center;
+    font-family: 'Fira Code', monospace;
+}
+
+.backend-note strong {
+    color: var(--text-main);
+}
+
+.backend-note code {
+    color: var(--accent);
+    background: rgba(77, 173, 255, 0.08);
+    padding: 0.1rem 0.35rem;
+    border-radius: 4px;
+}
+
+/* ============ Visitor counter (footer, all pages) ============ */
+.footer-counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.4rem;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.82rem;
+}
+
+.counter-label {
+    color: var(--text-dim);
+}
+
+.counter-value {
+    color: var(--accent);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    min-width: 2ch;
+}
+
+/* ============ Project card badges ============ */
+.badge.flagship {
+    background: var(--accent);
+    color: var(--bg-dark);
+}
+
+.badge.deprecated {
+    background: #333;
+    color: #999;
+}
+
+.light-theme .badge.deprecated {
+    background: #e5e7eb;
+    color: #6b7280;
+}
+
+.sakura-theme .badge.deprecated {
+    background: #4a2a33;
+    color: #c89aa8;
+}
+
+@media (max-width: 768px) {
+    .stack-grid {
+        grid-template-columns: 1fr;
     }
 }

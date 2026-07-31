@@ -1,0 +1,5 @@
+# Niplex - zero bot protection.
+# Every crawler is explicitly welcome to index, research and link
+# the projects on this site. Nothing is blocked.
+User-agent: *
+Allow: /

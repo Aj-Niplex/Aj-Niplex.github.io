@@ -51,6 +51,7 @@
                 <div class="stat-item"><span>MCP Protocol</span></div>
                 <div class="stat-item"><span>MEXT 2028 Target</span></div>
                 <div class="stat-item"><span>Robotics Engineering</span></div>
+                <div class="stat-item"><span>👁 <span class="view-counter" id="hero-views">&mdash;</span> views</span></div>
             </div>
 
             <div class="hero-btns animate-slide-up stagger-3" style="margin-top: 2rem;">
@@ -59,6 +60,64 @@
             </div>
         </div>
     </header>
+
+    <section class="section bg-alt" id="stack">
+        <div class="container">
+            <h2 class="section-title animate-fade-in">The Stack</h2>
+            <p class="section-intro animate-fade-in">Python is my main language &mdash; and it powers the backend of this very site. TypeScript, JavaScript and Rust round out the toolkit.</p>
+            <div class="stack-grid">
+                <div class="stack-card main animate-slide-up stagger-1">
+                    <div class="stack-icon">🐍</div>
+                    <h3>Python <span class="stack-flag">Primary</span></h3>
+                    <p>My main language &mdash; everything important starts here. This site's backend, Rei-kun's AI stack, and my LLM fine-tuning (Unsloth, TRL, PEFT) all live in Python.</p>
+                    <div class="code-card">
+                        <div class="code-header"><span>backend.py</span><span>stdlib only</span></div>
+                        <pre>def increment_views():
+    views = read_views() + 1
+    save_views(views)
+    return {"views": views}</pre>
+                    </div>
+                </div>
+                <div class="stack-card animate-slide-up stagger-2">
+                    <div class="stack-icon">⚡</div>
+                    <h3>TypeScript</h3>
+                    <p>Typed, safe frontend tooling &mdash; used when I need structure and autocomplete to keep agent-facing tooling reliable.</p>
+                    <div class="code-card">
+                        <div class="code-header"><span>agent.ts</span><span>strict</span></div>
+                        <pre>const views: number =
+  await countViews();</pre>
+                    </div>
+                </div>
+                <div class="stack-card animate-slide-up stagger-2">
+                    <div class="stack-icon">🌐</div>
+                    <h3>JavaScript</h3>
+                    <p>Client-side interactions right here &mdash; the theme system, petal effects, and the live visitor counter you're looking at.</p>
+                    <div class="code-card">
+                        <div class="code-header"><span>counter.js</span><span>no build step</span></div>
+                        <pre>fetch("/api/visit", {
+  method: "POST"
+});</pre>
+                    </div>
+                </div>
+                <div class="stack-card animate-slide-up stagger-3">
+                    <div class="stack-icon">🦀</div>
+                    <h3>Rust</h3>
+                    <p>On the learning path &mdash; high-performance tooling for agent infrastructure and robotics-adjacent systems.</p>
+                    <div class="code-card">
+                        <div class="code-header"><span>main.rs</span><span>learning</span></div>
+                        <pre>fn main() {
+    println!(
+        "never stop imagining"
+    );
+}</pre>
+                    </div>
+                </div>
+            </div>
+            <div class="backend-note animate-fade-in">
+                ⚙️ This site runs a real <strong>Python backend</strong> &mdash; every page load hits <code>POST /api/visit</code>, persisted to <code>visits.json</code> (with a remote KV upgrade in production). Zero bot protection: crawlers are welcome to index everything.
+            </div>
+        </div>
+    </section>
 
     <footer>
         <div class="footer-container">
@@ -69,6 +128,10 @@
             </div>
             <p>&copy; 2026 Adarsh Jaiswal &mdash; Niplex. <strong>NEVER STOP IMAGINING</strong></p>
             <p class="footer-credit">Built independently, with AI tools used as part of the process.</p>
+            <div class="footer-counter" title="Total site views - crawlers and bots are welcome too">
+                <span class="counter-label">👁 Site Views</span>
+                <span class="view-counter counter-value">&mdash;</span>
+            </div>
         </div>
     </footer>
 
@@ -148,6 +211,7 @@
             });
         })();
     </script>
+    <script type="module" src="/script.js"></script>
 </body>
 </html>
 <!-- Updated: Mon Jul 13 10:43:46 UTC 2026 -->

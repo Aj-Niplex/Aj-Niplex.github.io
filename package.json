@@ -2,11 +2,15 @@
   "name": "aj-niplex-github-io",
   "version": "1.0.0",
   "private": true,
-  "description": "Niplex personal site - NEVER STOP IMAGINING (static HTML/CSS/JS portfolio)",
+  "description": "Niplex personal site - NEVER STOP IMAGINING (Python-backed portfolio with live visitor counter, no bot protection)",
   "scripts": {
-    "dev": "python3 -m http.server $PORT --bind 0.0.0.0",
-    "preview": "python3 -m http.server $PORT --bind 0.0.0.0",
-    "start": "python3 -m http.server $PORT --bind 0.0.0.0",
-    "build": "mkdir -p dist && cp -r index.html about.html projects.html roadmap.html project-mcp.html project-neural.html project-rei.html style.css assets dist/"
+    "dev": "python3 server.py",
+    "preview": "python3 server.py",
+    "start": "python3 server.py",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "typescript": "^7.0.2",
+    "vite": "^6.3.5"
   }
 }

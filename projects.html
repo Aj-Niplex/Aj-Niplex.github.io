@@ -38,15 +38,42 @@
 
     <section class="section">
         <div class="container">
-            <h2 class="section-title">Projects</h2>
+            <h2 class="section-title animate-fade-in">Projects</h2>
+            <p class="section-intro animate-fade-in">Everything I'm actively building &mdash; sourced live from my GitHub.
+                <a href="https://github.com/Aj-Niplex" target="_blank">View all repositories &rarr;</a>
+            </p>
             <div class="projects-grid">
+                <!-- Ishani v2 (Flagship) -->
+                <div class="project-card animate-slide-up stagger-1">
+                    <div class="project-header">
+                        <div class="project-icon">🤖</div>
+                        <h3>Ishani v2</h3>
+                    </div>
+                    <p>My flagship AI project &mdash; a LoRA adapter on Mistral-7B-v0.3 that pushes the sarcastic, no-nonsense Ishani mentor persona onto a stronger base model. Trained with Unsloth, TRL and PEFT. Next phase: once my fundamentals run deep enough, I move from fine-tuning toward training an original LLM from scratch.</p>
+                    <div class="repo-meta">
+                        <span class="meta-item"><span class="lang-dot" style="background:#ff8000;"></span>LoRA</span>
+                        <span class="meta-item">★ 1</span>
+                        <span class="meta-item">Updated Jul 16, 2026</span>
+                        <span class="meta-item"><a href="https://github.com/Aj-Niplex/Ishani_v2" target="_blank">Ishani_v2 &nearr;</a></span>
+                    </div>
+                    <span class="badge flagship">Flagship &middot; Active Development</span>
+                    <div class="project-actions">
+                        <a href="https://github.com/Aj-Niplex/Ishani_v2" target="_blank" class="btn primary">GitHub</a>
+                    </div>
+                </div>
                 <!-- Rei-kun Bot -->
-                <div class="project-card">
+                <div class="project-card animate-slide-up stagger-1">
                     <div class="project-header">
                         <img src="assets/rei_logo.png" alt="Rei-kun Logo" class="project-logo">
                         <h3>Rei-kun Bot</h3>
                     </div>
-                    <p>A production Discord bot serving an active student community &mdash; multi-model AI chat, a custom emoji system, and a study resource hub. 24 commands, self-managed on a Linux VPS.</p>
+                    <p>A production Discord bot serving an active student community &mdash; multi-model AI chat with automatic fallback across DeepSeek, LLaMA 4, GPT and Gemini via OpenRouter, a custom emoji system, and a study resource hub. 24 commands, self-managed on a Linux VPS.</p>
+                    <div class="repo-meta">
+                        <span class="meta-item"><span class="lang-dot" style="background:#3572A5;"></span>Python</span>
+                        <span class="meta-item">★ 1</span>
+                        <span class="meta-item">Updated Jul 12, 2026</span>
+                        <span class="meta-item"><a href="https://github.com/Aj-Niplex/Rei-kun-Bot" target="_blank">Rei-kun-Bot &nearr;</a></span>
+                    </div>
                     <span class="badge">Live &amp; Operational</span>
                     <div class="project-actions">
                         <a href="project-rei.html" class="btn secondary">Details</a>
@@ -54,28 +81,55 @@
                     </div>
                 </div>
                 <!-- Niplex-MCP -->
-                <div class="project-card">
+                <div class="project-card animate-slide-up stagger-2">
                     <div class="project-header">
                         <div class="project-icon">⚡</div>
                         <h3>Niplex-MCP</h3>
                     </div>
-                    <p>A Model Context Protocol server that lets AI tools like Claude read and work with my GitHub repositories without ever handling raw credentials directly.</p>
+                    <p>A professional Model Context Protocol server that acts as a secure bridge between AI agents and developer infrastructure &mdash; GitHub read/write without raw credential exposure, isolated Daytona sandboxes, plus web, YouTube and research integrations.</p>
+                    <div class="repo-meta">
+                        <span class="meta-item"><span class="lang-dot" style="background:#3572A5;"></span>Python</span>
+                        <span class="meta-item">Updated Jul 14, 2026</span>
+                        <span class="meta-item"><a href="https://github.com/Aj-Niplex/niplex-mcp" target="_blank">niplex-mcp &nearr;</a></span>
+                    </div>
                     <span class="badge">Active Development</span>
                     <div class="project-actions">
                         <a href="project-mcp.html" class="btn secondary">Details</a>
                         <a href="https://github.com/Aj-Niplex/niplex-mcp" target="_blank" class="btn primary">GitHub</a>
                     </div>
                 </div>
+                <!-- Ishani v1 (deprecated) -->
+                <div class="project-card animate-slide-up stagger-2">
+                    <div class="project-header">
+                        <div class="project-icon">🌸</div>
+                        <h3>Ishani (v1)</h3>
+                    </div>
+                    <p>The first-generation cognitive core &mdash; a fine-tuned Llama-3-8B mentor with the high-attitude, sarcastic personality. This version is being retired and the repo will be archived soon; the persona lives on in Ishani v2.</p>
+                    <div class="repo-meta">
+                        <span class="meta-item"><span class="lang-dot" style="background:#a52a22;"></span>Jinja</span>
+                        <span class="meta-item">Updated Jul 16, 2026</span>
+                        <span class="meta-item"><a href="https://github.com/Aj-Niplex/Ishani" target="_blank">Ishani &nearr;</a></span>
+                    </div>
+                    <span class="badge deprecated">Deprecated &middot; Archiving Soon</span>
+                    <div class="project-actions">
+                        <a href="https://github.com/Aj-Niplex/Ishani" target="_blank" class="btn primary">GitHub</a>
+                    </div>
+                </div>
                 <!-- Neural-OS -->
-                <div class="project-card">
+                <div class="project-card animate-slide-up stagger-3">
                     <div class="project-header">
                         <div class="project-icon">🧠</div>
                         <h3>Neural-OS</h3>
                     </div>
-                    <p>An orchestration layer for coordinating multiple AI agents &mdash; how they share memory and hand off tasks. Currently in the design and planning phase.</p>
+                    <p>An orchestration layer for coordinating multiple AI agents &mdash; how they share memory and hand off tasks. The design and planning phase, now tracked in its own repository.</p>
+                    <div class="repo-meta">
+                        <span class="meta-item">Updated Jul 11, 2026</span>
+                        <span class="meta-item"><a href="https://github.com/Aj-Niplex/Neural-OS" target="_blank">Neural-OS &nearr;</a></span>
+                    </div>
                     <span class="badge">Early Design Phase</span>
                     <div class="project-actions">
                         <a href="project-neural.html" class="btn secondary">Details</a>
+                        <a href="https://github.com/Aj-Niplex/Neural-OS" target="_blank" class="btn primary">GitHub</a>
                     </div>
                 </div>
             </div>
@@ -91,6 +145,10 @@
             </div>
             <p>&copy; 2026 Adarsh Jaiswal &mdash; Niplex. <strong>NEVER STOP IMAGINING</strong></p>
             <p class="footer-credit">Built independently, with AI tools used as part of the process.</p>
+            <div class="footer-counter" title="Total site views - crawlers and bots are welcome too">
+                <span class="counter-label">👁 Site Views</span>
+                <span class="view-counter counter-value">&mdash;</span>
+            </div>
         </div>
     </footer>
 
@@ -170,5 +228,6 @@
             });
         })();
     </script>
+    <script type="module" src="/script.js"></script>
 </body>
 </html>

@@ -9,6 +9,11 @@ venv/
 dist/
 build/
 
+# Node
+node_modules/
+*.log
+*.tsbuildinfo
+
 # Local environment / secrets
 .env
 .env.*
@@ -18,3 +23,7 @@ build/
 .DS_Store
 .idea/
 .vscode/
+
+# Runtime data (visitor counter)
+visits.json
+visits.json.tmp
