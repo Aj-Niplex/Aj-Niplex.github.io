@@ -1,0 +1,12 @@
+{
+  "name": "aj-niplex-github-io",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Niplex personal site - NEVER STOP IMAGINING (static HTML/CSS/JS portfolio)",
+  "scripts": {
+    "dev": "python3 -m http.server $PORT --bind 0.0.0.0",
+    "preview": "python3 -m http.server $PORT --bind 0.0.0.0",
+    "start": "python3 -m http.server $PORT --bind 0.0.0.0",
+    "build": "mkdir -p dist && cp -r index.html about.html projects.html roadmap.html project-mcp.html project-neural.html project-rei.html style.css assets dist/"
+  }
+}
