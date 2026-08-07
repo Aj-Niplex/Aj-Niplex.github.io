@@ -1,0 +1,168 @@
+site_name: Niplex
+site_description: Niplex - AI agent systems, MCP tooling, and open-source documentation. Empowering non-technical users. NEVER STOP IMAGINING.
+site_author: Adarsh Jaiswal
+site_url: https://aj-niplex.readthedocs.io/
+copyright: Copyright &copy; 2026 Adarsh Jaiswal &mdash; Niplex. NEVER STOP IMAGINING.
+repo_name: Aj-Niplex/Aj-Niplex.github.io
+repo_url: https://github.com/Aj-Niplex/Aj-Niplex.github.io
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  custom_dir: docs/overrides
+  logo: assets/company_logo.png
+  favicon: assets/company_logo.png
+  icon:
+    repo: fontawesome/brands/github
+  font:
+    text: Space Grotesk
+    code: JetBrains Mono
+  features:
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.indexes
+    - navigation.footer
+    - navigation.path
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - content.action.edit
+    - header.autohide
+    - announce.dismiss
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: pink
+      accent: orange
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: pink
+      accent: orange
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+plugins:
+  - search:
+      lang:
+        - en
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: date
+  - minify:
+      minify_html: true
+  - social:
+      cards_layout_options:
+        background_color: "#c2185b"
+        color: "#ffffff"
+
+extra:
+  generator: false
+  analytics:
+    provider: google
+    property: G-XXXXXXXXXX
+    feedback:
+      title: Was this page helpful?
+      ratings:
+        - icon: material/thumb-up-outline
+          name: This page was helpful
+          data: 1
+          note: >-
+            Thanks for your feedback!
+        - icon: material/thumb-down-outline
+          name: This page could be improved
+          data: 0
+          note: >-
+            Thanks for your feedback! Help us improve this page by
+            using our <a href="https://github.com/Aj-Niplex/Aj-Niplex.github.io/issues"
+            target="_blank" rel="noopener">issue tracker</a>.
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/Aj-Niplex
+      name: GitHub
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/aj-niplex-foundation
+      name: LinkedIn
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/
+      name: Discord
+    - icon: fontawesome/solid/envelope
+      link: mailto:niplex.owner@gmail.com
+      name: Email
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - footnotes
+  - tables
+  - def_list
+  - toc:
+      permalink: true
+      toc_depth: 3
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - javascripts/animation.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+extra_css:
+  - stylesheets/extra.css
+
+nav:
+  - Home: index.md
+  - Mission: mission.md
+  - Vision: about.md
+  - Projects:
+      - projects/index.md
+      - Rei-kun Bot: projects/rei-kun.md
+      - Niplex-MCP: projects/niplex-mcp.md
+      - Ishani v2: projects/ishani-v2.md
+      - Ishani (v1): projects/ishani.md
+      - Neural-OS: projects/neural-os.md
+      - AI Memory Workspace: projects/ai-memory-workspace.md
+      - This Site: projects/aj-niplex-github-io.md
+  - Blog:
+      - blog/index.md
+      - Welcome to Niplex Docs: blog/posts/welcome.md
+      - A Gentle Introduction to MCP: blog/posts/mcp-intro.md
+  - FAQ: faq.md
+  - Roadmap: roadmap.md

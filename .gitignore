@@ -9,6 +9,12 @@ venv/
 dist/
 build/
 
+# MkDocs build output
+site/
+
+# MkDocs plugin caches
+.cache/
+
 # Node
 node_modules/
 *.log

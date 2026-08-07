@@ -1,2 +1,5 @@
-# Niplex backend uses ONLY the Python standard library.
-# Freebuff hosting installs this file automatically; there is nothing to install.
+mkdocs-material>=9.5
+mkdocs-git-revision-date-localized-plugin>=1.2
+mkdocs-minify-plugin>=0.8
+pillow>=10.0
+cairosvg>=2.7
