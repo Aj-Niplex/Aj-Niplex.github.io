@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Niplex | Adarsh Jaiswal</title>
+    <title>Niplex | Adarsh Jaiswal · AJ NiPlex</title>
+    <meta name="description" content="AJ NiPlex — Adarsh Jaiswal. Building real AI agent systems. Main products: NiPlex-Harness and NiPlex-MCP.">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,9 +21,8 @@
             </div>
             <div class="nav-links">
                 <a href="index.html">Home</a>
-                <a href="about.html">Vision</a>
+                <a href="about.html">About</a>
                 <a href="projects.html">Projects</a>
-                <a href="roadmap.html">Roadmap</a>
                 <div class="theme-picker">
                     <button id="theme-toggle" class="theme-toggle" title="Toggle Theme" aria-haspopup="true">🌙</button>
                     <div class="theme-dropdown" id="theme-dropdown">
@@ -31,7 +31,7 @@
                         <button class="theme-option" data-theme="sakura" aria-pressed="false">🌸 Sakura</button>
                     </div>
                 </div>
-                <a href="https://www.linkedin.com/in/aj-niplex-foundation" target="_blank" class="nav-cta">Contact</a>
+                <a href="https://github.com/Aj-Niplex" target="_blank" class="nav-cta">GitHub</a>
             </div>
         </div>
     </nav>
@@ -41,81 +41,83 @@
             <div class="logo-group">
                 <img src="assets/user_logo.jpeg" alt="Adarsh Jaiswal" class="circle-logo">
                 <img src="assets/company_logo.png" alt="Niplex" class="circle-logo overlap">
-                <img src="assets/niplex_ai_logo.jpeg" alt="Niplex-AI" class="mascot-logo">
             </div>
             <h1 class="animate-slide-up stagger-1">NEVER STOP <span class="accent">IMAGINING</span></h1>
-            <p class="animate-slide-up stagger-2">Class 12 PCM student building AI agent systems, and working toward the MEXT Undergraduate Scholarship to study Robotics Engineering in Japan.</p>
+            <p class="animate-slide-up stagger-2">Adarsh Jaiswal · AJ NiPlex — building real AI agent systems. Backend & agents first.</p>
 
             <div class="stats-bar animate-slide-up stagger-3">
                 <div class="stat-item"><span>Python 3.13</span></div>
                 <div class="stat-item"><span>MCP Protocol</span></div>
-                <div class="stat-item"><span>MEXT 2028 Target</span></div>
-                <div class="stat-item"><span>Robotics Engineering</span></div>
+                <div class="stat-item"><span>Discord / Telegram</span></div>
+                <div class="stat-item"><span>Linux VPS</span></div>
                 <div class="stat-item"><span>👁 <span class="view-counter" id="hero-views">&mdash;</span> views</span></div>
             </div>
 
             <div class="hero-btns animate-slide-up stagger-3" style="margin-top: 2rem;">
                 <a href="projects.html" class="btn primary">See What I've Built</a>
-                <a href="roadmap.html" class="btn secondary">The Path to Japan</a>
+                <a href="https://github.com/Aj-Niplex/NiPlex-Harness" class="btn secondary" target="_blank">NiPlex-Harness</a>
             </div>
         </div>
     </header>
 
-    <section class="section bg-alt" id="stack">
+    <section class="section bg-alt" id="main-products">
+        <div class="container">
+            <h2 class="section-title animate-fade-in">Main Products</h2>
+            <div class="stack-grid">
+                <div class="stack-card main animate-slide-up stagger-1">
+                    <div class="stack-icon">🤖</div>
+                    <h3>NiPlex-Harness <span class="stack-flag">Public</span></h3>
+                    <p>Personal AI agent harness controlled from Discord or Telegram. Built for free hosts — phone is the control panel. Sandbox + approval buttons, memory, skills, web search.</p>
+                    <a href="https://github.com/Aj-Niplex/NiPlex-Harness" target="_blank" class="btn primary" style="margin-top:1rem;display:inline-block">View on GitHub</a>
+                </div>
+                <div class="stack-card animate-slide-up stagger-2">
+                    <div class="stack-icon">⚡</div>
+                    <h3>NiPlex-MCP <span class="stack-flag">Core</span></h3>
+                    <p>Production Model Context Protocol server — 47+ tools. GitHub, sandboxes, HidenCloud, web, YouTube, Neural memory, Google Workspace. Secure bridge for AI agents.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="stack">
         <div class="container">
             <h2 class="section-title animate-fade-in">The Stack</h2>
-            <p class="section-intro animate-fade-in">Python is my main language &mdash; and it powers the backend of this very site. TypeScript, JavaScript and Rust round out the toolkit.</p>
+            <p class="section-intro animate-fade-in">Python is the primary language. MCP, Discord.py, aiohttp, Linux VPS, sandbox isolation, agent memory layers.</p>
             <div class="stack-grid">
                 <div class="stack-card main animate-slide-up stagger-1">
                     <div class="stack-icon">🐍</div>
                     <h3>Python <span class="stack-flag">Primary</span></h3>
-                    <p>My main language &mdash; everything important starts here. This site's backend, Rei-kun's AI stack, and my LLM fine-tuning (Unsloth, TRL, PEFT) all live in Python.</p>
-                    <div class="code-card">
-                        <div class="code-header"><span>backend.py</span><span>stdlib only</span></div>
-                        <pre>def increment_views():
-    views = read_views() + 1
-    save_views(views)
-    return {"views": views}</pre>
-                    </div>
+                    <p>Everything important starts here — Harness, MCP server, bots, backend of this site.</p>
                 </div>
                 <div class="stack-card animate-slide-up stagger-2">
-                    <div class="stack-icon">⚡</div>
-                    <h3>TypeScript</h3>
-                    <p>Typed, safe frontend tooling &mdash; used when I need structure and autocomplete to keep agent-facing tooling reliable.</p>
-                    <div class="code-card">
-                        <div class="code-header"><span>agent.ts</span><span>strict</span></div>
-                        <pre>const views: number =
-  await countViews();</pre>
-                    </div>
+                    <div class="stack-icon">🔌</div>
+                    <h3>MCP Protocol</h3>
+                    <p>Model Context Protocol — the core abstraction that lets any MCP client talk to the same tool server.</p>
                 </div>
                 <div class="stack-card animate-slide-up stagger-2">
-                    <div class="stack-icon">🌐</div>
-                    <h3>JavaScript</h3>
-                    <p>Client-side interactions right here &mdash; the theme system, petal effects, and the live visitor counter you're looking at.</p>
-                    <div class="code-card">
-                        <div class="code-header"><span>counter.js</span><span>no build step</span></div>
-                        <pre>fetch("/api/visit", {
-  method: "POST"
-});</pre>
-                    </div>
+                    <div class="stack-icon">💬</div>
+                    <h3>Discord / Telegram</h3>
+                    <p>Primary UI for agents. Social apps as the control surface instead of another web dashboard.</p>
                 </div>
                 <div class="stack-card animate-slide-up stagger-3">
-                    <div class="stack-icon">🦀</div>
-                    <h3>Rust</h3>
-                    <p>On the learning path &mdash; high-performance tooling for agent infrastructure and robotics-adjacent systems.</p>
-                    <div class="code-card">
-                        <div class="code-header"><span>main.rs</span><span>learning</span></div>
-                        <pre>fn main() {
-    println!(
-        "never stop imagining"
-    );
-}</pre>
-                    </div>
+                    <div class="stack-icon">🐧</div>
+                    <h3>Linux VPS</h3>
+                    <p>Self-hosted production. Free-host friendly (HidenCloud etc.) and phone-first workflows.</p>
                 </div>
             </div>
-            <div class="backend-note animate-fade-in">
-                ⚙️ This site runs a real <strong>Python backend</strong> &mdash; every page load hits <code>POST /api/visit</code>, persisted to <code>visits.json</code> (with a remote KV upgrade in production). Zero bot protection: crawlers are welcome to index everything.
-            </div>
+        </div>
+    </section>
+
+    <section class="section bg-alt">
+        <div class="container">
+            <h2 class="section-title animate-fade-in">How I Work</h2>
+            <ul style="max-width:640px;margin:0 auto;line-height:1.8;font-size:1.05rem">
+                <li>Backend & agents first</li>
+                <li>Ship real running systems, then improve them</li>
+                <li>Social apps (Discord / Telegram) as the primary UI</li>
+                <li>Transparent prompts, bounded context, explicit approvals</li>
+                <li>Mobile-first development whenever possible</li>
+            </ul>
         </div>
     </section>
 
@@ -124,11 +126,10 @@
             <div class="footer-logos">
                 <img src="assets/user_logo.jpeg" alt="User">
                 <img src="assets/company_logo.png" alt="Company">
-                <img src="assets/niplex_ai_logo.jpeg" alt="AI">
             </div>
-            <p>&copy; 2026 Adarsh Jaiswal &mdash; Niplex. <strong>NEVER STOP IMAGINING</strong></p>
-            <p class="footer-credit">Built independently, with AI tools used as part of the process.</p>
-            <div class="footer-counter" title="Total site views - crawlers and bots are welcome too">
+            <p>&copy; 2026 Adarsh Jaiswal — Niplex. <strong>NEVER STOP IMAGINING</strong></p>
+            <p class="footer-credit">For AI agents: see <a href="https://github.com/Aj-Niplex/Aj-Niplex/blob/main/agent.md" target="_blank">agent.md</a> on GitHub.</p>
+            <div class="footer-counter" title="Total site views">
                 <span class="counter-label">👁 Site Views</span>
                 <span class="view-counter counter-value">&mdash;</span>
             </div>
@@ -153,11 +154,7 @@
                 options.forEach(btn => {
                     btn.setAttribute('aria-pressed', btn.dataset.theme === theme ? 'true' : 'false');
                 });
-                if (theme === 'sakura') {
-                    spawnPetals();
-                } else {
-                    clearPetals();
-                }
+                if (theme === 'sakura') spawnPetals(); else clearPetals();
             }
 
             function spawnPetals() {
@@ -172,11 +169,10 @@
                     const swayDuration = 3 + Math.random() * 3;
                     const delay = Math.random() * 10;
                     const size = 8 + Math.random() * 10;
-                    const opacity = 0.5 + Math.random() * 0.4;
                     petal.style.left = left + 'vw';
                     petal.style.width = size + 'px';
                     petal.style.height = size + 'px';
-                    petal.style.opacity = opacity;
+                    petal.style.opacity = 0.5 + Math.random() * 0.4;
                     petal.style.animationDuration = fallDuration + 's, ' + swayDuration + 's';
                     petal.style.animationDelay = '-' + delay + 's, -' + (Math.random() * swayDuration) + 's';
                     petalLayer.appendChild(petal);
@@ -189,8 +185,7 @@
                 petalLayer.dataset.spawned = 'false';
             }
 
-            const saved = localStorage.getItem('theme') || 'dark';
-            applyTheme(saved);
+            applyTheme(localStorage.getItem('theme') || 'dark');
 
             toggleBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
@@ -214,4 +209,3 @@
     <script type="module" src="/script.js"></script>
 </body>
 </html>
-<!-- Updated: Mon Jul 13 10:43:46 UTC 2026 -->
