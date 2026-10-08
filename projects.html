@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects | Niplex</title>
+    <title>Projects | Niplex · AJ NiPlex</title>
+    <meta name="description" content="Current projects by AJ NiPlex — NiPlex-Harness, NiPlex-MCP, Rei-kun-Bot.">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,9 +21,8 @@
             </div>
             <div class="nav-links">
                 <a href="index.html">Home</a>
-                <a href="about.html">Vision</a>
+                <a href="about.html">About</a>
                 <a href="projects.html">Projects</a>
-                <a href="roadmap.html">Roadmap</a>
                 <div class="theme-picker">
                     <button id="theme-toggle" class="theme-toggle" title="Toggle Theme" aria-haspopup="true">🌙</button>
                     <div class="theme-dropdown" id="theme-dropdown">
@@ -31,7 +31,7 @@
                         <button class="theme-option" data-theme="sakura" aria-pressed="false">🌸 Sakura</button>
                     </div>
                 </div>
-                <a href="https://www.linkedin.com/in/aj-niplex-foundation" target="_blank" class="nav-cta">Contact</a>
+                <a href="https://github.com/Aj-Niplex" target="_blank" class="nav-cta">GitHub</a>
             </div>
         </div>
     </nav>
@@ -39,99 +39,60 @@
     <section class="section">
         <div class="container">
             <h2 class="section-title animate-fade-in">Projects</h2>
-            <p class="section-intro animate-fade-in">Everything I'm actively building &mdash; sourced live from my GitHub.
-                <a href="https://github.com/Aj-Niplex" target="_blank">View all repositories &rarr;</a>
+            <p class="section-intro animate-fade-in">What I’m actively building right now.
+                <a href="https://github.com/Aj-Niplex" target="_blank">View all repositories →</a>
             </p>
             <div class="projects-grid">
-                <!-- Ishani v2 (Flagship) -->
+
+                <!-- NiPlex-Harness -->
                 <div class="project-card animate-slide-up stagger-1">
                     <div class="project-header">
                         <div class="project-icon">🤖</div>
-                        <h3>Ishani v2</h3>
+                        <h3>NiPlex-Harness</h3>
                     </div>
-                    <p>My flagship AI project &mdash; a LoRA adapter on Mistral-7B-v0.3 that pushes the sarcastic, no-nonsense Ishani mentor persona onto a stronger base model. Trained with Unsloth, TRL and PEFT. Next phase: once my fundamentals run deep enough, I move from fine-tuning toward training an original LLM from scratch.</p>
+                    <p>Personal AI agent harness controlled from Discord or Telegram. Built for free hosts (HidenCloud etc.) — phone is the control panel. Includes <code>/setup</code>, Python sandbox + approval buttons, memory, files, skills, web search, terminal. Allow-list only.</p>
                     <div class="repo-meta">
-                        <span class="meta-item"><span class="lang-dot" style="background:#ff8000;"></span>LoRA</span>
-                        <span class="meta-item">★ 1</span>
-                        <span class="meta-item">Updated Jul 16, 2026</span>
-                        <span class="meta-item"><a href="https://github.com/Aj-Niplex/Ishani_v2" target="_blank">Ishani_v2 &nearr;</a></span>
+                        <span class="meta-item"><span class="lang-dot" style="background:#3572A5;"></span>Python</span>
+                        <span class="meta-item"><a href="https://github.com/Aj-Niplex/NiPlex-Harness" target="_blank">NiPlex-Harness ↗</a></span>
                     </div>
-                    <span class="badge flagship">Flagship &middot; Active Development</span>
+                    <span class="badge flagship">Main Product · Public</span>
                     <div class="project-actions">
-                        <a href="https://github.com/Aj-Niplex/Ishani_v2" target="_blank" class="btn primary">GitHub</a>
+                        <a href="https://github.com/Aj-Niplex/NiPlex-Harness" target="_blank" class="btn primary">GitHub</a>
                     </div>
                 </div>
-                <!-- Rei-kun Bot -->
+
+                <!-- NiPlex-MCP -->
                 <div class="project-card animate-slide-up stagger-1">
+                    <div class="project-header">
+                        <div class="project-icon">⚡</div>
+                        <h3>NiPlex-MCP</h3>
+                    </div>
+                    <p>Production Model Context Protocol server — 47+ tools behind one connection. GitHub (full access), sandboxes (Daytona / E2B / Horizon), HidenCloud, web, YouTube, Neural memory sub-agent, Google Workspace. Security-reviewed, allow-list dispatch.</p>
+                    <div class="repo-meta">
+                        <span class="meta-item"><span class="lang-dot" style="background:#3572A5;"></span>Python</span>
+                        <span class="meta-item">Private · Core</span>
+                    </div>
+                    <span class="badge flagship">Main Product · Core</span>
+                </div>
+
+                <!-- Rei-kun Bot -->
+                <div class="project-card animate-slide-up stagger-2">
                     <div class="project-header">
                         <img src="assets/rei_logo.png" alt="Rei-kun Logo" class="project-logo">
                         <h3>Rei-kun Bot</h3>
                     </div>
-                    <p>A production Discord bot serving an active student community &mdash; multi-model AI chat with automatic fallback across DeepSeek, LLaMA 4, GPT and Gemini via OpenRouter, a custom emoji system, and a study resource hub. 24 commands, self-managed on a Linux VPS.</p>
+                    <p>High-performance Discord AI orchestrator with persistent persona, multi-model intelligence, and a comprehensive resource hub. Live and self-hosted on a Linux VPS.</p>
                     <div class="repo-meta">
                         <span class="meta-item"><span class="lang-dot" style="background:#3572A5;"></span>Python</span>
                         <span class="meta-item">★ 1</span>
-                        <span class="meta-item">Updated Jul 12, 2026</span>
-                        <span class="meta-item"><a href="https://github.com/Aj-Niplex/Rei-kun-Bot" target="_blank">Rei-kun-Bot &nearr;</a></span>
+                        <span class="meta-item"><a href="https://github.com/Aj-Niplex/Rei-kun-Bot" target="_blank">Rei-kun-Bot ↗</a></span>
                     </div>
-                    <span class="badge">Live &amp; Operational</span>
+                    <span class="badge">Live & Operational</span>
                     <div class="project-actions">
-                        <a href="project-rei.html" class="btn secondary">Details</a>
                         <a href="https://github.com/Aj-Niplex/Rei-kun-Bot" target="_blank" class="btn primary">GitHub</a>
                     </div>
                 </div>
-                <!-- Niplex-MCP -->
-                <div class="project-card animate-slide-up stagger-2">
-                    <div class="project-header">
-                        <div class="project-icon">⚡</div>
-                        <h3>Niplex-MCP</h3>
-                    </div>
-                    <p>A professional Model Context Protocol server that acts as a secure bridge between AI agents and developer infrastructure &mdash; GitHub read/write without raw credential exposure, isolated Daytona sandboxes, plus web, YouTube and research integrations.</p>
-                    <div class="repo-meta">
-                        <span class="meta-item"><span class="lang-dot" style="background:#3572A5;"></span>Python</span>
-                        <span class="meta-item">Updated Jul 14, 2026</span>
-                        <span class="meta-item"><a href="https://github.com/Aj-Niplex/niplex-mcp" target="_blank">niplex-mcp &nearr;</a></span>
-                    </div>
-                    <span class="badge">Active Development</span>
-                    <div class="project-actions">
-                        <a href="project-mcp.html" class="btn secondary">Details</a>
-                        <a href="https://github.com/Aj-Niplex/niplex-mcp" target="_blank" class="btn primary">GitHub</a>
-                    </div>
-                </div>
-                <!-- Ishani v1 (deprecated) -->
-                <div class="project-card animate-slide-up stagger-2">
-                    <div class="project-header">
-                        <div class="project-icon">🌸</div>
-                        <h3>Ishani (v1)</h3>
-                    </div>
-                    <p>The first-generation cognitive core &mdash; a fine-tuned Llama-3-8B mentor with the high-attitude, sarcastic personality. This version is being retired and the repo will be archived soon; the persona lives on in Ishani v2.</p>
-                    <div class="repo-meta">
-                        <span class="meta-item"><span class="lang-dot" style="background:#a52a22;"></span>Jinja</span>
-                        <span class="meta-item">Updated Jul 16, 2026</span>
-                        <span class="meta-item"><a href="https://github.com/Aj-Niplex/Ishani" target="_blank">Ishani &nearr;</a></span>
-                    </div>
-                    <span class="badge deprecated">Deprecated &middot; Archiving Soon</span>
-                    <div class="project-actions">
-                        <a href="https://github.com/Aj-Niplex/Ishani" target="_blank" class="btn primary">GitHub</a>
-                    </div>
-                </div>
-                <!-- Neural-OS -->
-                <div class="project-card animate-slide-up stagger-3">
-                    <div class="project-header">
-                        <div class="project-icon">🧠</div>
-                        <h3>Neural-OS</h3>
-                    </div>
-                    <p>An orchestration layer for coordinating multiple AI agents &mdash; how they share memory and hand off tasks. The design and planning phase, now tracked in its own repository.</p>
-                    <div class="repo-meta">
-                        <span class="meta-item">Updated Jul 11, 2026</span>
-                        <span class="meta-item"><a href="https://github.com/Aj-Niplex/Neural-OS" target="_blank">Neural-OS &nearr;</a></span>
-                    </div>
-                    <span class="badge">Early Design Phase</span>
-                    <div class="project-actions">
-                        <a href="project-neural.html" class="btn secondary">Details</a>
-                        <a href="https://github.com/Aj-Niplex/Neural-OS" target="_blank" class="btn primary">GitHub</a>
-                    </div>
-                </div>
+
             </div>
         </div>
     </section>
@@ -141,11 +102,10 @@
             <div class="footer-logos">
                 <img src="assets/user_logo.jpeg" alt="User">
                 <img src="assets/company_logo.png" alt="Company">
-                <img src="assets/niplex_ai_logo.jpeg" alt="AI">
             </div>
-            <p>&copy; 2026 Adarsh Jaiswal &mdash; Niplex. <strong>NEVER STOP IMAGINING</strong></p>
-            <p class="footer-credit">Built independently, with AI tools used as part of the process.</p>
-            <div class="footer-counter" title="Total site views - crawlers and bots are welcome too">
+            <p>&copy; 2026 Adarsh Jaiswal — Niplex. <strong>NEVER STOP IMAGINING</strong></p>
+            <p class="footer-credit">For AI agents: see <a href="https://github.com/Aj-Niplex/Aj-Niplex/blob/main/agent.md" target="_blank">agent.md</a>.</p>
+            <div class="footer-counter">
                 <span class="counter-label">👁 Site Views</span>
                 <span class="view-counter counter-value">&mdash;</span>
             </div>
@@ -171,61 +131,28 @@
                     btn.setAttribute('aria-pressed', btn.dataset.theme === theme ? 'true' : 'false');
                 });
                 if (theme === 'sakura') {
-                    spawnPetals();
-                } else {
-                    clearPetals();
+                    if (petalLayer && petalLayer.dataset.spawned !== 'true') {
+                        petalLayer.dataset.spawned = 'true';
+                        const count = window.innerWidth < 600 ? 16 : 28;
+                        for (let i = 0; i < count; i++) {
+                            const petal = document.createElement('div');
+                            petal.className = 'petal';
+                            petal.style.left = Math.random() * 100 + 'vw';
+                            petal.style.width = petal.style.height = (8 + Math.random() * 10) + 'px';
+                            petal.style.opacity = 0.5 + Math.random() * 0.4;
+                            petalLayer.appendChild(petal);
+                        }
+                    }
+                } else if (petalLayer) {
+                    petalLayer.innerHTML = '';
+                    petalLayer.dataset.spawned = 'false';
                 }
             }
 
-            function spawnPetals() {
-                if (!petalLayer || petalLayer.dataset.spawned === 'true') return;
-                petalLayer.dataset.spawned = 'true';
-                const count = window.innerWidth < 600 ? 16 : 28;
-                for (let i = 0; i < count; i++) {
-                    const petal = document.createElement('div');
-                    petal.className = 'petal';
-                    const left = Math.random() * 100;
-                    const fallDuration = 7 + Math.random() * 8;
-                    const swayDuration = 3 + Math.random() * 3;
-                    const delay = Math.random() * 10;
-                    const size = 8 + Math.random() * 10;
-                    const opacity = 0.5 + Math.random() * 0.4;
-                    petal.style.left = left + 'vw';
-                    petal.style.width = size + 'px';
-                    petal.style.height = size + 'px';
-                    petal.style.opacity = opacity;
-                    petal.style.animationDuration = fallDuration + 's, ' + swayDuration + 's';
-                    petal.style.animationDelay = '-' + delay + 's, -' + (Math.random() * swayDuration) + 's';
-                    petalLayer.appendChild(petal);
-                }
-            }
-
-            function clearPetals() {
-                if (!petalLayer) return;
-                petalLayer.innerHTML = '';
-                petalLayer.dataset.spawned = 'false';
-            }
-
-            const saved = localStorage.getItem('theme') || 'dark';
-            applyTheme(saved);
-
-            toggleBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                dropdown.classList.toggle('open');
-            });
-
-            options.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    applyTheme(btn.dataset.theme);
-                    dropdown.classList.remove('open');
-                });
-            });
-
-            document.addEventListener('click', (e) => {
-                if (!dropdown.contains(e.target) && e.target !== toggleBtn) {
-                    dropdown.classList.remove('open');
-                }
-            });
+            applyTheme(localStorage.getItem('theme') || 'dark');
+            toggleBtn.addEventListener('click', e => { e.stopPropagation(); dropdown.classList.toggle('open'); });
+            options.forEach(btn => btn.addEventListener('click', () => { applyTheme(btn.dataset.theme); dropdown.classList.remove('open'); }));
+            document.addEventListener('click', e => { if (!dropdown.contains(e.target) && e.target !== toggleBtn) dropdown.classList.remove('open'); });
         })();
     </script>
     <script type="module" src="/script.js"></script>
