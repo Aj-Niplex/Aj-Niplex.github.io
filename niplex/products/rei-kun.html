@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rei-kun Bot — Live Discord AI Orchestrator | NiPlex</title>
+    <meta name="description" content="Rei-kun Bot: a persona-driven Discord AI orchestrator serving an active student community — 24 slash commands, 21 util modules, multi-model fallback, Code Doctor, study resource hub, hard security layer.">
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="petal-layer" id="petal-layer"></div>
+
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="../assets/favicon.svg" alt="NiPlex Logo">
+                <span>NIPLEX</span>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">Hub</a>
+                <a href="harness.html">Harness</a>
+                <a href="mcp.html">MCP</a>
+                <a href="rei-kun.html">Rei-kun</a>
+                <a href="threadforge.html">ThreadForge</a>
+                <div class="theme-picker">
+                    <button id="theme-toggle" class="theme-toggle" title="Toggle Theme" aria-haspopup="true">🌙</button>
+                    <div class="theme-dropdown" id="theme-dropdown">
+                        <button class="theme-option" data-theme="dark" aria-pressed="true">🌙 Dark</button>
+                        <button class="theme-option" data-theme="light" aria-pressed="false">☀️ Light</button>
+                        <button class="theme-option" data-theme="sakura" aria-pressed="false">🌸 Sakura</button>
+                    </div>
+                </div>
+                <a href="https://github.com/Aj-Niplex/Rei-kun-Bot" target="_blank" class="nav-cta">GitHub</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="section">
+        <div class="container">
+            <div class="project-detail-header">
+                <div class="detail-icon">🌸</div>
+                <h1>Rei-kun Bot</h1>
+                <p class="detail-subtitle">The live Discord AI orchestrator — persona, fallback models and a hard security layer</p>
+            </div>
+
+            <div class="detail-grid">
+                <div class="detail-main">
+                    <div class="content-block">
+                        <h2>What It Is</h2>
+                        <div class="markdown-content">
+                            <p>Rei-kun is a <strong>persona-driven Discord AI orchestrator</strong> serving an active student community — not a demo bot, a deployed one. It chats, diagnoses code, curates study resources and manages its own community, while a serious security layer (rate limiting, RBAC, ToS tracking, blocklists) keeps a public-facing bot safe.</p>
+                            <p>Its identity lives in <code>config/bot_identity.yaml</code> — the persona is a config file, so tone and character change without touching code. The brain is <code>app.py</code> (19KB core), supported by 21 utility modules and a core package that owns ownership, prompting, rate limiting and security.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>Architecture</h2>
+                        <div class="code-card">
+                            <div class="code-header">architecture.txt</div>
+                            <pre>Discord (slash commands)
+        │
+        ▼
+Rei-kun Bot
+  app.py (19KB core)
+  config/bot_identity.yaml — persona definition
+        │
+        ├── commands/   — 24 slash commands (25 modules
+        │                 incl. healthcheck, backup)
+        ├── utils/      — 21 modules
+        │     ai.py (Claude) · code_doctor.py ·
+        │     conversation.py · emoji system (×4) ·
+        │     storage.py · email_sender.py (SMTP) ·
+        │     tos.py · permissions.py · concurrency.py ·
+        │     vps_logger.py · command_catalog.py …
+        ├── core/       — ownership · prompt ·
+        │                 rate_limiter · security
+        └── data stores — JSON: blocked_users · tos ·
+                          resources · conversations/</pre>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>The 24 Commands</h2>
+                        <table class="spec-table">
+                            <thead><tr><th>Category</th><th>Commands</th></tr></thead>
+                            <tbody>
+                                <tr><td>Core AI</td><td>chat + persona control (<code>prompt</code>, <code>setprompt</code>)</td></tr>
+                                <tr><td>Code help</td><td>Code Doctor — diagnose and patch Python</td></tr>
+                                <tr><td>Study hub</td><td>resource search and retrieval for students</td></tr>
+                                <tr><td>Community</td><td><code>quote</code>, emoji sync (<code>emojisync</code>), admin promo (<code>admin_promo</code>), activity stats (<code>activity_stats</code>)</td></tr>
+                                <tr><td>Operations</td><td><code>healthcheck</code>, <code>backup</code>, ToS consent tracking</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>Multi-Model Fallback</h2>
+                        <div class="markdown-content">
+                            <p>Rei-kun routes chat through <strong>OpenRouter with multi-model fallback</strong>: if the primary model fails or times out, the next in the chain takes over mid-conversation. The community never sees a dead bot — it sees a slightly different voice at worst. Claude integration is used for heavier reasoning through <code>utils/ai.py</code>.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>Code Doctor</h2>
+                        <div class="markdown-content">
+                            <p>The signature feature: paste broken Python, get a <strong>diagnosis plus a patched version</strong>. It reads the error, explains what went wrong in plain language, and returns corrected code — purpose-built for the student community it serves.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>Security Layer</h2>
+                        <div class="markdown-content">
+                            <ul>
+                                <li><strong>Rate limiting</strong> — per-user quotas via <code>core/rate_limiter.py</code>, so no one can flood the AI budget.</li>
+                                <li><strong>Input sanitization</strong> — user text is cleaned before it reaches any model or file.</li>
+                                <li><strong>RBAC</strong> — permissions module gates admin commands by role.</li>
+                                <li><strong>ToS tracking</strong> — <code>tos.py</code> records consent per user before elevated features unlock.</li>
+                                <li><strong>Blocklists</strong> — <code>blocked_users</code> JSON store keeps banned users out at the data layer.</li>
+                                <li><strong>Secret hygiene</strong> — <code>encrypt_secrets.py</code> keeps credentials encrypted at rest.</li>
+                                <li><strong>SMTP error alerts</strong> — <code>email_sender.py</code> emails the owner when the bot errors, plus <code>vps_logger.py</code> for host-side visibility.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>Deployment</h2>
+                        <div class="code-section">
+                            <div class="code-header">vps.txt</div>
+                            <pre><code>Target:  Linux VPS (3GB RAM · 2 cores)
+Runtime: Python 3.13
+Stores:  JSON files (no external DB required)
+ persona: config/bot_identity.yaml</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>Where It Sits in NiPlex</h2>
+                        <div class="markdown-content">
+                            <p>Rei-kun is the public-facing cousin of <a href="harness.html">NiPlex-Harness</a>: where the harness is a private agent under one owner's control, Rei-kun proves the same agent patterns — persona, fallback, memory, approvals — can survive a real community with real abuse. MIT licensed and open for anyone to run.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-sidebar">
+                    <div class="sidebar-card">
+                        <h3>Technical Meta</h3>
+                        <ul>
+                            <li><strong>Status:</strong> Live · serving a community</li>
+                            <li><strong>License:</strong> MIT</li>
+                            <li><strong>Language:</strong> Python 3.13</li>
+                            <li><strong>Commands:</strong> 24 slash commands (25 command modules)</li>
+                            <li><strong>Util modules:</strong> 21 (utils/)</li>
+                            <li><strong>Core package:</strong> ownership · prompt · rate_limiter · security</li>
+                            <li><strong>Models:</strong> OpenRouter multi-model fallback + Claude</li>
+                            <li><strong>Stores:</strong> 5 JSON stores (no DB)</li>
+                            <li><strong>Deploy:</strong> Linux VPS · 3GB / 2 cores</li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-card">
+                        <h3>Quick Links</h3>
+                        <a href="https://github.com/Aj-Niplex/Rei-kun-Bot" target="_blank" class="btn primary">Source on GitHub</a>
+                    </div>
+                    <div class="sidebar-card">
+                        <h3>Related Products</h3>
+                        <ul>
+                            <li><a href="harness.html">NiPlex-Harness</a> — the private-agent counterpart</li>
+                            <li><a href="threadforge.html">ThreadForge-MCP</a> — the chat-thread engine pattern</li>
+                            <li><a href="infra.html">Infrastructure</a> — the free-tier backbone</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2026 NiPlex — Adarsh Jaiswal. <strong>NEVER STOP IMAGINING</strong></p>
+            <p class="footer-credit">NiPlex is the product collection of <a href="https://aj-niplex.github.io/" target="_blank">Adarsh Jaiswal</a> · Personal site · <a href="https://aj-niplex.github.io/resume.html" target="_blank">Résumé</a> · For AI agents: <a href="https://github.com/Aj-Niplex/Aj-Niplex/blob/main/agent.md" target="_blank">agent.md</a></p>
+        </div>
+    </footer>
+
+    <script src="../assets/hub.js" defer></script>
+    <script>
+        (function () {
+            const body = document.body;
+            const toggleBtn = document.getElementById('theme-toggle');
+            const dropdown = document.getElementById('theme-dropdown');
+            const options = document.querySelectorAll('.theme-option');
+            const petalLayer = document.getElementById('petal-layer');
+            const ICONS = { dark: '🌙', light: '☀️', sakura: '🌸' };
+
+            function spawnPetals() {
+                if (!petalLayer || petalLayer.dataset.spawned === 'true') return;
+                petalLayer.dataset.spawned = 'true';
+                const count = window.innerWidth < 600 ? 16 : 28;
+                for (let i = 0; i < count; i++) {
+                    const petal = document.createElement('div');
+                    petal.className = 'petal';
+                    petal.style.left = Math.random() * 100 + 'vw';
+                    petal.style.width = petal.style.height = (8 + Math.random() * 10) + 'px';
+                    petal.style.opacity = 0.5 + Math.random() * 0.4;
+                    petalLayer.appendChild(petal);
+                }
+            }
+
+            function clearPetals() {
+                if (!petalLayer) return;
+                petalLayer.innerHTML = '';
+                petalLayer.dataset.spawned = 'false';
+            }
+
+            function applyTheme(theme) {
+                body.classList.remove('light-theme', 'sakura-theme');
+                if (theme === 'light') body.classList.add('light-theme');
+                if (theme === 'sakura') body.classList.add('sakura-theme');
+                localStorage.setItem('theme', theme);
+                if (toggleBtn) toggleBtn.textContent = ICONS[theme] || '🌙';
+                options.forEach(btn => btn.setAttribute('aria-pressed', btn.dataset.theme === theme ? 'true' : 'false'));
+                if (theme === 'sakura') { spawnPetals(); } else { clearPetals(); }
+            }
+
+            applyTheme(localStorage.getItem('theme') || 'dark');
+            if (toggleBtn) toggleBtn.addEventListener('click', e => { e.stopPropagation(); dropdown.classList.toggle('open'); });
+            options.forEach(btn => btn.addEventListener('click', () => { applyTheme(btn.dataset.theme); dropdown.classList.remove('open'); }));
+            document.addEventListener('click', e => { if (!dropdown.contains(e.target) && e.target !== toggleBtn) dropdown.classList.remove('open'); });
+        })();
+    </script>
+</body>
+</html>
