@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects | Niplex · AJ NiPlex</title>
-    <meta name="description" content="Current projects by AJ NiPlex — NiPlex-Harness, NiPlex-MCP, Rei-kun-Bot.">
+    <meta name="description" content="Everything Adarsh Jaiswal has built: NiPlex-Harness, NiPlex-MCP, Rei-kun Bot, ThreadForge, Computer-Use MCP, Research AI, the Neural stack, VaultBridge and the infrastructure underneath.">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,6 +23,7 @@
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
                 <a href="projects.html">Projects</a>
+                <a href="resume.html">Resume</a>
                 <div class="theme-picker">
                     <button id="theme-toggle" class="theme-toggle" title="Toggle Theme" aria-haspopup="true">🌙</button>
                     <div class="theme-dropdown" id="theme-dropdown">
@@ -39,58 +40,265 @@
     <section class="section">
         <div class="container">
             <h2 class="section-title animate-fade-in">Projects</h2>
-            <p class="section-intro animate-fade-in">What I’m actively building right now.
-                <a href="https://github.com/Aj-Niplex" target="_blank">View all repositories →</a>
-            </p>
+            <p class="section-intro animate-fade-in">Everything I have built and keep running — 31 repositories, 10+ shipped systems. Public repos link out; private products are listed with their real scope, no source access. <a href="https://github.com/Aj-Niplex" target="_blank">View all repositories →</a></p>
             <div class="projects-grid">
 
-                <!-- NiPlex-Harness -->
-                <div class="project-card animate-slide-up stagger-1">
-                    <div class="project-header">
-                        <div class="project-icon">🤖</div>
-                        <h3>NiPlex-Harness</h3>
-                    </div>
-                    <p>Personal AI agent harness controlled from Discord or Telegram. Built for free hosts (HidenCloud etc.) — phone is the control panel. Includes <code>/setup</code>, Python sandbox + approval buttons, memory, files, skills, web search, terminal. Allow-list only.</p>
-                    <div class="repo-meta">
-                        <span class="meta-item"><span class="lang-dot" style="background:#3572A5;"></span>Python</span>
-                        <span class="meta-item"><a href="https://github.com/Aj-Niplex/NiPlex-Harness" target="_blank">NiPlex-Harness ↗</a></span>
-                    </div>
-                    <span class="badge flagship">Main Product · Public</span>
-                    <div class="project-actions">
-                        <a href="https://github.com/Aj-Niplex/NiPlex-Harness" target="_blank" class="btn primary">GitHub</a>
-                    </div>
-                </div>
+<div class="project-card animate-slide-up stagger-1">
+      <div class="project-header"><div class="project-icon">🤖</div><h3>NiPlex-Harness</h3></div>
+      <p>Personal AI agent harness controlled from Discord or Telegram. Built for free hosts (HidenCloud etc.) — phone is the control panel. Includes /setup, Python sandbox + approval buttons, memory, files, skills, web search, terminal. Allow-list only.</p>
+      <div class="repo-meta"><span class="meta-item"><span class="lang-dot" style="background:#3572A5;"></span>Python 3.13</span><span class="meta-item"><a href="https://github.com/Aj-Niplex/NiPlex-Harness" target="_blank">NiPlex-Harness ↗</a></span></div>
+      <span class="badge flagship">Flagship · Public · MIT</span>
+      <div class="project-actions"><a href="https://github.com/Aj-Niplex/NiPlex-Harness" target="_blank" class="btn primary">GitHub</a><a href="https://aj-niplex.github.io/niplex/products/harness.html" target="_blank" class="btn secondary">Full Detail</a></div>
+    </div>
 
-                <!-- NiPlex-MCP -->
-                <div class="project-card animate-slide-up stagger-1">
-                    <div class="project-header">
-                        <div class="project-icon">⚡</div>
-                        <h3>NiPlex-MCP</h3>
-                    </div>
-                    <p>Production Model Context Protocol server — 47+ tools behind one connection. GitHub (full access), sandboxes (Daytona / E2B / Horizon), HidenCloud, web, YouTube, Neural memory sub-agent, Google Workspace. Security-reviewed, allow-list dispatch.</p>
-                    <div class="repo-meta">
-                        <span class="meta-item"><span class="lang-dot" style="background:#3572A5;"></span>Python</span>
-                        <span class="meta-item">Private · Core</span>
-                    </div>
-                    <span class="badge flagship">Main Product · Core</span>
-                </div>
+<div class="project-card animate-slide-up stagger-1">
+      <div class="project-header"><div class="project-icon">⚡</div><h3>NiPlex-MCP</h3></div>
+      <p>Production Model Context Protocol server — 70+ tools behind one connection. GitHub (full access), sandboxes (Daytona / E2B / Horizon), HidenCloud, web, YouTube, Neural memory sub-agent, Google Workspace. Security-reviewed, allow-list dispatch. FastMCP on Horizon, auto-deploy on push.</p>
+      <div class="repo-meta"><span class="meta-item"><span class="lang-dot" style="background:#3572A5;"></span>Python</span><span class="meta-item">Private · Core</span></div>
+      <span class="badge flagship">Flagship · Core</span>
+      <div class="project-actions"><a href="project-mcp.html" class="btn secondary">Full Detail</a></div>
+    </div>
 
-                <!-- Rei-kun Bot -->
+<div class="project-card animate-slide-up stagger-2">
+      <div class="project-header"><img src="assets/rei_logo.png" alt="Rei-kun Logo" class="project-logo"><h3>Rei-kun Bot</h3></div>
+      <p>High-performance Discord AI orchestrator with persistent persona, multi-model fallback (OpenRouter: DeepSeek / Llama 4 / GPT / Gemini), Code Doctor, resource hub, per-channel memory, hot-reload. Live and self-hosted on a Linux VPS.</p>
+      <div class="repo-meta"><span class="meta-item"><span class="lang-dot" style="background:#3572A5;"></span>Python 3.13</span><span class="meta-item"><a href="https://github.com/Aj-Niplex/Rei-kun-Bot" target="_blank">Rei-kun-Bot ↗</a></span></div>
+      <span class="badge">Live &amp; Operational · MIT</span>
+      <div class="project-actions"><a href="https://github.com/Aj-Niplex/Rei-kun-Bot" target="_blank" class="btn primary">GitHub</a><a href="project-rei.html" class="btn secondary">Full Detail</a></div>
+    </div>
+
                 <div class="project-card animate-slide-up stagger-2">
                     <div class="project-header">
-                        <img src="assets/rei_logo.png" alt="Rei-kun Logo" class="project-logo">
-                        <h3>Rei-kun Bot</h3>
+                        <div class="project-icon">🧵</div>
+                        <h3>ThreadForge MCP</h3>
                     </div>
-                    <p>High-performance Discord AI orchestrator with persistent persona, multi-model intelligence, and a comprehensive resource hub. Live and self-hosted on a Linux VPS.</p>
+                    <p>Multi-model conversational chatbot MCP server — persistent threads, model routing + automatic fallback, background context compression, GitHub-backed shared artifacts. Deployed on Horizon.</p>
                     <div class="repo-meta">
-                        <span class="meta-item"><span class="lang-dot" style="background:#3572A5;"></span>Python</span>
-                        <span class="meta-item">★ 1</span>
-                        <span class="meta-item"><a href="https://github.com/Aj-Niplex/Rei-kun-Bot" target="_blank">Rei-kun-Bot ↗</a></span>
+                        <span class="meta-item"><span class="lang-dot" style="background:#3572A5;"></span>Python · Public</span>
+                        <span class="meta-item"><a href="https://github.com/Aj-Niplex/ThreadForge-MCP" target="_blank">ThreadForge-MCP ↗</a></span>
                     </div>
-                    <span class="badge">Live & Operational</span>
-                    <div class="project-actions">
-                        <a href="https://github.com/Aj-Niplex/Rei-kun-Bot" target="_blank" class="btn primary">GitHub</a>
+                    <span class="badge ">Shipped · Public</span>
+                </div>
+
+                <div class="project-card animate-slide-up stagger-2">
+                    <div class="project-header">
+                        <div class="project-icon">🖥️</div>
+                        <h3>Computer-Use MCP</h3>
                     </div>
+                    <p>16 browser + workspace tools for any MCP-compatible AI agent, executed on a real Chromium runtime on HidenCloud — screenshots, clicks, typing, confined workspace — behind a single Horizon MCP layer.</p>
+                    <div class="repo-meta">
+                        <span class="meta-item"><span class="lang-dot" style="background:#3572A5;"></span>Python · Public</span>
+                        <span class="meta-item"><a href="https://github.com/Aj-Niplex/Computer-Use-MCP" target="_blank">Computer-Use-MCP ↗</a></span>
+                    </div>
+                    <span class="badge ">Shipped · Public</span>
+                </div>
+
+                <div class="project-card animate-slide-up stagger-2">
+                    <div class="project-header">
+                        <div class="project-icon">🔍</div>
+                        <h3>NiPlex Research AI</h3>
+                    </div>
+                    <p>Mobile-first research assistant plugin for Obsidian — bounded context (reads what it needs, never the whole vault), approval-gated edits, transparent prompts, MCP-compatible tool calling.</p>
+                    <div class="repo-meta">
+                        <span class="meta-item"><span class="lang-dot" style="background:#3178c6;"></span>TS · Public</span>
+                        <span class="meta-item"><a href="https://github.com/Aj-Niplex/Niplex-obsidian-Research-AI" target="_blank">Research AI ↗</a></span>
+                    </div>
+                    <span class="badge ">Shipped · Public</span>
+                </div>
+
+                <div class="project-card animate-slide-up stagger-2">
+                    <div class="project-header">
+                        <div class="project-icon">🌐</div>
+                        <h3>NiPlex Product Hub</h3>
+                    </div>
+                    <p>The full NiPlex product catalog — every product, in detail: architecture, tools, security models and deployment specs. Served as a GitHub Pages project site.</p>
+                    <div class="repo-meta">
+                        <span class="meta-item"><span class="lang-dot" style="background:#3572A5;"></span>HTML · CSS · Public</span>
+                        <span class="meta-item"><a href="https://aj-niplex.github.io/niplex/" target="_blank">Hub ↗</a></span>
+                    </div>
+                    <span class="badge ">Shipped · Public</span>
+                </div>
+
+                <div class="project-card animate-slide-up stagger-2">
+                    <div class="project-header">
+                        <div class="project-icon">📄</div>
+                        <h3>niplex-harness-site</h3>
+                    </div>
+                    <p>V1 marketing site for NiPlex-Harness — pure static build (docs pages, redirects, robots, sitemap), deployable on GitHub Pages and Cloudflare Pages.</p>
+                    <div class="repo-meta">
+                        <span class="meta-item"><span class="lang-dot" style="background:#3572A5;"></span>HTML · CSS · Public</span>
+                        <span class="meta-item"><a href="https://github.com/Aj-Niplex/niplex-harness-site" target="_blank">niplex-harness-site ↗</a></span>
+                    </div>
+                    <span class="badge ">Shipped · Public</span>
+                </div>
+
+                <div class="project-card animate-slide-up stagger-2">
+                    <div class="project-header">
+                        <div class="project-icon">🤝</div>
+                        <h3>Hermes / OpenDots forks</h3>
+                    </div>
+                    <p>Maintained forks feeding the ecosystem: hermes-agent (Nous Research stack) and OpenDots (CopilotKit) — plus opendots-host, the self-hosting launcher.</p>
+                    <div class="repo-meta">
+                        <span class="meta-item"><span class="lang-dot" style="background:#3178c6;"></span>Python · TS · Public</span>
+                        <span class="meta-item"><a href="https://github.com/Aj-Niplex/hermes-agent" target="_blank">forks ↗</a></span>
+                    </div>
+                    <span class="badge ">Open Source</span>
+                </div>
+
+                <div class="project-card animate-slide-up stagger-2">
+                    <div class="project-header">
+                        <div class="project-icon">🧠</div>
+                        <h3>Neural Stack</h3>
+                    </div>
+                    <p>The memory layer: Neural-MCP sub-agent (ask_neural / log_to_neural over Adarshs-Stack, two auth layers), neural-chat capture bot (Discord + Telegram, 47+ tools in chat mode), Neural-OS second brain (React 19 + Convex).</p>
+                    <div class="repo-meta">
+                        <span class="meta-item"><span class="lang-dot" style="background:#3178c6;"></span>Python · TS · Private</span>
+                        <span class="meta-item"><a href="project-neural.html">Detail</a></span>
+                    </div>
+                    <span class="badge flagship">Deployed · Private</span>
+                </div>
+
+                <div class="project-card animate-slide-up stagger-2">
+                    <div class="project-header">
+                        <div class="project-icon">💬</div>
+                        <h3>neural-chat</h3>
+                    </div>
+                    <p>Discord + Telegram capture bot — post in a section channel and the thought gets filed to Neural; message elsewhere and it is a full assistant with 47+ MCP tools. /setup creates the 8 sections.</p>
+                    <div class="repo-meta">
+                        <span class="meta-item"><span class="lang-dot" style="background:#3572A5;"></span>Python · Private</span>
+                        
+                    </div>
+                    <span class="badge ">Deployed · Private</span>
+                </div>
+
+                <div class="project-card animate-slide-up stagger-2">
+                    <div class="project-header">
+                        <div class="project-icon">🌉</div>
+                        <h3>VaultBridge</h3>
+                    </div>
+                    <p>Notion → Obsidian sync: incremental pulls, stable note identity, snapshot diffing, version history and rollback design. Supabase-backed, auto-deploying on Railway.</p>
+                    <div class="repo-meta">
+                        <span class="meta-item"><span class="lang-dot" style="background:#f1e05a;"></span>JS · Private</span>
+                        
+                    </div>
+                    <span class="badge ">MVP · Deployed</span>
+                </div>
+
+                <div class="project-card animate-slide-up stagger-2">
+                    <div class="project-header">
+                        <div class="project-icon">🤖</div>
+                        <h3>Niplex-bot</h3>
+                    </div>
+                    <p>The Hermes-based Telegram/Discord bot with Adarshs-Stack memory — the lineage the harness grew out of.</p>
+                    <div class="repo-meta">
+                        <span class="meta-item"><span class="lang-dot" style="background:#3572A5;"></span>Python · Private</span>
+                        
+                    </div>
+                    <span class="badge ">Ancestor</span>
+                </div>
+
+                <div class="project-card animate-slide-up stagger-2">
+                    <div class="project-header">
+                        <div class="project-icon">🚪</div>
+                        <h3>Free LLM Gateway</h3>
+                    </div>
+                    <p>Self-hosted LLM gateway — Caddy + FreeLLMAPI on a free Wispbyte host — one stable OpenAI-compatible endpoint over free-tier providers.</p>
+                    <div class="repo-meta">
+                        <span class="meta-item"><span class="lang-dot" style="background:#3572A5;"></span>Python · Private</span>
+                        
+                    </div>
+                    <span class="badge ">Running</span>
+                </div>
+
+                <div class="project-card animate-slide-up stagger-2">
+                    <div class="project-header">
+                        <div class="project-icon">📦</div>
+                        <h3>Sandbox</h3>
+                    </div>
+                    <p>FastMCP run_code server — disposable code execution with hard caps: 60 seconds, 1.5 GB.</p>
+                    <div class="repo-meta">
+                        <span class="meta-item"><span class="lang-dot" style="background:#3572A5;"></span>Python · Private</span>
+                        
+                    </div>
+                    <span class="badge ">Running</span>
+                </div>
+
+                <div class="project-card animate-slide-up stagger-2">
+                    <div class="project-header">
+                        <div class="project-icon">⏰</div>
+                        <h3>worker-server</h3>
+                    </div>
+                    <p>Cron-driven reminder poller — the quiet background worker that fires scheduled reminders.</p>
+                    <div class="repo-meta">
+                        <span class="meta-item"><span class="lang-dot" style="background:#3572A5;"></span>Python · Private</span>
+                        
+                    </div>
+                    <span class="badge ">Running</span>
+                </div>
+
+                <div class="project-card animate-slide-up stagger-2">
+                    <div class="project-header">
+                        <div class="project-icon">🧰</div>
+                        <h3>Niplex-Computer-MCP</h3>
+                    </div>
+                    <p>Combined computer-use toolkit packaging, plus Computer-Runtime — the HidenCloud Chromium service the MCP layer drives.</p>
+                    <div class="repo-meta">
+                        <span class="meta-item"><span class="lang-dot" style="background:#3572A5;"></span>Python · Private</span>
+                        
+                    </div>
+                    <span class="badge ">Family</span>
+                </div>
+
+                <div class="project-card animate-slide-up stagger-2">
+                    <div class="project-header">
+                        <div class="project-icon">📚</div>
+                        <h3>NiPlex-Docs</h3>
+                    </div>
+                    <p>Deep product analyses: architecture trees, tool-category tables, security models, setup flows — the reference layer for the whole ecosystem.</p>
+                    <div class="repo-meta">
+                        <span class="meta-item"><span class="lang-dot" style="background:#3572A5;"></span>Markdown · Private</span>
+                        
+                    </div>
+                    <span class="badge ">Reference</span>
+                </div>
+
+                <div class="project-card animate-slide-up stagger-2">
+                    <div class="project-header">
+                        <div class="project-icon">🗂️</div>
+                        <h3>save-data</h3>
+                    </div>
+                    <p>Plans, decisions, coordination logs and the V1 harness site source — where the three-agent team coordinates.</p>
+                    <div class="repo-meta">
+                        <span class="meta-item"><span class="lang-dot" style="background:#3572A5;"></span>Markdown · Private</span>
+                        
+                    </div>
+                    <span class="badge ">Coordination</span>
+                </div>
+
+                <div class="project-card animate-slide-up stagger-2">
+                    <div class="project-header">
+                        <div class="project-icon">🧩</div>
+                        <h3>Memory workspace &amp; agent.md</h3>
+                    </div>
+                    <p>Adarsh-Jaiswal (memory workspace) + the profile repo — agent.md is the source of truth for how AI agents treat NiPlex work.</p>
+                    <div class="repo-meta">
+                        <span class="meta-item"><span class="lang-dot" style="background:#3572A5;"></span>Markdown · Public</span>
+                        <span class="meta-item"><a href="https://github.com/Aj-Niplex/Aj-Niplex/blob/main/agent.md" target="_blank">agent.md ↗</a></span>
+                    </div>
+                    <span class="badge ">For AI agents</span>
+                </div>
+
+                <div class="project-card animate-slide-up stagger-2">
+                    <div class="project-header">
+                        <div class="project-icon">🧪</div>
+                        <h3>Dev twins</h3>
+                    </div>
+                    <p>Private development twins — dev-NiPlex-Harness, dev-NiPlex-MCP, Dev-obsidian-agentic-research, VaultBridge-dev, Hermes-backup — full source, experiments and AI-handover notes stay out of public repos by design.</p>
+                    <div class="repo-meta">
+                        <span class="meta-item"><span class="lang-dot" style="background:#3178c6;"></span>Python · TS · Private</span>
+                        
+                    </div>
+                    <span class="badge ">Private</span>
                 </div>
 
             </div>
