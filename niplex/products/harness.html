@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NiPlex-Harness — Phone-First AI Agent Harness | NiPlex</title>
+    <meta name="description" content="NiPlex-Harness: a personal AI agent harness controlled from Discord or Telegram, built for free hosts with no PC required. 10 tool categories, 8-round agent loop, Python sandbox, approval buttons, memory, skills, vault.">
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="petal-layer" id="petal-layer"></div>
+
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="../assets/favicon.svg" alt="NiPlex Logo">
+                <span>NIPLEX</span>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">Hub</a>
+                <a href="harness.html">Harness</a>
+                <a href="mcp.html">MCP</a>
+                <a href="rei-kun.html">Rei-kun</a>
+                <a href="threadforge.html">ThreadForge</a>
+                <div class="theme-picker">
+                    <button id="theme-toggle" class="theme-toggle" title="Toggle Theme" aria-haspopup="true">🌙</button>
+                    <div class="theme-dropdown" id="theme-dropdown">
+                        <button class="theme-option" data-theme="dark" aria-pressed="true">🌙 Dark</button>
+                        <button class="theme-option" data-theme="light" aria-pressed="false">☀️ Light</button>
+                        <button class="theme-option" data-theme="sakura" aria-pressed="false">🌸 Sakura</button>
+                    </div>
+                </div>
+                <a href="https://github.com/Aj-Niplex/NiPlex-Harness" target="_blank" class="nav-cta">GitHub</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="section">
+        <div class="container">
+            <div class="project-detail-header">
+                <div class="detail-icon">🤖</div>
+                <h1>NiPlex-Harness</h1>
+                <p class="detail-subtitle">The phone-first AI agent harness — Discord or Telegram is the control panel</p>
+            </div>
+
+            <div class="detail-grid">
+                <div class="detail-main">
+                    <div class="content-block">
+                        <h2>What It Is</h2>
+                        <div class="markdown-content">
+                            <p>NiPlex-Harness is a personal AI agent harness controlled entirely from <strong>Discord or Telegram</strong>. It exists because of one hard constraint: run a real agent <strong>without a PC</strong> — the phone is the control panel. It targets free hosts like HidenCloud, so the whole system costs nothing to keep online.</p>
+                            <p>Every session starts in chat. The agent runs a <strong>bounded tool loop — up to 8 tool rounds per turn</strong> — with conversation history kept on a leash (soft limit 40 messages, target 32) so long chats stay fast and cheap. Identity comes from a <code>soul.md</code> file: the harness knows who it is before it knows what to do. Risky actions pause and wait for <strong>approval buttons</strong> in chat. Durable knowledge lands in <code>vault/</code>, an Obsidian-ready Markdown store that stays human-readable — and the agent is hard-ruled never to operate on the repo root.</p>
+                            <p>Configuration is conversational too: the <code>/setup</code> wizard walks through provider, API key and model selection pulled <strong>live from the provider API</strong>. No config files to hand-edit, no laptop needed.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>Architecture</h2>
+                        <div class="code-card">
+                            <div class="code-header">architecture.txt</div>
+                            <pre>Phone (Discord / Telegram)
+        │
+        ▼
+NiPlex-Harness
+  gateway (discord.py / aiohttp)
+  identity: soul.md
+  /setup wizard — provider, API key, models (live)
+  agent loop — up to 8 tool rounds per turn
+  history soft-limit 40 / target 32
+        │
+        ├── Python sandbox (venv · 60s · 512MB · approvals)
+        ├── 10 tool categories (allow-listed)
+        ├── notifications (ntfy push)
+        └── vault/ — Obsidian-ready Markdown (never repo root)
+        │
+        ▼
+Free host (HidenCloud) — python launch.py
+  launch.py auto-installs deps (hash marker)</pre>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>Tool Categories — the real 10, from capabilities.py</h2>
+                        <div class="markdown-content">
+                            <p>The agent can reach a bounded set of tool categories. Anything not on the list simply does not exist for it. On top of these, <strong>5 meta-tools are always on</strong>: <code>who_am_i</code>, <code>report_status</code>, <code>get_progress</code>, <code>list_tool_categories</code>, <code>set_tool_category</code>.</p>
+                        </div>
+                        <table class="spec-table">
+                            <thead><tr><th>Category</th><th>Tools</th><th>What the agent can do</th><th>Default</th></tr></thead>
+                            <tbody>
+                                <tr><td>memory</td><td>8</td><td>Store and recall durable context — including a knowledge <code>graph</code> and <code>vector_search</code></td><td>ON</td></tr>
+                                <tr><td>terminal</td><td>6</td><td>Run allow-listed shell commands</td><td>ON</td></tr>
+                                <tr><td>files</td><td>7</td><td>Read and write files inside its workspace</td><td>ON</td></tr>
+                                <tr><td>skills</td><td>6</td><td>Load reusable skill modules into the loop</td><td>ON</td></tr>
+                                <tr><td>web</td><td>3</td><td>Look things up on the web</td><td>ON</td></tr>
+                                <tr><td>cron</td><td>3</td><td>Schedule recurring work for the agent</td><td>ON</td></tr>
+                                <tr><td>subagents</td><td>3</td><td>Spawn focused sub-agents for delegated tasks</td><td>ON</td></tr>
+                                <tr><td>notifications</td><td>—</td><td>Push alerts to the owner via ntfy</td><td>ON</td></tr>
+                                <tr><td>git</td><td>—</td><td>Git operations on repos</td><td>OFF</td></tr>
+                                <tr><td>voice</td><td>—</td><td>Text-to-speech replies (Piper TTS)</td><td>OFF</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>Providers</h2>
+                        <div class="markdown-content">
+                            <p>Built-in defaults out of the box: <strong>Agnes</strong> (<code>agnes-2.0-flash</code>), <strong>Gemini</strong> (<code>2.0-flash</code>) and <strong>OpenAI</strong> (<code>gpt-4o-mini</code>). Anthropic, OpenRouter and fully custom providers plug in through <code>/setup</code> — model lists are fetched live, so new models appear without code changes.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>Sandbox</h2>
+                        <div class="markdown-content">
+                            <ul>
+                                <li><strong>Builtin venv sandbox</strong> — 60-second cap, 512MB memory, isolated from the host.</li>
+                                <li><strong>auto_approve_low = true</strong> — trivially safe runs go straight through; anything risky pauses for an approval button.</li>
+                                <li><strong>Remote sandbox option</strong> — heavy runs can be delegated instead of running on the free host.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>Security Model</h2>
+                        <div class="markdown-content">
+                            <p>Security is a stack of dedicated modules, not an afterthought: <strong>approvals</strong>, <strong>content_guard</strong>, <strong>privacy</strong>, <strong>scanner</strong>, and <strong>vault</strong> rules.</p>
+                            <ul>
+                                <li><strong>Allow-list only.</strong> Only allow-listed user IDs can talk to the agent at all — anyone else is ignored.</li>
+                                <li><strong>Approval buttons.</strong> Risky sandbox actions do not run until a human taps Approve in Discord or Telegram.</li>
+                                <li><strong>Sandboxed code.</strong> Untrusted Python runs isolated with hard time and memory caps.</li>
+                                <li><strong>File discipline.</strong> The agent never touches the repo root; durable writes go to <code>vault/</code> only.</li>
+                                <li><strong>Public / private split.</strong> The public repo carries docs and cleaned source ready for users; experiments, agent notes and private data stay only in the private dev repo.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>5-Minute Start</h2>
+                        <div class="code-section">
+                            <div class="code-header">local.txt</div>
+                            <pre><code># 1. Create a Discord or Telegram bot token
+# 2. Configure
+cp .env.example .env        # set token + your user id
+
+# 3. Install and launch
+pip install -r requirements.txt
+python launch.py            # auto-installs deps via hash marker
+
+# 4. In chat
+/setup    # provider → API key → models (live list)
+/help</code></pre>
+                        </div>
+                        <div class="code-section" style="margin-top: 1rem;">
+                            <div class="code-header">free-host.txt (HidenCloud)</div>
+                            <pre><code>1. Upload the repo
+2. Set .env values in the panel
+3. Start command: python launch.py
+4. /setup in Discord or Telegram — done</code></pre>
+                        </div>
+                        <div class="markdown-content" style="margin-top: 1rem;">
+                            <p>Full guides live in the repo: <code>docs/SETUP.md</code> and <code>docs/HELP.md</code>. Commands: <code>/setup</code>, <code>/help</code>, <code>/reset</code>.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>Where It Sits in NiPlex</h2>
+                        <div class="markdown-content">
+                            <p>Harness is the flagship front door of the ecosystem: the loop, sandbox, approvals, memory and vault. When it needs more reach than its local tools — GitHub, cloud sandboxes, YouTube — it connects to <a href="mcp.html">NiPlex-MCP</a>, the 73-tool MCP server that sits underneath everything.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-sidebar">
+                    <div class="sidebar-card">
+                        <h3>Technical Meta</h3>
+                        <ul>
+                            <li><strong>License:</strong> MIT</li>
+                            <li><strong>Language:</strong> Python 3.13</li>
+                            <li><strong>Gateways:</strong> Discord (recommended) · Telegram</li>
+                            <li><strong>Core libs:</strong> discord.py · aiohttp</li>
+                            <li><strong>Agent loop:</strong> up to 8 tool rounds per turn</li>
+                            <li><strong>Tool categories:</strong> 10 + 5 always-on meta-tools</li>
+                            <li><strong>Identity:</strong> soul.md</li>
+                            <li><strong>Sandbox:</strong> venv · 60s · 512MB · auto_approve_low</li>
+                            <li><strong>Deploys on:</strong> free hosts (HidenCloud)</li>
+                            <li><strong>Commands:</strong> /setup · /help · /reset</li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-card">
+                        <h3>Quick Links</h3>
+                        <a href="https://github.com/Aj-Niplex/NiPlex-Harness" target="_blank" class="btn primary">Source on GitHub</a>
+                        <a href="https://github.com/Aj-Niplex/NiPlex-Harness/blob/main/docs/SETUP.md" target="_blank" class="btn secondary">Setup Guide</a>
+                    </div>
+                    <div class="sidebar-card">
+                        <h3>Related Products</h3>
+                        <ul>
+                            <li><a href="mcp.html">NiPlex-MCP</a> — the 73-tool layer under the harness</li>
+                            <li><a href="rei-kun.html">Rei-kun Bot</a> — the community orchestrator cousin</li>
+                            <li><a href="neural.html">Neural stack</a> — memory capture and second brain</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2026 NiPlex — Adarsh Jaiswal. <strong>NEVER STOP IMAGINING</strong></p>
+            <p class="footer-credit">NiPlex is the product collection of <a href="https://aj-niplex.github.io/" target="_blank">Adarsh Jaiswal</a> · Personal site · <a href="https://aj-niplex.github.io/resume.html" target="_blank">Résumé</a> · For AI agents: <a href="https://github.com/Aj-Niplex/Aj-Niplex/blob/main/agent.md" target="_blank">agent.md</a></p>
+        </div>
+    </footer>
+
+    <script src="../assets/hub.js" defer></script>
+    <script>
+        (function () {
+            const body = document.body;
+            const toggleBtn = document.getElementById('theme-toggle');
+            const dropdown = document.getElementById('theme-dropdown');
+            const options = document.querySelectorAll('.theme-option');
+            const petalLayer = document.getElementById('petal-layer');
+            const ICONS = { dark: '🌙', light: '☀️', sakura: '🌸' };
+
+            function spawnPetals() {
+                if (!petalLayer || petalLayer.dataset.spawned === 'true') return;
+                petalLayer.dataset.spawned = 'true';
+                const count = window.innerWidth < 600 ? 16 : 28;
+                for (let i = 0; i < count; i++) {
+                    const petal = document.createElement('div');
+                    petal.className = 'petal';
+                    petal.style.left = Math.random() * 100 + 'vw';
+                    petal.style.width = petal.style.height = (8 + Math.random() * 10) + 'px';
+                    petal.style.opacity = 0.5 + Math.random() * 0.4;
+                    petalLayer.appendChild(petal);
+                }
+            }
+
+            function clearPetals() {
+                if (!petalLayer) return;
+                petalLayer.innerHTML = '';
+                petalLayer.dataset.spawned = 'false';
+            }
+
+            function applyTheme(theme) {
+                body.classList.remove('light-theme', 'sakura-theme');
+                if (theme === 'light') body.classList.add('light-theme');
+                if (theme === 'sakura') body.classList.add('sakura-theme');
+                localStorage.setItem('theme', theme);
+                if (toggleBtn) toggleBtn.textContent = ICONS[theme] || '🌙';
+                options.forEach(btn => btn.setAttribute('aria-pressed', btn.dataset.theme === theme ? 'true' : 'false'));
+                if (theme === 'sakura') { spawnPetals(); } else { clearPetals(); }
+            }
+
+            applyTheme(localStorage.getItem('theme') || 'dark');
+            if (toggleBtn) toggleBtn.addEventListener('click', e => { e.stopPropagation(); dropdown.classList.toggle('open'); });
+            options.forEach(btn => btn.addEventListener('click', () => { applyTheme(btn.dataset.theme); dropdown.classList.remove('open'); }));
+            document.addEventListener('click', e => { if (!dropdown.contains(e.target) && e.target !== toggleBtn) dropdown.classList.remove('open'); });
+        })();
+    </script>
+</body>
+</html>
