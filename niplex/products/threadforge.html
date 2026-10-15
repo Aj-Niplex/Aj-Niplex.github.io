@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThreadForge-MCP — Multi-Model Chat Threads | NiPlex</title>
+    <meta name="description" content="ThreadForge-MCP: a multi-model conversational chatbot MCP server — persistent threads, model routing and fallback, automatic context compression, GitHub-backed durable storage, shared artifacts.">
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="petal-layer" id="petal-layer"></div>
+
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="../assets/favicon.svg" alt="NiPlex Logo">
+                <span>NIPLEX</span>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">Hub</a>
+                <a href="harness.html">Harness</a>
+                <a href="mcp.html">MCP</a>
+                <a href="rei-kun.html">Rei-kun</a>
+                <a href="threadforge.html">ThreadForge</a>
+                <div class="theme-picker">
+                    <button id="theme-toggle" class="theme-toggle" title="Toggle Theme" aria-haspopup="true">🌙</button>
+                    <div class="theme-dropdown" id="theme-dropdown">
+                        <button class="theme-option" data-theme="dark" aria-pressed="true">🌙 Dark</button>
+                        <button class="theme-option" data-theme="light" aria-pressed="false">☀️ Light</button>
+                        <button class="theme-option" data-theme="sakura" aria-pressed="false">🌸 Sakura</button>
+                    </div>
+                </div>
+                <a href="https://github.com/Aj-Niplex/ThreadForge-MCP" target="_blank" class="nav-cta">GitHub</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="section">
+        <div class="container">
+            <div class="project-detail-header">
+                <div class="detail-icon">🧵</div>
+                <h1>ThreadForge-MCP</h1>
+                <p class="detail-subtitle">Multi-model chat threads over MCP — persistent, compressed, GitHub-backed</p>
+            </div>
+
+            <div class="detail-grid">
+                <div class="detail-main">
+                    <div class="content-block">
+                        <h2>What It Is</h2>
+                        <div class="markdown-content">
+                            <p>ThreadForge-MCP is a <strong>multi-model conversational chatbot MCP server</strong>. Most MCP servers expose data or actions; ThreadForge exposes <em>conversation itself</em>: any MCP-capable agent — Claude, Grok, Mistral, Gemini — can open a thread, chat across turns, switch models mid-thread, and save artifacts that other agents can pick up later.</p>
+                            <p>The entire server is one disciplined file: <code>server.py</code>, 19.6KB of FastMCP. No database, no vector store — durable state lives in GitHub itself, which means threads survive restarts, are human-readable, and cost nothing to host.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>The Model Pool — routing with a reason</h2>
+                        <table class="spec-table">
+                            <thead><tr><th>Model</th><th>Role</th><th>Why</th></tr></thead>
+                            <tbody>
+                                <tr><td>gemini-2.5-flash</td><td>Reliability anchor</td><td>The most reliable model in the pool — the fallback that always answers</td></tr>
+                                <tr><td>gemini-3.8-flash</td><td>Preferred</td><td>Best quality per token, but can time out — falls back to the anchor</td></tr>
+                                <tr><td>gemini-3.1-pro-preview</td><td>Heavy tasks</td><td>Reserved for harder jobs where the flash models are not enough</td></tr>
+                                <tr><td>gemini-2.5-flash</td><td>Compression (CHEAP_COMPRESS_MODEL)</td><td>Summarizes old history cheaply before it is dropped</td></tr>
+                            </tbody>
+                        </table>
+                        <div class="markdown-content" style="margin-top: 1rem;">
+                            <p>This is not a random model list — it is a <strong>routing table with measured trade-offs</strong>: speed vs quality vs availability, encoded per model.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>Context Compression</h2>
+                        <div class="markdown-content">
+                            <p>Long threads stay cheap through a best-effort compression pass:</p>
+                            <ul>
+                                <li>Threads are capped at <strong>30 messages</strong></li>
+                                <li>The <strong>latest 12 messages are always kept verbatim</strong></li>
+                                <li>Older messages are <strong>summarized into a thread summary</strong> by the cheap compress model — best-effort, so a failure never loses chat</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>Storage — threads live in GitHub</h2>
+                        <div class="code-card">
+                            <div class="code-header">storage.txt</div>
+                            <pre>save-data repo (raw GitHub API)
+  Chatbot MCP data/{thread_id}/
+        ├── metadata.json      thread config + model prefs
+        ├── messages.json      full message history
+        ├── conversation.md   human-readable transcript
+        ├── summary.md         compressed older history
+        └── artifacts/         files shared across agents</pre>
+                        </div>
+                        <div class="markdown-content" style="margin-top: 1rem;">
+                            <p>Every thread is a folder of plain files. If ThreadForge disappeared tomorrow, every conversation would still be readable in a text editor — that is the point.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>The 9 Tools</h2>
+                        <table class="spec-table">
+                            <thead><tr><th>Tool</th><th>What it does</th></tr></thead>
+                            <tbody>
+                                <tr><td>chat</td><td>Send a message into a thread, get a model reply</td></tr>
+                                <tr><td>list_threads</td><td>Enumerate existing threads</td></tr>
+                                <tr><td>get_thread</td><td>Load a thread's full state</td></tr>
+                                <tr><td>save_artifact</td><td>Store a file in the thread's artifact folder</td></tr>
+                                <tr><td>list_artifacts</td><td>See what artifacts a thread holds</td></tr>
+                                <tr><td>get_artifact</td><td>Read an artifact back</td></tr>
+                                <tr><td>update_artifact</td><td>Revise an existing artifact</td></tr>
+                                <tr><td>delete_artifact</td><td>Remove an artifact</td></tr>
+                                <tr><td>set_model_preference</td><td>Change the model routing for a thread</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>Proxied Through NiPlex-MCP</h2>
+                        <div class="markdown-content">
+                            <p>Agents that already connect to <a href="mcp.html">NiPlex-MCP</a> get ThreadForge for free: all 9 tools are proxied under the <code>tf_*</code> prefix. One connection, two servers.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>Quick Start</h2>
+                        <div class="code-section">
+                            <div class="code-header">start.txt</div>
+                            <pre><code>git clone https://github.com/Aj-Niplex/ThreadForge-MCP
+cd ThreadForge-MCP
+uv sync            # deps via uv
+uv run server.py   # FastMCP server up
+
+# then connect any MCP client:
+# tools: chat, list_threads, get_thread,
+#        save_artifact, list_artifacts, get_artifact,
+#        update_artifact, delete_artifact, set_model_preference</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-sidebar">
+                    <div class="sidebar-card">
+                        <h3>Technical Meta</h3>
+                        <ul>
+                            <li><strong>Status:</strong> Public</li>
+                            <li><strong>Framework:</strong> FastMCP · single server.py (19.6KB)</li>
+                            <li><strong>Tools:</strong> 9 (proxied as 12 tf_* calls via NiPlex-MCP)</li>
+                            <li><strong>Models:</strong> gemini-2.5-flash / 3.8-flash / 3.1-pro-preview</li>
+                            <li><strong>Compression:</strong> cap 30 · keep 12 · older → summary</li>
+                            <li><strong>Storage:</strong> save-data repo via raw GitHub API</li>
+                            <li><strong>Package manager:</strong> uv</li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-card">
+                        <h3>Quick Links</h3>
+                        <a href="https://github.com/Aj-Niplex/ThreadForge-MCP" target="_blank" class="btn primary">Source on GitHub</a>
+                    </div>
+                    <div class="sidebar-card">
+                        <h3>Related Products</h3>
+                        <ul>
+                            <li><a href="mcp.html">NiPlex-MCP</a> — proxies these tools as tf_*</li>
+                            <li><a href="rei-kun.html">Rei-kun Bot</a> — the Discord chat face</li>
+                            <li><a href="infra.html">Infrastructure</a> — where the data lives</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2026 NiPlex — Adarsh Jaiswal. <strong>NEVER STOP IMAGINING</strong></p>
+            <p class="footer-credit">NiPlex is the product collection of <a href="https://aj-niplex.github.io/" target="_blank">Adarsh Jaiswal</a> · Personal site · <a href="https://aj-niplex.github.io/resume.html" target="_blank">Résumé</a> · For AI agents: <a href="https://github.com/Aj-Niplex/Aj-Niplex/blob/main/agent.md" target="_blank">agent.md</a></p>
+        </div>
+    </footer>
+
+    <script src="../assets/hub.js" defer></script>
+    <script>
+        (function () {
+            const body = document.body;
+            const toggleBtn = document.getElementById('theme-toggle');
+            const dropdown = document.getElementById('theme-dropdown');
+            const options = document.querySelectorAll('.theme-option');
+            const petalLayer = document.getElementById('petal-layer');
+            const ICONS = { dark: '🌙', light: '☀️', sakura: '🌸' };
+
+            function spawnPetals() {
+                if (!petalLayer || petalLayer.dataset.spawned === 'true') return;
+                petalLayer.dataset.spawned = 'true';
+                const count = window.innerWidth < 600 ? 16 : 28;
+                for (let i = 0; i < count; i++) {
+                    const petal = document.createElement('div');
+                    petal.className = 'petal';
+                    petal.style.left = Math.random() * 100 + 'vw';
+                    petal.style.width = petal.style.height = (8 + Math.random() * 10) + 'px';
+                    petal.style.opacity = 0.5 + Math.random() * 0.4;
+                    petalLayer.appendChild(petal);
+                }
+            }
+
+            function clearPetals() {
+                if (!petalLayer) return;
+                petalLayer.innerHTML = '';
+                petalLayer.dataset.spawned = 'false';
+            }
+
+            function applyTheme(theme) {
+                body.classList.remove('light-theme', 'sakura-theme');
+                if (theme === 'light') body.classList.add('light-theme');
+                if (theme === 'sakura') body.classList.add('sakura-theme');
+                localStorage.setItem('theme', theme);
+                if (toggleBtn) toggleBtn.textContent = ICONS[theme] || '🌙';
+                options.forEach(btn => btn.setAttribute('aria-pressed', btn.dataset.theme === theme ? 'true' : 'false'));
+                if (theme === 'sakura') { spawnPetals(); } else { clearPetals(); }
+            }
+
+            applyTheme(localStorage.getItem('theme') || 'dark');
+            if (toggleBtn) toggleBtn.addEventListener('click', e => { e.stopPropagation(); dropdown.classList.toggle('open'); });
+            options.forEach(btn => btn.addEventListener('click', () => { applyTheme(btn.dataset.theme); dropdown.classList.remove('open'); }));
+            document.addEventListener('click', e => { if (!dropdown.contains(e.target) && e.target !== toggleBtn) dropdown.classList.remove('open'); });
+        })();
+    </script>
+</body>
+</html>
