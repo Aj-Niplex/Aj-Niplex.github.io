@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NiPlex-MCP — 73-Tool Production MCP Server | NiPlex</title>
+    <meta name="description" content="NiPlex-MCP: the production Model Context Protocol server behind the NiPlex ecosystem — 73 active tools across GitHub, sandboxes, HidenCloud, search, YouTube and Gemini, with fail-secure auth and allow-list dispatch.">
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="petal-layer" id="petal-layer"></div>
+
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="../assets/favicon.svg" alt="NiPlex Logo">
+                <span>NIPLEX</span>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">Hub</a>
+                <a href="harness.html">Harness</a>
+                <a href="mcp.html">MCP</a>
+                <a href="rei-kun.html">Rei-kun</a>
+                <a href="threadforge.html">ThreadForge</a>
+                <div class="theme-picker">
+                    <button id="theme-toggle" class="theme-toggle" title="Toggle Theme" aria-haspopup="true">🌙</button>
+                    <div class="theme-dropdown" id="theme-dropdown">
+                        <button class="theme-option" data-theme="dark" aria-pressed="true">🌙 Dark</button>
+                        <button class="theme-option" data-theme="light" aria-pressed="false">☀️ Light</button>
+                        <button class="theme-option" data-theme="sakura" aria-pressed="false">🌸 Sakura</button>
+                    </div>
+                </div>
+                <a href="https://github.com/Aj-Niplex" target="_blank" class="nav-cta">GitHub</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="section">
+        <div class="container">
+            <div class="project-detail-header">
+                <div class="detail-icon">⚡</div>
+                <h1>NiPlex-MCP</h1>
+                <p class="detail-subtitle">73 active tools, one MCP connection — the production toolkit under the ecosystem</p>
+            </div>
+
+            <div class="detail-grid">
+                <div class="detail-main">
+                    <div class="content-block">
+                        <h2>What It Is</h2>
+                        <div class="markdown-content">
+                            <p>NiPlex-MCP is a production <strong>Model Context Protocol server</strong> that gives any connected agent the owner's full toolkit: GitHub operations, cloud sandboxes, HidenCloud file operations, web and YouTube search, Gemini analysis — all behind one authenticated MCP connection. It runs as a <strong>FastMCP service on port 7860</strong> and <strong>auto-deploys on every push to main</strong>, so the server on Horizon is always the latest committed code.</p>
+                            <p>It is deliberately boring in the best way: security-reviewed, allow-listed dispatch, and organized as <strong>10 manager classes</strong> under <code>tools/managers/</code> — one per domain — instead of one giant flat file.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>The 73 Active Tools — exact breakdown</h2>
+                        <table class="spec-table">
+                            <thead><tr><th>Group</th><th>Tools</th><th>What it covers</th></tr></thead>
+                            <tbody>
+                                <tr><td>GitHub</td><td>38</td><td>Repos, files, branches, commits, issues — the full development surface</td></tr>
+                                <tr><td>ThreadForge proxy (tf_*)</td><td>12</td><td>ThreadForge-MCP's chat/artifact tools, proxied so agents get them through this one server</td></tr>
+                                <tr><td>HidenCloud SFTP</td><td>8</td><td>File operations directly on the HidenCloud host</td></tr>
+                                <tr><td>Sandbox</td><td>4</td><td>Daytona execute/destroy + Horizon run/health — two cloud sandboxes, one interface</td></tr>
+                                <tr><td>Search</td><td>2</td><td>You.com search with DuckDuckGo + Jina fallback chain</td></tr>
+                                <tr><td>YouTube</td><td>3</td><td>Video search and retrieval</td></tr>
+                                <tr><td>Gemini</td><td>2</td><td>Gemini analysis — including analyzing a YouTube video straight from its URL</td></tr>
+                                <tr><td>Misc</td><td>4</td><td>Utilities, including a <code>help()</code> keyword search across all 73 tools</td></tr>
+                            </tbody>
+                        </table>
+                        <div class="markdown-content" style="margin-top: 1rem;">
+                            <p><strong>38 + 12 + 8 + 4 + 2 + 3 + 2 + 4 = 73</strong> — every number above was counted from the source, not estimated.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>Staged for the Future — 14 Hidden Tools</h2>
+                        <div class="markdown-content">
+                            <p>Besides the active 73, <strong>14 tools are implemented but hidden</strong>, staged behind future proxy MCP servers rather than exposed now:</p>
+                            <ul>
+                                <li><strong>E2B sandbox</strong> — 3 tools (a third sandbox provider, waiting in reserve)</li>
+                                <li><strong>Neural</strong> — 2 tools (<code>ask_neural</code> / <code>log_to_neural</code> — currently served through the dedicated Neural-MCP; see the <a href="neural.html">Neural stack</a>)</li>
+                                <li><strong>Google Workspace</strong> — 9 tools (Gmail draft, Calendar, Drive, Docs — implemented but not yet routed publicly)</li>
+                            </ul>
+                            <p>Nothing hidden is dead code — it is deliberately parked until each domain gets its own proxy, keeping the live surface exactly as large as it needs to be.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>Security Posture</h2>
+                        <div class="markdown-content">
+                            <ul>
+                                <li><strong>Fail-secure auth.</strong> APIKeyMiddleware guards every call — if <code>MCP_API_KEY</code> is not configured, the whole server answers <strong>503</strong> rather than running open.</li>
+                                <li><strong>Allow-list dispatch.</strong> Tools are dispatched through an explicit allow-list; unknown calls do not reach implementation code.</li>
+                                <li><strong>Security-reviewed.</strong> Audited as part of the ecosystem's security pass: no email-send, no auto-merge, no destructive default.</li>
+                                <li><strong>Manager isolation.</strong> Each domain lives in its own manager class, so one tool group's logic cannot leak into another.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>The ThreadForge Proxy Story</h2>
+                        <div class="markdown-content">
+                            <p><a href="threadforge.html">ThreadForge-MCP</a> is a separate public MCP server for multi-model chat threads. Rather than forcing agents to hold two connections, NiPlex-MCP <strong>proxies all 12 ThreadForge tools</strong> under the <code>tf_*</code> prefix. One connection, two servers, zero extra auth for the agent.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>Role in the Stack</h2>
+                        <div class="code-card">
+                            <div class="code-header">stack.txt</div>
+                            <pre>Any MCP-capable agent (Claude, Mistral, Grok, custom)
+        │
+        ▼
+NiPlex-MCP  (FastMCP · port 7860 · fail-secure API key)
+        │
+        ├── GitHub manager        (38 tools)
+        ├── Sandbox managers      (Daytona + Horizon)
+        ├── HidenCloud SFTP       (8 tools)
+        ├── Search manager        (You.com → DDG → Jina)
+        ├── YouTube manager       (3 tools)
+        ├── Gemini manager        (2 tools — incl. video-from-URL)
+        ├── Misc + help()         (4 tools)
+        └── ThreadForge proxy    (12 tf_* tools)
+        │
+        ▼
+auto-deploys on push to main (Horizon)</pre>
+                        </div>
+                        <div class="markdown-content" style="margin-top: 1rem;">
+                            <p>It is the deep layer under <a href="harness.html">NiPlex-Harness</a> and every other agent in the ecosystem — the single place where "what can my agent actually do" gets answered.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-sidebar">
+                    <div class="sidebar-card">
+                        <h3>Technical Meta</h3>
+                        <ul>
+                            <li><strong>Status:</strong> Private (production)</li>
+                            <li><strong>Framework:</strong> FastMCP · Python 3.13</li>
+                            <li><strong>Port:</strong> 7860 (Horizon)</li>
+                            <li><strong>Active tools:</strong> 73</li>
+                            <li><strong>Staged/hidden tools:</strong> 14</li>
+                            <li><strong>Manager classes:</strong> 10 (tools/managers/)</li>
+                            <li><strong>Auth:</strong> fail-secure API key middleware</li>
+                            <li><strong>Deploy:</strong> auto on push to main</li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-card">
+                        <h3>Quick Links</h3>
+                        <a href="https://github.com/Aj-Niplex" target="_blank" class="btn primary">Aj-Niplex on GitHub</a>
+                        <a href="https://modelcontextprotocol.io/" target="_blank" class="btn secondary">What is MCP?</a>
+                    </div>
+                    <div class="sidebar-card">
+                        <h3>Related Products</h3>
+                        <ul>
+                            <li><a href="harness.html">NiPlex-Harness</a> — the flagship that consumes these tools</li>
+                            <li><a href="threadforge.html">ThreadForge-MCP</a> — its 12 tools proxied here as tf_*</li>
+                            <li><a href="neural.html">Neural stack</a> — memory domain, own MCP server</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2026 NiPlex — Adarsh Jaiswal. <strong>NEVER STOP IMAGINING</strong></p>
+            <p class="footer-credit">NiPlex is the product collection of <a href="https://aj-niplex.github.io/" target="_blank">Adarsh Jaiswal</a> · Personal site · <a href="https://aj-niplex.github.io/resume.html" target="_blank">Résumé</a> · For AI agents: <a href="https://github.com/Aj-Niplex/Aj-Niplex/blob/main/agent.md" target="_blank">agent.md</a></p>
+        </div>
+    </footer>
+
+    <script src="../assets/hub.js" defer></script>
+    <script>
+        (function () {
+            const body = document.body;
+            const toggleBtn = document.getElementById('theme-toggle');
+            const dropdown = document.getElementById('theme-dropdown');
+            const options = document.querySelectorAll('.theme-option');
+            const petalLayer = document.getElementById('petal-layer');
+            const ICONS = { dark: '🌙', light: '☀️', sakura: '🌸' };
+
+            function spawnPetals() {
+                if (!petalLayer || petalLayer.dataset.spawned === 'true') return;
+                petalLayer.dataset.spawned = 'true';
+                const count = window.innerWidth < 600 ? 16 : 28;
+                for (let i = 0; i < count; i++) {
+                    const petal = document.createElement('div');
+                    petal.className = 'petal';
+                    petal.style.left = Math.random() * 100 + 'vw';
+                    petal.style.width = petal.style.height = (8 + Math.random() * 10) + 'px';
+                    petal.style.opacity = 0.5 + Math.random() * 0.4;
+                    petalLayer.appendChild(petal);
+                }
+            }
+
+            function clearPetals() {
+                if (!petalLayer) return;
+                petalLayer.innerHTML = '';
+                petalLayer.dataset.spawned = 'false';
+            }
+
+            function applyTheme(theme) {
+                body.classList.remove('light-theme', 'sakura-theme');
+                if (theme === 'light') body.classList.add('light-theme');
+                if (theme === 'sakura') body.classList.add('sakura-theme');
+                localStorage.setItem('theme', theme);
+                if (toggleBtn) toggleBtn.textContent = ICONS[theme] || '🌙';
+                options.forEach(btn => btn.setAttribute('aria-pressed', btn.dataset.theme === theme ? 'true' : 'false'));
+                if (theme === 'sakura') { spawnPetals(); } else { clearPetals(); }
+            }
+
+            applyTheme(localStorage.getItem('theme') || 'dark');
+            if (toggleBtn) toggleBtn.addEventListener('click', e => { e.stopPropagation(); dropdown.classList.toggle('open'); });
+            options.forEach(btn => btn.addEventListener('click', () => { applyTheme(btn.dataset.theme); dropdown.classList.remove('open'); }));
+            document.addEventListener('click', e => { if (!dropdown.contains(e.target) && e.target !== toggleBtn) dropdown.classList.remove('open'); });
+        })();
+    </script>
+</body>
+</html>
