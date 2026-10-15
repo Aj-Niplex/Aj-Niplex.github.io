@@ -1,24 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
 :root {
-    --bg-dark: #0a0a0a;
-    --bg-card: #121212;
-    --bg-alt: #0f0f0f;
-    --accent: #4dabff;
-    --text-main: #e0e0e0;
-    --text-dim: #a0a0a0;
+    --bg-dark: #060608;
+    --bg-card: #12121a;
+    --bg-alt: #0e0e12;
+    --accent: #ff6b35;
+    --ember-glow: #ff8c5a;
+    --ember-dim: #c44d22;
+    --mist: #e8e4df;
+    --text-main: #f4f0eb;
+    --text-dim: #8a8a9a;
     --white: #ffffff;
-    --border: #222;
+    --border: rgba(255, 107, 53, 0.12);
+    --border-strong: rgba(255, 107, 53, 0.35);
     --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .light-theme {
-    --bg-dark: #f8f9fa;
+    --bg-dark: #f7f3ec;
     --bg-card: #ffffff;
-    --bg-alt: #f1f3f5;
-    --accent: #2563eb;
-    --text-main: #1a1a1a;
-    --text-dim: #4b5563;
+    --bg-alt: #efe8dd;
+    --accent: #e05a1e;
+    --text-main: #241d16;
+    --text-dim: #6b5f52;
     --white: #ffffff;
-    --border: #e5e7eb;
+    --border: rgba(224, 90, 30, 0.18);
 }
 
 .sakura-theme {
@@ -43,7 +49,7 @@ html {
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Syne', sans-serif;
     background-color: var(--bg-dark);
     color: var(--text-main);
     line-height: 1.6;
@@ -70,9 +76,9 @@ body {
 }
 
 @keyframes glow {
-    0% { filter: drop-shadow(0 0 5px rgba(77, 173, 255, 0.2)); }
-    50% { filter: drop-shadow(0 0 15px rgba(77, 173, 255, 0.5)); }
-    100% { filter: drop-shadow(0 0 5px rgba(77, 173, 255, 0.2)); }
+    0% { filter: drop-shadow(0 0 5px rgba(255, 107, 53, 0.2)); }
+    50% { filter: drop-shadow(0 0 15px rgba(255, 107, 53, 0.5)); }
+    100% { filter: drop-shadow(0 0 5px rgba(255, 107, 53, 0.2)); }
 }
 
 .animate-fade-in {
@@ -100,7 +106,7 @@ nav {
     top: 0;
     width: 100%;
     z-index: 1000;
-    background: rgba(10, 10, 10, 0.8);
+    background: rgba(6, 6, 8, 0.85);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border);
     display: flex;
@@ -110,7 +116,7 @@ nav {
 }
 
 .light-theme nav {
-    background: rgba(248, 249, 250, 0.8);
+    background: rgba(247, 243, 236, 0.85);
 }
 
 .sakura-theme nav {
@@ -141,7 +147,7 @@ nav {
 }
 
 .nav-logo span {
-    font-family: 'Fira Code', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-weight: 600;
     letter-spacing: 1px;
     color: var(--text-main);
@@ -170,8 +176,9 @@ nav {
     background: var(--accent);
     color: var(--bg-dark) !important;
     padding: 0.5rem 1.2rem;
-    border-radius: 6px;
+    border-radius: 999px;
     font-weight: 600 !important;
+    box-shadow: 0 0 24px rgba(255, 107, 53, 0.25);
 }
 
 /* Theme Picker Dropdown */
@@ -181,7 +188,7 @@ nav {
 
 .theme-toggle {
     list-style: none;
-    font-family: 'Fira Code', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 0.9rem;
     color: var(--text-dim);
     background: transparent;
@@ -226,7 +233,7 @@ nav {
     border-radius: 8px;
     cursor: pointer;
     text-align: left;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Syne', sans-serif;
     font-size: 0.85rem;
     display: flex;
     align-items: center;
@@ -237,7 +244,7 @@ nav {
 
 .theme-option:hover {
     border-color: var(--accent);
-    background: rgba(255, 143, 171, 0.08);
+    background: rgba(255, 107, 53, 0.08);
 }
 
 .theme-option[aria-pressed="true"] {
@@ -300,7 +307,7 @@ nav {
 .mascot-logo {
     width: 80px;
     height: auto;
-    filter: drop-shadow(0 0 10px rgba(77, 173, 255, 0.3));
+    filter: drop-shadow(0 0 10px rgba(255, 107, 53, 0.3));
 }
 
 .hero h1 {
@@ -312,7 +319,10 @@ nav {
 }
 
 .hero h1 .accent {
-    color: var(--accent);
+    background: linear-gradient(135deg, #fff 0%, var(--ember-glow) 50%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .accent {
@@ -336,7 +346,7 @@ nav {
 
 .btn {
     padding: 1rem 2rem;
-    border-radius: 8px;
+    border-radius: 999px;
     text-decoration: none;
     font-weight: 600;
     transition: var(--transition);
@@ -354,7 +364,7 @@ nav {
 
 .btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    box-shadow: 0 0 40px rgba(255, 107, 53, 0.35);
 }
 
 /* Sections */
@@ -441,7 +451,7 @@ nav {
     align-items: center;
     gap: 1rem;
     margin-bottom: 0.5rem;
-    font-family: 'Fira Code', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 0.78rem;
     color: var(--text-dim);
 }
@@ -489,8 +499,9 @@ nav {
 }
 
 .project-card:hover {
-    border-color: var(--accent);
-    background: #161616;
+    border-color: var(--border-strong);
+    background: #17120d;
+    box-shadow: 0 0 40px rgba(255, 107, 53, 0.08);
 }
 
 .light-theme .project-card:hover {
@@ -523,14 +534,14 @@ nav {
     color: var(--accent);
     text-decoration: none;
     font-weight: 600;
-    font-family: 'Fira Code', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 0.9rem;
 }
 
 .badge {
     display: inline-block;
     padding: 0.25rem 0.75rem;
-    background: #222;
+    background: rgba(255, 107, 53, 0.12);
     color: var(--accent);
     border-radius: 20px;
     font-size: 0.75rem;
@@ -540,7 +551,7 @@ nav {
 }
 
 .light-theme .badge {
-    background: #eef2ff;
+    background: #fdeadb;
 }
 
 .sakura-theme .badge {
@@ -620,13 +631,13 @@ nav {
     font-size: 0.8rem;
     color: var(--text-dim);
     border-bottom: 1px solid var(--border);
-    font-family: 'Fira Code', monospace;
+    font-family: 'JetBrains Mono', monospace;
 }
 
 .code-section pre {
     padding: 1.5rem;
     color: #a9b7c6;
-    font-family: 'Fira Code', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 0.9rem;
     overflow-x: auto;
 }
@@ -717,7 +728,7 @@ footer p {
     margin-top: 1rem;
     font-size: 0.8rem;
     opacity: 0.6;
-    font-family: 'Fira Code', monospace;
+    font-family: 'JetBrains Mono', monospace;
 }
 
 @media (max-width: 768px) {
@@ -755,7 +766,7 @@ footer p {
     border: 1px solid var(--border);
     padding: 0.5rem 1.1rem;
     border-radius: 20px;
-    font-family: 'Fira Code', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 0.82rem;
     color: var(--text-dim);
     transition: var(--transition);
@@ -792,9 +803,9 @@ footer p {
 }
 
 .stack-card:hover {
-    border-color: var(--accent);
+    border-color: var(--border-strong);
     transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 0 40px rgba(255, 107, 53, 0.12);
 }
 
 .light-theme .stack-card:hover {
@@ -803,12 +814,12 @@ footer p {
 
 .stack-card.main {
     border-color: var(--accent);
-    background: linear-gradient(160deg, rgba(77, 173, 255, 0.09), transparent 55%);
+    background: linear-gradient(160deg, rgba(255, 107, 53, 0.10), transparent 55%);
     box-shadow: inset 0 0 0 1px var(--accent);
 }
 
 .light-theme .stack-card.main {
-    background: linear-gradient(160deg, rgba(37, 99, 235, 0.07), transparent 55%);
+    background: linear-gradient(160deg, rgba(224, 90, 30, 0.07), transparent 55%);
 }
 
 .stack-icon {
@@ -832,7 +843,7 @@ footer p {
 }
 
 .stack-flag {
-    font-family: 'Fira Code', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 0.65rem;
     font-weight: 600;
     letter-spacing: 0.5px;
@@ -853,7 +864,7 @@ footer p {
 .code-card .code-header {
     background: #151515;
     padding: 0.5rem 0.9rem;
-    font-family: 'Fira Code', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 0.7rem;
     color: var(--text-dim);
     border-bottom: 1px solid var(--border);
@@ -864,7 +875,7 @@ footer p {
 
 .code-card pre {
     padding: 1rem;
-    font-family: 'Fira Code', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 0.78rem;
     color: #a9b7c6;
     overflow-x: auto;
@@ -881,7 +892,7 @@ footer p {
     color: var(--text-dim);
     font-size: 0.9rem;
     text-align: center;
-    font-family: 'Fira Code', monospace;
+    font-family: 'JetBrains Mono', monospace;
 }
 
 .backend-note strong {
@@ -890,7 +901,7 @@ footer p {
 
 .backend-note code {
     color: var(--accent);
-    background: rgba(77, 173, 255, 0.08);
+    background: rgba(255, 107, 53, 0.10);
     padding: 0.1rem 0.35rem;
     border-radius: 4px;
 }
@@ -902,7 +913,7 @@ footer p {
     justify-content: center;
     gap: 0.5rem;
     margin-top: 1.4rem;
-    font-family: 'Fira Code', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 0.82rem;
 }
 
@@ -941,5 +952,57 @@ footer p {
 @media (max-width: 768px) {
     .stack-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+/* ============ Ember extras: grain, glow orbs, grid bg ============ */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    pointer-events: none;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.hero {
+    position: relative;
+    background:
+        radial-gradient(circle at 15% 25%, rgba(255, 107, 53, 0.18), transparent 45%),
+        radial-gradient(circle at 85% 40%, rgba(255, 69, 0, 0.12), transparent 50%),
+        linear-gradient(rgba(255, 107, 53, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 107, 53, 0.03) 1px, transparent 1px);
+    background-size: auto, auto, 64px 64px, 64px 64px;
+}
+
+::selection {
+    background: rgba(255, 107, 53, 0.35);
+    color: #fff;
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #c44d22 var(--bg-dark);
+}
+
+@media (max-width: 768px) {
+    .hero {
+        background:
+            radial-gradient(circle at 50% 20%, rgba(255, 107, 53, 0.14), transparent 55%),
+            linear-gradient(rgba(255, 107, 53, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 107, 53, 0.03) 1px, transparent 1px);
+        background-size: auto, 64px 64px, 64px 64px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .animate-slide-up,
+    .animate-fade-in,
+    .petal,
+    .detail-logo,
+    .project-logo {
+        animation: none !important;
+        opacity: 1 !important;
     }
 }
