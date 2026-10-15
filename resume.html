@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résumé | Adarsh Jaiswal · Niplex</title>
+    <meta name="description" content="Résumé of Adarsh Jaiswal — independent AI-agent systems builder, Class 12 PCM student (Woodland Academy, Gorakhpur), MEXT 2028 applicant for Robotics Engineering in Japan.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="petal-layer" id="petal-layer"></div>
+
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/company_logo.png" alt="Niplex Logo">
+                <span>NIPLEX</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">Vision</a>
+                <a href="projects.html">Projects</a>
+                <a href="resume.html">Resume</a>
+                <a href="roadmap.html">Roadmap</a>
+                <div class="theme-picker">
+                    <button id="theme-toggle" class="theme-toggle" title="Toggle Theme" aria-haspopup="true">🌙</button>
+                    <div class="theme-dropdown" id="theme-dropdown">
+                        <button class="theme-option" data-theme="dark" aria-pressed="true">🌙 Dark</button>
+                        <button class="theme-option" data-theme="light" aria-pressed="false">☀️ Light</button>
+                        <button class="theme-option" data-theme="sakura" aria-pressed="false">🌸 Sakura</button>
+                    </div>
+                </div>
+                <a href="https://www.linkedin.com/in/aj-niplex-foundation" target="_blank" class="nav-cta">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title animate-fade-in">Résumé</h2>
+            <p class="section-intro animate-fade-in">Adarsh Jaiswal — independent builder of AI-agent systems. What I have actually shipped, what I know, and where I am going. <em>Tip: Print &rarr; Save as PDF gives you a clean copy.</em></p>
+
+            <div class="about-grid">
+                <div class="about-card animate-slide-up stagger-1">
+                    <h3>Summary</h3>
+                    <p>I design, build and operate real AI-agent infrastructure: a phone-first agent harness, a 70+-tool production MCP server, live Discord bots, memory systems and sync services — 31 repositories, 10+ shipped systems, running on free hosts. I treat building as the education itself: documentation, real deployments, real debugging. Currently in Class 12 (PCM) at Woodland Academy, Gorakhpur, working toward the MEXT Undergraduate Scholarship 2028 to study Robotics Engineering in Japan.</p>
+                </div>
+                <div class="about-card animate-slide-up stagger-2">
+                    <h3>How I Work</h3>
+                    <p>Backend and agents first, phone-first control surfaces, explicit approvals over silent automation, allow-lists over open access. AI tools are used deliberately in my process — three agent lanes work the codebase under my direction — but architecture and shipping decisions are mine. Everything durable stays human-readable Markdown.</p>
+                </div>
+                <div class="about-card animate-slide-up stagger-3">
+                    <h3>Links</h3>
+                    <p>
+                        <a href="https://github.com/Aj-Niplex" target="_blank">GitHub</a> ·
+                        <a href="https://www.linkedin.com/in/aj-niplex-foundation" target="_blank">LinkedIn</a> ·
+                        <a href="https://aj-niplex.github.io/niplex/" target="_blank">NiPlex Product Hub</a> ·
+                        <a href="https://github.com/Aj-Niplex/Aj-Niplex/blob/main/agent.md" target="_blank">agent.md (for AI agents)</a>
+                    </p>
+                </div>
+            </div>
+
+            <h2 class="section-title animate-fade-in" style="margin-top: 4rem;">Build Experience</h2>
+            <p class="section-intro animate-fade-in">Systems I built and keep running — with real status, not employment dates.</p>
+            <div class="projects-grid">
+
+                <div class="project-card animate-slide-up stagger-1">
+                    <div class="project-header">
+                        <div class="project-icon">🤖</div>
+                        <h3>NiPlex-Harness</h3>
+                    </div>
+                    <p>Personal AI agent harness controlled from Discord or Telegram — built for free hosts, no PC required. Bounded 8-round tool loop, Python sandbox with approval buttons, memory, skills, web search, terminal, Obsidian-ready vault. Allow-list only.</p>
+                    <div class="repo-meta">
+                        <span class="meta-item"><span class="lang-dot" style="background:#3572A5;"></span>Python 3.13</span>
+                        <span class="meta-item"><a href="https://github.com/Aj-Niplex/NiPlex-Harness" target="_blank">NiPlex-Harness ↗</a></span>
+                    </div>
+                    <span class="badge flagship">Flagship · Public · MIT</span>
+                </div>
+
+                <div class="project-card animate-slide-up stagger-1">
+                    <div class="project-header">
+                        <div class="project-icon">⚡</div>
+                        <h3>NiPlex-MCP</h3>
+                    </div>
+                    <p>Production Model Context Protocol server — 70+ tools behind one connection: GitHub, three sandboxes, HidenCloud, web search, YouTube, Google Workspace, Neural memory sub-agent. Security-reviewed, allow-list dispatch, no email-send, no auto-merge. FastMCP on Horizon, auto-deploy on push.</p>
+                    <div class="repo-meta">
+                        <span class="meta-item"><span class="lang-dot" style="background:#3572A5;"></span>Python</span>
+                        <span class="meta-item">Private · Core</span>
+                    </div>
+                    <span class="badge flagship">Flagship · Deployed</span>
+                </div>
+
+                <div class="project-card animate-slide-up stagger-2">
+                    <div class="project-header">
+                        <div class="project-icon">🎭</div>
+                        <h3>Rei-kun Bot</h3>
+                    </div>
+                    <p>Live Discord AI orchestrator for a student community — multi-model fallback via OpenRouter (DeepSeek / Llama 4 / GPT / Gemini), Code Doctor, Resource Hub, per-channel memory, hot-reload. 24 commands, 19 modules.</p>
+                    <div class="repo-meta">
+                        <span class="meta-item"><span class="lang-dot" style="background:#3572A5;"></span>Python 3.13</span>
+                        <span class="meta-item"><a href="https://github.com/Aj-Niplex/Rei-kun-Bot" target="_blank">Rei-kun-Bot ↗</a></span>
+                    </div>
+                    <span class="badge">Live · Public · MIT</span>
+                </div>
+
+                <div class="project-card animate-slide-up stagger-2">
+                    <div class="project-header">
+                        <div class="project-icon">🧵</div>
+                        <h3>ThreadForge MCP</h3>
+                    </div>
+                    <p>Multi-model conversational chatbot MCP server — persistent threads, model routing + fallback, background context compression, GitHub-backed shared artifacts. Deployed on Horizon.</p>
+                    <div class="repo-meta">
+                        <span class="meta-item"><span class="lang-dot" style="background:#3572A5;"></span>Python</span>
+                        <span class="meta-item"><a href="https://github.com/Aj-Niplex/ThreadForge-MCP" target="_blank">ThreadForge-MCP ↗</a></span>
+                    </div>
+                    <span class="badge">Shipped · Public</span>
+                </div>
+
+                <div class="project-card animate-slide-up stagger-3">
+                    <div class="project-header">
+                        <div class="project-icon">🖥️</div>
+                        <h3>Computer-Use MCP</h3>
+                    </div>
+                    <p>16 browser + workspace tools for any MCP agent, executed on a real Chromium runtime on HidenCloud — screenshots, clicks, typing, confined workspace — behind Horizon's MCP layer.</p>
+                    <div class="repo-meta">
+                        <span class="meta-item"><span class="lang-dot" style="background:#3572A5;"></span>Python</span>
+                        <span class="meta-item"><a href="https://github.com/Aj-Niplex/Computer-Use-MCP" target="_blank">Computer-Use-MCP ↗</a></span>
+                    </div>
+                    <span class="badge">Shipped · Public</span>
+                </div>
+
+                <div class="project-card animate-slide-up stagger-3">
+                    <div class="project-header">
+                        <div class="project-icon">🧠</div>
+                        <h3>Neural Stack</h3>
+                    </div>
+                    <p>Memory layer of the ecosystem: Neural-MCP sub-agent (ask_neural / log_to_neural over Adarshs-Stack), neural-chat capture bot (Discord + Telegram, 47+ tools in chat mode), Neural-OS second brain (React 19 + Convex).</p>
+                    <div class="repo-meta">
+                        <span class="meta-item"><span class="lang-dot" style="background:#3572A5;"></span>Python · TS</span>
+                        <span class="meta-item"><a href="https://github.com/Aj-Niplex/Neural" target="_blank">Neural ↗</a></span>
+                    </div>
+                    <span class="badge">Deployed · Private</span>
+                </div>
+
+                <div class="project-card animate-slide-up stagger-1">
+                    <div class="project-header">
+                        <div class="project-icon">🔍</div>
+                        <h3>NiPlex Research AI</h3>
+                    </div>
+                    <p>Mobile-first research assistant plugin for Obsidian — bounded context (reads what it needs, never the whole vault), approval-gated edits, transparent prompts, MCP-compatible tool calling.</p>
+                    <div class="repo-meta">
+                        <span class="meta-item"><span class="lang-dot" style="background:#3178c6;"></span>TypeScript</span>
+                        <span class="meta-item"><a href="https://github.com/Aj-Niplex/Niplex-obsidian-Research-AI" target="_blank">Research AI ↗</a></span>
+                    </div>
+                    <span class="badge">Shipped · Public</span>
+                </div>
+
+                <div class="project-card animate-slide-up stagger-2">
+                    <div class="project-header">
+                        <div class="project-icon">🌉</div>
+                        <h3>VaultBridge</h3>
+                    </div>
+                    <p>Notion → Obsidian sync: incremental pulls, stable note identity, snapshot diffing, version history — Supabase-backed, deployed on Railway.</p>
+                    <div class="repo-meta">
+                        <span class="meta-item"><span class="lang-dot" style="background:#f1e05a;"></span>JavaScript</span>
+                        <span class="meta-item">Private · MVP</span>
+                    </div>
+                    <span class="badge">MVP · Deployed</span>
+                </div>
+
+                <div class="project-card animate-slide-up stagger-3">
+                    <div class="project-header">
+                        <div class="project-icon">🛠️</div>
+                        <h3>Infrastructure</h3>
+                    </div>
+                    <p>Free LLM Gateway (Caddy + FreeLLMAPI on Wispbyte), FastMCP sandbox (60s / 1.5 GB caps), cron reminder worker, OpenDots hosting — the whole stack runs on free hosts, by design.</p>
+                    <div class="repo-meta">
+                        <span class="meta-item"><span class="lang-dot" style="background:#3572A5;"></span>Python · JS</span>
+                        <span class="meta-item">Private · Operational</span>
+                    </div>
+                    <span class="badge">Running · Private</span>
+                </div>
+
+            </div>
+
+            <h2 class="section-title animate-fade-in" style="margin-top: 4rem;">Education</h2>
+            <div class="about-grid">
+                <div class="about-card animate-slide-up stagger-1">
+                    <h3>Woodland Academy, Gorakhpur</h3>
+                    <p>Class 12 — PCM (Physics, Chemistry, Mathematics), 2025&ndash;2027. Robotics Technology as a subject in Class 11&ndash;12.</p>
+                </div>
+                <div class="about-card animate-slide-up stagger-2">
+                    <h3>MEXT Undergraduate Scholarship — 2028 Target</h3>
+                    <p>Applying for the MEXT scholarship to study Robotics Engineering in Japan. The roadmap lives on the <a href="roadmap.html">Roadmap page</a>.</p>
+                </div>
+                <div class="about-card animate-slide-up stagger-3">
+                    <h3>Japanese — JLPT N5 (in progress)</h3>
+                    <p>Beginner Japanese, working toward JLPT N5 before the MEXT application window.</p>
+                </div>
+            </div>
+
+            <div class="skill-matrix-container animate-slide-up" style="margin-top: 4rem;">
+                <h3 class="section-subtitle" style="text-align: center; color: var(--white); margin-bottom: 2rem;">Skills</h3>
+                <div class="skill-matrix">
+                    <div class="skill-category">
+                        <h4>AI &amp; Agents</h4>
+                        <ul>
+                            <li>AI Agent Design &amp; Orchestration</li>
+                            <li>Model Context Protocol (MCP)</li>
+                            <li>Multi-Model Fallback Systems</li>
+                            <li>Prompt Engineering</li>
+                            <li>Agent Memory &amp; Knowledge Systems</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Engineering</h4>
+                        <ul>
+                            <li>Python (primary) &middot; Python 3.13 stdlib backends</li>
+                            <li>TypeScript &amp; JavaScript</li>
+                            <li>Discord.py &middot; aiohttp REST</li>
+                            <li>Linux VPS Administration</li>
+                            <li>Free-host deployment (HidenCloud · Horizon · Wispbyte · Railway)</li>
+                            <li>Rust — learning path</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Academic</h4>
+                        <ul>
+                            <li>PCM (Physics, Chemistry, Math)</li>
+                            <li>Robotics Technology</li>
+                            <li>Japanese — Beginner, targeting JLPT N5</li>
+                            <li>Technical Documentation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logos">
+                <img src="assets/user_logo.jpeg" alt="User">
+                <img src="assets/company_logo.png" alt="Company">
+            </div>
+            <p>&copy; 2026 Adarsh Jaiswal — Niplex. <strong>NEVER STOP IMAGINING</strong></p>
+            <p class="footer-credit">For AI agents: see <a href="https://github.com/Aj-Niplex/Aj-Niplex/blob/main/agent.md" target="_blank">agent.md</a>.</p>
+            <div class="footer-counter">
+                <span class="counter-label">👁 Site Views</span>
+                <span class="view-counter counter-value">&mdash;</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            const body = document.body;
+            const toggleBtn = document.getElementById('theme-toggle');
+            const dropdown = document.getElementById('theme-dropdown');
+            const options = document.querySelectorAll('.theme-option');
+            const petalLayer = document.getElementById('petal-layer');
+            const ICONS = { dark: '🌙', light: '☀️', sakura: '🌸' };
+
+            function applyTheme(theme) {
+                body.classList.remove('light-theme', 'sakura-theme');
+                if (theme === 'light') body.classList.add('light-theme');
+                if (theme === 'sakura') body.classList.add('sakura-theme');
+                localStorage.setItem('theme', theme);
+                toggleBtn.textContent = ICONS[theme] || '🌙';
+                options.forEach(btn => {
+                    btn.setAttribute('aria-pressed', btn.dataset.theme === theme ? 'true' : 'false');
+                });
+                if (theme === 'sakura') {
+                    if (petalLayer && petalLayer.dataset.spawned !== 'true') {
+                        petalLayer.dataset.spawned = 'true';
+                        const count = window.innerWidth < 600 ? 16 : 28;
+                        for (let i = 0; i < count; i++) {
+                            const petal = document.createElement('div');
+                            petal.className = 'petal';
+                            petal.style.left = Math.random() * 100 + 'vw';
+                            petal.style.width = petal.style.height = (8 + Math.random() * 10) + 'px';
+                            petal.style.opacity = 0.5 + Math.random() * 0.4;
+                            petalLayer.appendChild(petal);
+                        }
+                    }
+                } else if (petalLayer) {
+                    petalLayer.innerHTML = '';
+                    petalLayer.dataset.spawned = 'false';
+                }
+            }
+
+            applyTheme(localStorage.getItem('theme') || 'dark');
+            toggleBtn.addEventListener('click', e => { e.stopPropagation(); dropdown.classList.toggle('open'); });
+            options.forEach(btn => btn.addEventListener('click', () => { applyTheme(btn.dataset.theme); dropdown.classList.remove('open'); }));
+            document.addEventListener('click', e => { if (!dropdown.contains(e.target) && e.target !== toggleBtn) dropdown.classList.remove('open'); });
+        })();
+    </script>
+    <script type="module" src="/script.js"></script>
+</body>
+</html>
