@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niplex Research AI — Obsidian Research Agent | NiPlex</title>
+    <meta name="description" content="Niplex-obsidian-Research-AI: an autonomous, mobile-first Obsidian research agent plugin — bounded vault context, transparent prompts, approval-gated durable edits, model fallback.">
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="petal-layer" id="petal-layer"></div>
+
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="../assets/favicon.svg" alt="NiPlex Logo">
+                <span>NIPLEX</span>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">Hub</a>
+                <a href="harness.html">Harness</a>
+                <a href="mcp.html">MCP</a>
+                <a href="rei-kun.html">Rei-kun</a>
+                <a href="threadforge.html">ThreadForge</a>
+                <div class="theme-picker">
+                    <button id="theme-toggle" class="theme-toggle" title="Toggle Theme" aria-haspopup="true">🌙</button>
+                    <div class="theme-dropdown" id="theme-dropdown">
+                        <button class="theme-option" data-theme="dark" aria-pressed="true">🌙 Dark</button>
+                        <button class="theme-option" data-theme="light" aria-pressed="false">☀️ Light</button>
+                        <button class="theme-option" data-theme="sakura" aria-pressed="false">🌸 Sakura</button>
+                    </div>
+                </div>
+                <a href="https://github.com/Aj-Niplex/Niplex-obsidian-Research-AI" target="_blank" class="nav-cta">GitHub</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="section">
+        <div class="container">
+            <div class="project-detail-header">
+                <div class="detail-icon">🔬</div>
+                <h1>Niplex Research AI</h1>
+                <p class="detail-subtitle">The autonomous Obsidian research agent — bounded context, transparent prompts, approved edits</p>
+            </div>
+
+            <div class="detail-grid">
+                <div class="detail-main">
+                    <div class="content-block">
+                        <h2>What It Is</h2>
+                        <div class="markdown-content">
+                            <p>Niplex Research AI is a <strong>real Obsidian plugin</strong> — not a script that happens to touch Markdown files. It ships with <code>manifest.json</code>, <code>versions.json</code>, an esbuild build pipeline and a test suite, and it runs inside Obsidian, which makes it the most mobile-first product in the collection: research sessions start from the same app that already holds the vault, on the phone.</p>
+                            <p>Its job is autonomous research: given a topic, it plans, reads what it needs, and drafts — under three hard rules: <strong>bounded reads</strong> (line windows, never whole vault), <strong>transparent prompts</strong> (the system prompt is inspectable), and <strong>approval-gated edits</strong> (durable changes wait for a human yes).</p>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>The src/core Module Map</h2>
+                        <div class="markdown-content">
+                            <p>The plugin's discipline shows in its architecture — every concern gets its own module in <code>src/core</code>:</p>
+                        </div>
+                        <table class="spec-table">
+                            <thead><tr><th>Module</th><th>Responsibility</th></tr></thead>
+                            <tbody>
+                                <tr><td>agent-runtime.ts</td><td>The research agent loop itself</td></tr>
+                                <tr><td>approval-policy.ts</td><td>What needs a human yes before it is durable</td></tr>
+                                <tr><td>context-budget.ts</td><td>Bounded line-window reads — the vault is never read whole</td></tr>
+                                <tr><td>chat-history.ts</td><td>Session history for long research runs</td></tr>
+                                <tr><td>mcp-client.ts + mcp-compat.ts</td><td>Connecting out to MCP servers (with compatibility layer)</td></tr>
+                                <tr><td>model-fallback.ts</td><td>Try the good model, fall back to the reliable one</td></tr>
+                                <tr><td>system-prompt.ts</td><td>Transparent, inspectable prompts</td></tr>
+                                <tr><td>vault-context.ts</td><td>Vault-aware retrieval for research grounding</td></tr>
+                                <tr><td>moc-organizer.ts</td><td>Maps of Content — auto-organizing the vault's index notes</td></tr>
+                                <tr><td>youtube.ts</td><td>Research from YouTube sources</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>Capabilities</h2>
+                        <table class="spec-table">
+                            <thead><tr><th>Capability</th><th>How it is bounded</th></tr></thead>
+                            <tbody>
+                                <tr><td>Autonomous research loop</td><td>Plans → reads → drafts, inside one session</td></tr>
+                                <tr><td>Vault reading</td><td>Bounded line-window reads, context budget enforced</td></tr>
+                                <tr><td>Durable edits</td><td>Explicit approval only — drafts are proposals, not writes</td></tr>
+                                <tr><td>Model routing</td><td>Fallback chain: preferred model → reliable model</td></tr>
+                                <tr><td>Vault organization</td><td>MOC organizing keeps index notes coherent</td></tr>
+                                <tr><td>External research</td><td>YouTube ingestion + MCP server connections</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>Why It Matters in the Collection</h2>
+                        <div class="markdown-content">
+                            <p>Every NiPlex product enforces the same three ideas — bounded context, explicit approvals, transparent prompts — but Research AI enforces them against the most personal surface of all: <strong>the knowledge vault</strong>. It is the proof that an agent can be genuinely autonomous inside someone's notes without ever being trusted blindly.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>Install</h2>
+                        <div class="code-section">
+                            <div class="code-header">install.txt</div>
+                            <pre><code># From the repo
+npm install
+npm run build      # esbuild pipeline
+# copy manifest.json + main.js into
+# .obsidian/plugins/&lt;plugin-id&gt;/ in your vault
+# enable in Obsidian settings → Community plugins</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-sidebar">
+                    <div class="sidebar-card">
+                        <h3>Technical Meta</h3>
+                        <ul>
+                            <li><strong>Status:</strong> Public</li>
+                            <li><strong>Type:</strong> Obsidian plugin (manifest + versions)</li>
+                            <li><strong>Language:</strong> TypeScript</li>
+                            <li><strong>Build:</strong> esbuild</li>
+                            <li><strong>Tests:</strong> test/ suite included</li>
+                            <li><strong>Core modules:</strong> 12+ in src/core</li>
+                            <li><strong>Constraints:</strong> bounded reads · approval-gated edits</li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-card">
+                        <h3>Quick Links</h3>
+                        <a href="https://github.com/Aj-Niplex/Niplex-obsidian-Research-AI" target="_blank" class="btn primary">Source on GitHub</a>
+                    </div>
+                    <div class="sidebar-card">
+                        <h3>Related Products</h3>
+                        <ul>
+                            <li><a href="neural.html">Neural stack</a> — the memory it researches against</li>
+                            <li><a href="harness.html">NiPlex-Harness</a> — same approval philosophy, chat-first</li>
+                            <li><a href="mcp.html">NiPlex-MCP</a> — the tool layer it can dial out to</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2026 NiPlex — Adarsh Jaiswal. <strong>NEVER STOP IMAGINING</strong></p>
+            <p class="footer-credit">NiPlex is the product collection of <a href="https://aj-niplex.github.io/" target="_blank">Adarsh Jaiswal</a> · Personal site · <a href="https://aj-niplex.github.io/resume.html" target="_blank">Résumé</a> · For AI agents: <a href="https://github.com/Aj-Niplex/Aj-Niplex/blob/main/agent.md" target="_blank">agent.md</a></p>
+        </div>
+    </footer>
+
+    <script src="../assets/hub.js" defer></script>
+    <script>
+        (function () {
+            const body = document.body;
+            const toggleBtn = document.getElementById('theme-toggle');
+            const dropdown = document.getElementById('theme-dropdown');
+            const options = document.querySelectorAll('.theme-option');
+            const petalLayer = document.getElementById('petal-layer');
+            const ICONS = { dark: '🌙', light: '☀️', sakura: '🌸' };
+
+            function spawnPetals() {
+                if (!petalLayer || petalLayer.dataset.spawned === 'true') return;
+                petalLayer.dataset.spawned = 'true';
+                const count = window.innerWidth < 600 ? 16 : 28;
+                for (let i = 0; i < count; i++) {
+                    const petal = document.createElement('div');
+                    petal.className = 'petal';
+                    petal.style.left = Math.random() * 100 + 'vw';
+                    petal.style.width = petal.style.height = (8 + Math.random() * 10) + 'px';
+                    petal.style.opacity = 0.5 + Math.random() * 0.4;
+                    petalLayer.appendChild(petal);
+                }
+            }
+
+            function clearPetals() {
+                if (!petalLayer) return;
+                petalLayer.innerHTML = '';
+                petalLayer.dataset.spawned = 'false';
+            }
+
+            function applyTheme(theme) {
+                body.classList.remove('light-theme', 'sakura-theme');
+                if (theme === 'light') body.classList.add('light-theme');
+                if (theme === 'sakura') body.classList.add('sakura-theme');
+                localStorage.setItem('theme', theme);
+                if (toggleBtn) toggleBtn.textContent = ICONS[theme] || '🌙';
+                options.forEach(btn => btn.setAttribute('aria-pressed', btn.dataset.theme === theme ? 'true' : 'false'));
+                if (theme === 'sakura') { spawnPetals(); } else { clearPetals(); }
+            }
+
+            applyTheme(localStorage.getItem('theme') || 'dark');
+            if (toggleBtn) toggleBtn.addEventListener('click', e => { e.stopPropagation(); dropdown.classList.toggle('open'); });
+            options.forEach(btn => btn.addEventListener('click', () => { applyTheme(btn.dataset.theme); dropdown.classList.remove('open'); }));
+            document.addEventListener('click', e => { if (!dropdown.contains(e.target) && e.target !== toggleBtn) dropdown.classList.remove('open'); });
+        })();
+    </script>
+</body>
+</html>
