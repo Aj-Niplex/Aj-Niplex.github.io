@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infrastructure — The NiPlex Backbone | NiPlex</title>
+    <meta name="description" content="The utilities that keep NiPlex running: Free LLM Gateway, self-hosted code sandbox, cron reminder worker, OpenDots host launcher, docs and coordination layer.">
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="petal-layer" id="petal-layer"></div>
+
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="../assets/favicon.svg" alt="NiPlex Logo">
+                <span>NIPLEX</span>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">Hub</a>
+                <a href="harness.html">Harness</a>
+                <a href="mcp.html">MCP</a>
+                <a href="rei-kun.html">Rei-kun</a>
+                <a href="threadforge.html">ThreadForge</a>
+                <div class="theme-picker">
+                    <button id="theme-toggle" class="theme-toggle" title="Toggle Theme" aria-haspopup="true">🌙</button>
+                    <div class="theme-dropdown" id="theme-dropdown">
+                        <button class="theme-option" data-theme="dark" aria-pressed="true">🌙 Dark</button>
+                        <button class="theme-option" data-theme="light" aria-pressed="false">☀️ Light</button>
+                        <button class="theme-option" data-theme="sakura" aria-pressed="false">🌸 Sakura</button>
+                    </div>
+                </div>
+                <a href="https://github.com/Aj-Niplex" target="_blank" class="nav-cta">GitHub</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="section">
+        <div class="container">
+            <div class="project-detail-header">
+                <div class="detail-icon">🛠️</div>
+                <h1>Infrastructure</h1>
+                <p class="detail-subtitle">The quiet utilities that keep a zero-cost ecosystem running</p>
+            </div>
+
+            <div class="detail-grid">
+                <div class="detail-main">
+                    <div class="content-block">
+                        <h2>What This Is</h2>
+                        <div class="markdown-content">
+                            <p>NiPlex runs on <strong>infrastructure that costs nothing</strong> — free hosts, free LLM tiers, self-built sandboxes. This is the layer that makes that possible: a free LLM gateway, a self-hosted code sandbox, a cron reminder worker, an OpenDots host launcher, plus the docs and coordination repos that keep three AI-agent lanes working the same codebase without stepping on each other.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>Free LLM Gateway (niplex-worker)</h2>
+                        <div class="markdown-content">
+                            <p>An OpenAI-compatible endpoint for the whole ecosystem, assembled from free tiers and gated by one key:</p>
+                            <ul>
+                                <li><strong>Caddy</strong> reverse proxy in front of <strong>FreeLLMAPI</strong> (Wispbyte free tier), with a <code>PUBLIC_API_KEY</code> gate on the public route</li>
+                                <li>Model <code>"auto"</code> — one name routes to whatever is available</li>
+                                <li>Providers: <strong>Groq, Google AI Studio, OpenRouter</strong> — all free tiers</li>
+                                <li>Runs on <strong>port 8080</strong>; FreeLLMAPI's dashboard stays localhost-only</li>
+                                <li>One command to run: <code>bash start.sh</code></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>Self-Hosted Code Sandbox</h2>
+                        <div class="markdown-content">
+                            <p>A FastMCP <code>run_code</code> server built for one reason: <strong>stop paying for E2B and Daytona</strong> when a controlled own-host sandbox does the job.</p>
+                            <ul>
+                                <li>Runs <strong>Python and JavaScript</strong></li>
+                                <li>Hard limits: <strong>60s wall clock · 1.5GB RLIMIT_AS · 50K output chars</strong></li>
+                                <li>Subprocess with full internet + environment passthrough — documented honestly, including the secrets caveat that implies</li>
+                                <li>A <code>health</code> tool for monitoring</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>worker-server — Cron + Reminders</h2>
+                        <div class="markdown-content">
+                            <p>A standalone poller that reads tasks from <strong>notion-mcp</strong>, evaluates cron and reminder rules on each pass, and sends <strong>reminder emails</strong> when something is due. No framework ceremony — one loop, one job.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>opendots-host</h2>
+                        <div class="markdown-content">
+                            <p>A launcher that <strong>downloads, builds and runs CopilotKit's OpenDots</strong> on HidenCloud — including a <code>gemini-shim.js</code> to adapt model calls and an <code>index.js</code> entry. Proof the pattern generalizes: NiPlex can host and adapt third-party agent UIs, not just its own.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>Docs &amp; Coordination Layer</h2>
+                        <div class="markdown-content">
+                            <p>The invisible product: the repos that let three AI agents (Claude, Grok, Mistral) develop together under one owner without collisions:</p>
+                            <ul>
+                                <li><strong>save-data</strong> — durable store (ThreadForge threads live here) plus the static-site plan and its coordination log</li>
+                                <li><strong>NiPlex-Docs</strong> — the documentation hub</li>
+                                <li><strong>AI-handover / agent-talk</strong> patterns — boards, findings and session logs per lane, so every session starts warm</li>
+                                <li>Private <strong>dev twins</strong> of the public repos — experiments and agent notes never ship from the public copies</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>The Zero-Cost Principle</h2>
+                        <div class="code-card">
+                            <div class="code-header">costs.txt</div>
+                            <pre>HidenCloud (free VPS tier)   — harness, Rei-kun, workers
+Horizon (free container)     — NiPlex-MCP, Neural-MCP, sandbox
+Wispbyte (free hosting)      — FreeLLMAPI behind Caddy
+Groq / AI Studio / OpenRouter — free LLM tiers via gateway
+GitHub Pages                  — this site
+
+Monthly infrastructure bill: $0</pre>
+                        </div>
+                        <div class="markdown-content" style="margin-top: 1rem;">
+                            <p>Everything in this directory runs on infrastructure that costs nothing — by design, not by accident. The constraint shaped the architecture: gateways instead of paid APIs, own-host sandboxes instead of metered ones, and always a fallback chain.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-sidebar">
+                    <div class="sidebar-card">
+                        <h3>Technical Meta</h3>
+                        <ul>
+                            <li><strong>Status:</strong> Private (production)</li>
+                            <li><strong>Gateway:</strong> Caddy + FreeLLMAPI · port 8080</li>
+                            <li><strong>Gateway auth:</strong> PUBLIC_API_KEY gate</li>
+                            <li><strong>Sandbox:</strong> Python + JS · 60s · 1.5GB · 50K out</li>
+                            <li><strong>Worker:</strong> notion-mcp poller → reminder emails</li>
+                            <li><strong>Launcher:</strong> OpenDots on HidenCloud</li>
+                            <li><strong>Hosts:</strong> HidenCloud · Horizon · Wispbyte</li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-card">
+                        <h3>Quick Links</h3>
+                        <a href="https://github.com/Aj-Niplex" target="_blank" class="btn primary">Aj-Niplex on GitHub</a>
+                        <a href="https://aj-niplex.github.io/" target="_blank" class="btn secondary">Main Site</a>
+                    </div>
+                    <div class="sidebar-card">
+                        <h3>Related Products</h3>
+                        <ul>
+                            <li><a href="mcp.html">NiPlex-MCP</a> — the tool layer these utilities feed</li>
+                            <li><a href="harness.html">NiPlex-Harness</a> — runs on this backbone</li>
+                            <li><a href="threadforge.html">ThreadForge-MCP</a> — stores threads in save-data</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2026 NiPlex — Adarsh Jaiswal. <strong>NEVER STOP IMAGINING</strong></p>
+            <p class="footer-credit">NiPlex is the product collection of <a href="https://aj-niplex.github.io/" target="_blank">Adarsh Jaiswal</a> · Personal site · <a href="https://aj-niplex.github.io/resume.html" target="_blank">Résumé</a> · For AI agents: <a href="https://github.com/Aj-Niplex/Aj-Niplex/blob/main/agent.md" target="_blank">agent.md</a></p>
+        </div>
+    </footer>
+
+    <script src="../assets/hub.js" defer></script>
+    <script>
+        (function () {
+            const body = document.body;
+            const toggleBtn = document.getElementById('theme-toggle');
+            const dropdown = document.getElementById('theme-dropdown');
+            const options = document.querySelectorAll('.theme-option');
+            const petalLayer = document.getElementById('petal-layer');
+            const ICONS = { dark: '🌙', light: '☀️', sakura: '🌸' };
+
+            function spawnPetals() {
+                if (!petalLayer || petalLayer.dataset.spawned === 'true') return;
+                petalLayer.dataset.spawned = 'true';
+                const count = window.innerWidth < 600 ? 16 : 28;
+                for (let i = 0; i < count; i++) {
+                    const petal = document.createElement('div');
+                    petal.className = 'petal';
+                    petal.style.left = Math.random() * 100 + 'vw';
+                    petal.style.width = petal.style.height = (8 + Math.random() * 10) + 'px';
+                    petal.style.opacity = 0.5 + Math.random() * 0.4;
+                    petalLayer.appendChild(petal);
+                }
+            }
+
+            function clearPetals() {
+                if (!petalLayer) return;
+                petalLayer.innerHTML = '';
+                petalLayer.dataset.spawned = 'false';
+            }
+
+            function applyTheme(theme) {
+                body.classList.remove('light-theme', 'sakura-theme');
+                if (theme === 'light') body.classList.add('light-theme');
+                if (theme === 'sakura') body.classList.add('sakura-theme');
+                localStorage.setItem('theme', theme);
+                if (toggleBtn) toggleBtn.textContent = ICONS[theme] || '🌙';
+                options.forEach(btn => btn.setAttribute('aria-pressed', btn.dataset.theme === theme ? 'true' : 'false'));
+                if (theme === 'sakura') { spawnPetals(); } else { clearPetals(); }
+            }
+
+            applyTheme(localStorage.getItem('theme') || 'dark');
+            if (toggleBtn) toggleBtn.addEventListener('click', e => { e.stopPropagation(); dropdown.classList.toggle('open'); });
+            options.forEach(btn => btn.addEventListener('click', () => { applyTheme(btn.dataset.theme); dropdown.classList.remove('open'); }));
+            document.addEventListener('click', e => { if (!dropdown.contains(e.target) && e.target !== toggleBtn) dropdown.classList.remove('open'); });
+        })();
+    </script>
+</body>
+</html>
