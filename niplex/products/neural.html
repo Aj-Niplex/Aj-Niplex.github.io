@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neural Stack — Memory as a Product | NiPlex</title>
+    <meta name="description" content="The Neural stack: Neural-MCP memory sub-agent with honest answers and routed knowledge, neural-chat capture bot with 8 sections, and Neural-OS — the second-brain workspace.">
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="petal-layer" id="petal-layer"></div>
+
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="../assets/favicon.svg" alt="NiPlex Logo">
+                <span>NIPLEX</span>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">Hub</a>
+                <a href="harness.html">Harness</a>
+                <a href="mcp.html">MCP</a>
+                <a href="rei-kun.html">Rei-kun</a>
+                <a href="threadforge.html">ThreadForge</a>
+                <div class="theme-picker">
+                    <button id="theme-toggle" class="theme-toggle" title="Toggle Theme" aria-haspopup="true">🌙</button>
+                    <div class="theme-dropdown" id="theme-dropdown">
+                        <button class="theme-option" data-theme="dark" aria-pressed="true">🌙 Dark</button>
+                        <button class="theme-option" data-theme="light" aria-pressed="false">☀️ Light</button>
+                        <button class="theme-option" data-theme="sakura" aria-pressed="false">🌸 Sakura</button>
+                    </div>
+                </div>
+                <a href="https://github.com/Aj-Niplex" target="_blank" class="nav-cta">GitHub</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="section">
+        <div class="container">
+            <div class="project-detail-header">
+                <div class="detail-icon">🧠</div>
+                <h1>The Neural Stack</h1>
+                <p class="detail-subtitle">Memory as a product — honest answers in, routed knowledge out, capture everywhere</p>
+            </div>
+
+            <div class="detail-grid">
+                <div class="detail-main">
+                    <div class="content-block">
+                        <h2>What It Is</h2>
+                        <div class="markdown-content">
+                            <p>Neural is the ecosystem's memory product line: <strong>Neural-MCP</strong> (a memory sub-agent that answers from the real knowledge store), <strong>neural-chat</strong> (a Discord + Telegram capture bot that files life into sections), and <strong>Neural-OS</strong> (a second-brain workspace app). Three systems, one idea: durable knowledge should be <em>routed, honest, and human-readable</em> — not dumped into one pile.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>Neural-MCP — the honest memory sub-agent</h2>
+                        <div class="markdown-content">
+                            <p>Two tools define the interface: <code>ask_neural</code> and <code>log_to_neural</code>. The design rule that makes it different: <strong>Neural says "I don't know" when it doesn't know</strong> — it never confabulates from thin context. It runs on Agnes (<code>agnes-2.0-flash</code>) over the Adarshs-Stack knowledge store, with two auth layers in front.</p>
+                            <p>The heart of <code>agent.py</code> is a <strong>real routing schema</strong> — messages are not dumped into a generic store, they are filed to the right Markdown path:</p>
+                        </div>
+                        <table class="spec-table">
+                            <thead><tr><th>Route</th><th>What lands there</th></tr></thead>
+                            <tbody>
+                                <tr><td>wiki/pages/niplex.md</td><td>NiPlex product knowledge</td></tr>
+                                <tr><td>wiki/pages/kaizenmanas.md</td><td>The Kaizen Manas agent-team system</td></tr>
+                                <tr><td>decisions.md</td><td>Decision records with reasoning</td></tr>
+                                <tr><td>academics-class-12.md</td><td>Class 12 study material and progress</td></tr>
+                                <tr><td>japanese-learning.md</td><td>JLPT study log and vocabulary</td></tr>
+                                <tr><td>lifestyle-goals.md</td><td>Personal goals and habits</td></tr>
+                                <tr><td>wiki/inbox.md</td><td>Catch-all for everything unclassified</td></tr>
+                                <tr><td>Projects/Claude/logs/{today}.md</td><td>Daily agent logs</td></tr>
+                                <tr><td>planning/{slug}.md</td><td>Per-plan planning documents</td></tr>
+                                <tr><td>USER.md</td><td>Owner profile, merged and kept under 100 lines</td></tr>
+                            </tbody>
+                        </table>
+                        <div class="markdown-content" style="margin-top: 1rem;">
+                            <p>A <code>PRIORITY_PATHS</code> list decides what the agent reads first, and <code>server.py</code> exposes it all as a FastMCP service on <strong>port 7861</strong>, behind a <strong>fail-secure Bearer middleware</strong> — no token configured, no server answering.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>neural-chat — capture from anywhere</h2>
+                        <div class="markdown-content">
+                            <p>A Discord + Telegram bot with two modes: <strong>capture</strong> (file messages into knowledge) and <strong>chat</strong>. Its <code>/setup</code> command is idempotent — run it twice, nothing breaks. On Telegram, capture uses forum Topics and requires the Manage Topics permission; on Discord it creates the sections it needs.</p>
+                            <p>The classifier prompt is fed by real <strong>section descriptions</strong>, so routing decisions are explainable:</p>
+                        </div>
+                        <table class="spec-table">
+                            <thead><tr><th>Section</th><th>What it collects</th></tr></thead>
+                            <tbody>
+                                <tr><td>unsorted 📥</td><td>Catch-all while the classifier decides</td></tr>
+                                <tr><td>projects 💼</td><td>Builds, repos, work in flight</td></tr>
+                                <tr><td>academics 🎓</td><td>Study notes, exams, concepts</td></tr>
+                                <tr><td>goals-and-plans 🎯</td><td>Targets and the plan to reach them</td></tr>
+                                <tr><td>decisions 🤔</td><td>Choices made and why</td></tr>
+                                <tr><td>ideas 💡</td><td>Raw sparks worth keeping</td></tr>
+                                <tr><td>daily-log</td><td>Day-by-day record</td></tr>
+                                <tr><td>personal</td><td>Everything else personal</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>Neural-OS — the second brain</h2>
+                        <div class="markdown-content">
+                            <p>The workspace layer: a second-brain app built on <strong>React 19 + Convex + Tailwind</strong>, turning the captured knowledge into something browsable and queryable — the "Graphene Daily" project. Where Neural-MCP is the memory's API and neural-chat is its intake, Neural-OS is its face.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2>Role in the Stack</h2>
+                        <div class="code-card">
+                            <div class="code-header">stack.txt</div>
+                            <pre>Discord / Telegram chat
+        │
+        ├── neural-chat — capture into 8 sections
+        │
+        ▼
+Adarshs-Stack knowledge store (Markdown, routed paths)
+        │
+        ▼
+Neural-MCP (FastMCP · port 7861 · fail-secure Bearer)
+        │
+        ├── ask_neural    → honest answer or "I don't know"
+        └── log_to_neural → filed to the right route
+        │
+        ▼
+Neural-OS (React 19 + Convex) — the human view</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-sidebar">
+                    <div class="sidebar-card">
+                        <h3>Technical Meta</h3>
+                        <ul>
+                            <li><strong>Status:</strong> Private (production)</li>
+                            <li><strong>Neural-MCP:</strong> FastMCP · port 7861 · Agnes agnes-2.0-flash</li>
+                            <li><strong>Interface:</strong> ask_neural · log_to_neural</li>
+                            <li><strong>Auth:</strong> 2 layers · fail-secure Bearer middleware</li>
+                            <li><strong>neural-chat:</strong> Discord + Telegram · 8 sections · idempotent /setup</li>
+                            <li><strong>Neural-OS:</strong> React 19 · Convex · Tailwind</li>
+                            <li><strong>Storage:</strong> routed Markdown paths (Adarshs-Stack)</li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-card">
+                        <h3>Quick Links</h3>
+                        <a href="https://github.com/Aj-Niplex" target="_blank" class="btn primary">Aj-Niplex on GitHub</a>
+                    </div>
+                    <div class="sidebar-card">
+                        <h3>Related Products</h3>
+                        <ul>
+                            <li><a href="mcp.html">NiPlex-MCP</a> — 2 Neural tools staged behind a future proxy</li>
+                            <li><a href="harness.html">NiPlex-Harness</a> — the agent that asks Neural</li>
+                            <li><a href="research-ai.html">Research AI</a> — bounded-context vault reading</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2026 NiPlex — Adarsh Jaiswal. <strong>NEVER STOP IMAGINING</strong></p>
+            <p class="footer-credit">NiPlex is the product collection of <a href="https://aj-niplex.github.io/" target="_blank">Adarsh Jaiswal</a> · Personal site · <a href="https://aj-niplex.github.io/resume.html" target="_blank">Résumé</a> · For AI agents: <a href="https://github.com/Aj-Niplex/Aj-Niplex/blob/main/agent.md" target="_blank">agent.md</a></p>
+        </div>
+    </footer>
+
+    <script src="../assets/hub.js" defer></script>
+    <script>
+        (function () {
+            const body = document.body;
+            const toggleBtn = document.getElementById('theme-toggle');
+            const dropdown = document.getElementById('theme-dropdown');
+            const options = document.querySelectorAll('.theme-option');
+            const petalLayer = document.getElementById('petal-layer');
+            const ICONS = { dark: '🌙', light: '☀️', sakura: '🌸' };
+
+            function spawnPetals() {
+                if (!petalLayer || petalLayer.dataset.spawned === 'true') return;
+                petalLayer.dataset.spawned = 'true';
+                const count = window.innerWidth < 600 ? 16 : 28;
+                for (let i = 0; i < count; i++) {
+                    const petal = document.createElement('div');
+                    petal.className = 'petal';
+                    petal.style.left = Math.random() * 100 + 'vw';
+                    petal.style.width = petal.style.height = (8 + Math.random() * 10) + 'px';
+                    petal.style.opacity = 0.5 + Math.random() * 0.4;
+                    petalLayer.appendChild(petal);
+                }
+            }
+
+            function clearPetals() {
+                if (!petalLayer) return;
+                petalLayer.innerHTML = '';
+                petalLayer.dataset.spawned = 'false';
+            }
+
+            function applyTheme(theme) {
+                body.classList.remove('light-theme', 'sakura-theme');
+                if (theme === 'light') body.classList.add('light-theme');
+                if (theme === 'sakura') body.classList.add('sakura-theme');
+                localStorage.setItem('theme', theme);
+                if (toggleBtn) toggleBtn.textContent = ICONS[theme] || '🌙';
+                options.forEach(btn => btn.setAttribute('aria-pressed', btn.dataset.theme === theme ? 'true' : 'false'));
+                if (theme === 'sakura') { spawnPetals(); } else { clearPetals(); }
+            }
+
+            applyTheme(localStorage.getItem('theme') || 'dark');
+            if (toggleBtn) toggleBtn.addEventListener('click', e => { e.stopPropagation(); dropdown.classList.toggle('open'); });
+            options.forEach(btn => btn.addEventListener('click', () => { applyTheme(btn.dataset.theme); dropdown.classList.remove('open'); }));
+            document.addEventListener('click', e => { if (!dropdown.contains(e.target) && e.target !== toggleBtn) dropdown.classList.remove('open'); });
+        })();
+    </script>
+</body>
+</html>
